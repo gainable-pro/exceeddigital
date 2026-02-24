@@ -1,6 +1,4 @@
-"use client";
-
-import { motion } from "framer-motion";
+import { GsapReveal } from "@/components/ui/GsapReveal";
 
 const projects = [
     { title: "Horizon Cloud", category: "Web Design / 3D", image: "https://images.unsplash.com/photo-1614850523296-d8c1af93d400?q=80&w=800" },
@@ -23,26 +21,21 @@ export function PortfolioSection() {
                     </button>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
                     {projects.map((project, i) => (
-                        <motion.div
-                            key={project.title}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ delay: i * 0.1 }}
-                            viewport={{ once: true }}
-                            className="group cursor-pointer"
-                        >
-                            <div className="relative aspect-video overflow-hidden rounded-2xl bg-slate-900 border border-white/5 mb-6">
-                                <div
-                                    className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                                    style={{ backgroundImage: `url(${project.image})` }}
-                                />
-                                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors" />
+                        <GsapReveal key={project.title} delay={i * 0.1} direction="up">
+                            <div className="group cursor-pointer">
+                                <div className="relative aspect-video overflow-hidden rounded-[2px] bg-slate-900 border border-white/5 mb-8">
+                                    <div
+                                        className="absolute inset-0 bg-cover bg-center transition-transform duration-[1.5s] ease-out group-hover:scale-105"
+                                        style={{ backgroundImage: `url(${project.image})` }}
+                                    />
+                                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-700" />
+                                </div>
+                                <h3 className="text-2xl font-bold mb-2 tracking-tight">{project.title}</h3>
+                                <p className="text-[10px] text-white/40 uppercase tracking-[0.3em]">{project.category}</p>
                             </div>
-                            <h3 className="text-xl font-bold mb-1">{project.title}</h3>
-                            <p className="text-sm text-slate-500 uppercase tracking-widest">{project.category}</p>
-                        </motion.div>
+                        </GsapReveal>
                     ))}
                 </div>
             </div>

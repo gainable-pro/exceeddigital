@@ -1,6 +1,4 @@
-"use client";
-
-import { motion } from "framer-motion";
+import { GsapReveal } from "@/components/ui/GsapReveal";
 
 const steps = [
     { id: "01", title: "Audit & Recherche", desc: "Analyse profonde de votre marché, de vos concurrents et de vos opportunités." },
@@ -18,22 +16,17 @@ export function MethodSection() {
                     <div className="w-24 h-1 bg-cyan-400 mx-auto" />
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/10 border border-white/10">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
                     {steps.map((step, i) => (
-                        <motion.div
-                            key={step.id}
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            transition={{ delay: i * 0.1 }}
-                            viewport={{ once: true }}
-                            className="bg-bg-deep p-12 hover:bg-white/[0.02] transition-colors"
-                        >
-                            <div className="text-4xl font-black text-cyan-400/20 mb-6">{step.id}</div>
-                            <h3 className="text-2xl font-bold mb-4">{step.title}</h3>
-                            <p className="text-slate-400 leading-relaxed">
-                                {step.desc}
-                            </p>
-                        </motion.div>
+                        <GsapReveal key={step.id} delay={i * 0.1} direction="up">
+                            <div className="group border-t border-white/5 pt-12 pb-8">
+                                <div className="text-[10px] font-black text-cyan-400 mb-8 tracking-[0.4em]">{step.id}</div>
+                                <h3 className="text-2xl font-bold mb-6 tracking-tight">{step.title}</h3>
+                                <p className="text-sm text-slate-500 leading-relaxed font-light">
+                                    {step.desc}
+                                </p>
+                            </div>
+                        </GsapReveal>
                     ))}
                 </div>
             </div>

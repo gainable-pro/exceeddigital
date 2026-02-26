@@ -19,28 +19,35 @@ export default function HeroWebGL() {
         containerRef.current.appendChild(renderer.domElement);
 
         // Geometry & Material
-        const geometry = new THREE.PlaneGeometry(20, 20, 128, 128);
+        const geometry = new THREE.PlaneGeometry(25, 25, 150, 150);
 
-        // Shader Material for Fluid Distortion
+        // Intensified Fluid/Noise Shader
         const material = new THREE.ShaderMaterial({
             uniforms: {
                 uTime: { value: 0 },
                 uColor1: { value: new THREE.Color("#0070f3") }, // Vibrant Blue
-                uColor2: { value: new THREE.Color("#02040a") }  // Deep Dark
+                uColor2: { value: new THREE.Color("#02040a") }, // Deep Dark
+                uMouse: { value: new THREE.Vector2(0, 0) }
             },
             vertexShader: `
                 varying vec2 vUv;
                 uniform float uTime;
+                uniform vec2 uMouse;
                 
                 void main() {
                     vUv = uv;
                     vec3 pos = position;
                     
-                    // Subtle noise wave
-                    float freq = 0.5;
-                    float amp = 0.5;
-                    pos.z += sin(pos.x * freq + uTime * 0.5) * amp;
-                    pos.z += cos(pos.y * freq + uTime * 0.3) * amp;
+                    // Complex wavy displacement
+                    float wave1 = sin(pos.x * 0.4 + uTime * 0.6) * 0.8;
+                    float wave2 = cos(pos.y * 0.3 + uTime * 0.4) * 0.8;
+                    float wave3 = sin((pos.x + pos.y) * 0.2 + uTime * 0.5) * 0.5;
+                    
+                    // Mouse interaction displacement
+                    float dist = distance(pos.xy, uMouse * 10.0);
+                    float mEffect = smoothstep(5.0, 0.0, dist) * 1.5;
+                    
+                    pos.z += wave1 + wave2 + wave3 + mEffect;
                     
                     gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
                 }
@@ -53,9 +60,19 @@ export default function HeroWebGL() {
                 
                 void main() {
                     vec2 uv = vUv;
-                    float strength = sin(uv.x * 2.0 + uTime * 0.2) * 0.5 + 0.5;
-                    vec3 color = mix(uColor2, uColor1, strength * 0.15); // Very subtle
-                    gl_FragColor = vec4(color, 1.0);
+                    
+                    // Plasma-like color mixing
+                    float strength = sin(uv.x * 3.0 + uTime * 0.1) * cos(uv.y * 3.0 + uTime * 0.2);
+                    strength = smoothstep(-0.5, 0.5, strength);
+                    
+                    // Create a more vibrant glow effect
+                    vec3 finalColor = mix(uColor2, uColor1, strength * 0.45);
+                    
+                    // Edge fade
+                    float edgeFade = smoothstep(0.0, 0.2, uv.x) * smoothstep(1.0, 0.8, uv.x) * 
+                                    smoothstep(0.0, 0.2, uv.y) * smoothstep(1.0, 0.8, uv.y);
+                    
+                    gl_FragColor = vec4(finalColor * edgeFade, 1.0);
                 }
             `,
             transparent: true,
@@ -63,11 +80,19 @@ export default function HeroWebGL() {
         });
 
         const mesh = new THREE.Mesh(geometry, material);
-        mesh.rotation.x = -Math.PI / 2.5;
-        mesh.position.y = -2;
+        mesh.rotation.x = -Math.PI / 2.8;
+        mesh.position.y = -3;
         scene.add(mesh);
 
-        camera.position.z = 5;
+        camera.position.z = 8;
+
+        // Interaction
+        const handleMouseMove = (e: MouseEvent) => {
+            const x = (e.clientX / window.innerWidth) * 2 - 1;
+            const y = -(e.clientY / window.innerHeight) * 2 + 1;
+            material.uniforms.uMouse.value.set(x, y);
+        };
+        window.addEventListener('mousemove', handleMouseMove);
 
         // Resize handler
         const handleResize = () => {
@@ -88,6 +113,7 @@ export default function HeroWebGL() {
         animate();
 
         return () => {
+            window.removeEventListener('mousemove', handleMouseMove);
             window.removeEventListener('resize', handleResize);
             if (containerRef.current) {
                 containerRef.current.removeChild(renderer.domElement);
@@ -109,8 +135,7 @@ export default function HeroWebGL() {
                 width: '100%',
                 height: '100%',
                 zIndex: 0,
-                pointerEvents: 'none',
-                opacity: 0.6
+                pointerEvents: 'none'
             }}
         />
     );

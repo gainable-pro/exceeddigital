@@ -237,7 +237,7 @@ h4 {
     display: none;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
     .v4-webgl-container {
         display: block !important;
     }

@@ -1,3 +1,4 @@
+"use client";
 import { GsapReveal } from "@/components/ui/GsapReveal";
 import { Mail, Phone, Send } from "lucide-react";
 

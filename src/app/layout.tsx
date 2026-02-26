@@ -1,4 +1,3 @@
-import "@/styles/globals.css";
 import type { Metadata } from "next";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
 
@@ -14,6 +13,9 @@ export default function RootLayout({
 }) {
     return (
         <html lang="fr">
+            <head>
+                <link rel="stylesheet" href="/app.css" />
+            </head>
             <body>
                 <SmoothScroll>
                     {children}

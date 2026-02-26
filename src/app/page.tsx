@@ -1,3 +1,4 @@
+"use client";
 import { Navbar } from "@/components/layout/Navbar";
 import { GsapReveal } from "@/components/ui/GsapReveal";
 import { ResultsSection } from "@/components/sections/ResultsSection";

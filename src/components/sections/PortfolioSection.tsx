@@ -9,31 +9,35 @@ const projects = [
 
 export function PortfolioSection() {
     return (
-        <section id="portfolio" className="py-24 px-6 relative">
+        <section id="portfolio" className="section-padding px-6 relative border-t border-white/5">
             <div className="max-w-7xl mx-auto">
-                <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                <div className="flex flex-col md:flex-row md:items-end justify-between mb-24 gap-12">
                     <div>
-                        <h2 className="text-3xl md:text-5xl font-black mb-4 uppercase">Portfolio</h2>
-                        <p className="text-slate-400">Quelques-unes de nos réalisations les plus marquantes.</p>
+                        <h2 className="text-6xl md:text-[9rem] leading-[0.8] mb-6">
+                            NOTRE <br /> <span className="text-gradient">LABORATOIRE</span>
+                        </h2>
+                        <p className="text-slate-400 font-light text-lg font-sora">Sélection de projets ayant redéfini les standards de performance.</p>
                     </div>
-                    <button className="text-sm font-bold uppercase tracking-widest text-cyan-400 hover:text-white transition-colors">
-                        Voir tous les projets →
+                    <button className="text-[10px] font-bold uppercase tracking-[0.4em] text-[var(--accent-primary)] hover:text-white transition-colors font-sora border-b border-[var(--accent-primary)] pb-2 flex items-center gap-4 group">
+                        See All Projects <span className="text-white group-hover:translate-x-2 transition-transform">→</span>
                     </button>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-24">
                     {projects.map((project, i) => (
                         <GsapReveal key={project.title} delay={i * 0.1} direction="up">
                             <div className="group cursor-pointer">
-                                <div className="relative aspect-video overflow-hidden rounded-[2px] bg-slate-900 border border-white/5 mb-8">
+                                <div className="relative aspect-[16/10] overflow-hidden rounded-[1.5rem] bg-slate-900 border border-white/5 mb-8">
                                     <div
-                                        className="absolute inset-0 bg-cover bg-center transition-transform duration-[1.5s] ease-out group-hover:scale-105"
+                                        className="absolute inset-0 bg-cover bg-center transition-transform duration-[2s] ease-out group-hover:scale-105"
                                         style={{ backgroundImage: `url(${project.image})` }}
                                     />
-                                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-700" />
+                                    <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-1000" />
                                 </div>
-                                <h3 className="text-2xl font-bold mb-2 tracking-tight">{project.title}</h3>
-                                <p className="text-[10px] text-white/40 uppercase tracking-[0.3em]">{project.category}</p>
+                                <div className="space-y-3">
+                                    <p className="text-[10px] text-[var(--accent-primary)] font-bold uppercase tracking-[0.4em] font-sora">{project.category}</p>
+                                    <h3 className="text-4xl font-bold font-sora leading-tight group-hover:text-gradient transition-all duration-500">{project.title}</h3>
+                                </div>
                             </div>
                         </GsapReveal>
                     ))}

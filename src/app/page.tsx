@@ -20,48 +20,48 @@ export default function Home() {
             <Navbar />
             <CustomCursor />
 
-            {/* 3D Scene Background (Hero) */}
-            <div className="h-screen w-full relative">
-                <LiquidHero />
+            {/* Hero Section V3 - Typography First */}
+            <div className="min-h-screen w-full relative flex flex-col items-center justify-center overflow-hidden">
+                {/* Visual Background Elements */}
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(156,71,216,0.05),transparent_70%)]" />
+                <div className="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none"
+                    style={{ backgroundImage: 'radial-gradient(var(--glass-border) 1px, transparent 0)', backgroundSize: '40px 40px' }}
+                />
 
-                {/* Background Glows */}
-                <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-cyan-600/5 blur-[120px] rounded-full pointer-events-none" />
-
-                <section className="h-full flex flex-col items-center justify-center relative z-10 text-center px-6">
+                <section className="relative z-10 text-center px-6 max-w-6xl mx-auto">
                     <GsapReveal delay={0.2} direction="up">
-                        <div className="inline-block px-4 py-1.5 mb-8 glass text-[10px] uppercase tracking-[0.4em] font-bold text-cyan-400">
-                            XCEED DIGITAL &mdash; EST. 2026
+                        <div className="inline-flex items-center gap-3 px-4 py-2 mb-12 glass border-white/5 rounded-full text-[9px] uppercase tracking-[0.5em] font-bold text-[var(--accent-primary)] font-sora">
+                            <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-primary)] animate-pulse" />
+                            Digital Excellence Agency
                         </div>
-                        <h1 className="text-6xl md:text-9xl font-black mb-8 tracking-tighter leading-[0.9] flex flex-col">
-                            <span className="text-white">QUANTUM</span>
-                            <span className="text-gradient">STRETCH</span>
+
+                        <h1 className="text-7xl md:text-[11rem] mb-12 flex flex-col gap-0 leading-[0.8] mix-blend-difference">
+                            <span className="text-white">IMPACTFUL</span>
+                            <span className="text-gradient drop-shadow-[0_0_30px_rgba(156,71,216,0.3)]">DIGITAL</span>
                         </h1>
-                        <p className="max-w-2xl mx-auto text-lg md:text-xl text-slate-400 font-light leading-relaxed mb-12 tracking-wide">
-                            Transformez votre vision en performance.
-                            Design immersif et technologie fluide pour votre croissance.
+
+                        <p className="max-w-xl mx-auto text-lg md:text-xl text-slate-400 font-light leading-relaxed mb-16 tracking-tight font-sora">
+                            Nous fusionnons design de haute couture et performance technologique pour propulser les leaders de demain.
                         </p>
 
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-8">
-                            <button className="px-12 py-5 bg-white text-black font-bold text-sm uppercase tracking-widest rounded-full hover:scale-105 active:scale-95 transition-all shadow-[0_0_50px_rgba(255,255,255,0.15)]">
-                                Audit Gratuit
+                            <button className="btn-primary group relative overflow-hidden">
+                                <span className="relative z-10">Lancer un audit</span>
+                                <div className="absolute inset-0 bg-[var(--accent-primary)] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out" />
                             </button>
                             <button onClick={() => document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' })}
-                                className="px-12 py-5 glass text-white font-bold text-sm uppercase tracking-widest rounded-full hover:bg-white/10 transition-all border border-white/10">
-                                Portfolio
+                                className="px-12 py-5 glass text-white font-bold text-sm uppercase tracking-widest rounded-full hover:bg-white/5 transition-all border border-white/10 font-sora">
+                                Explorer le Lab
                             </button>
                         </div>
                     </GsapReveal>
                 </section>
 
-                {/* Floating Scroll Indicator */}
-                <motion.div
-                    animate={{ y: [0, 10, 0] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                    className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-30"
-                >
-                    <span className="text-[10px] uppercase tracking-widest text-[#94a3b8]">Scroll</span>
-                    <div className="w-[1px] h-12 bg-gradient-to-b from-white to-transparent" />
-                </motion.div>
+                {/* Refined Scroll Indicator */}
+                <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 opacity-40">
+                    <span className="text-[9px] uppercase tracking-[0.4em] text-slate-500 font-sora font-bold">Discover</span>
+                    <div className="w-[1px] h-16 bg-gradient-to-b from-[var(--accent-primary)] to-transparent" />
+                </div>
             </div>
 
             {/* Narrative Flow */}

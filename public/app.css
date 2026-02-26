@@ -280,16 +280,19 @@ h4 {
     0% {
         transform: scale(0.9);
         opacity: 0.5;
+        box-shadow: 0 0 0 0 rgba(0, 112, 243, 0.7);
     }
 
     50% {
         transform: scale(1.2);
         opacity: 1;
+        box-shadow: 0 0 0 10px rgba(0, 112, 243, 0);
     }
 
     100% {
         transform: scale(0.9);
         opacity: 0.5;
+        box-shadow: 0 0 0 0 rgba(0, 112, 243, 0);
     }
 }
 
@@ -537,7 +540,7 @@ h4 {
 }
 
 .v3-method-card:hover {
-    background: rgba(156, 71, 216, 0.02);
+    background: rgba(0, 112, 243, 0.03);
 }
 
 /* Portfolio V3 */

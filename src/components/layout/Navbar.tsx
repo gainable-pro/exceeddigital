@@ -15,7 +15,7 @@ export function Navbar() {
         <nav className="v3-navbar">
             <GsapReveal delay={0.1} direction="down">
                 <Link href="/" className="v3-logo">
-                    XCEED<span className="accent">.</span>
+                    EXCEED <span className="logo-accent">DIGITAL</span>
                 </Link>
             </GsapReveal>
 

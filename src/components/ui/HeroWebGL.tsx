@@ -11,7 +11,7 @@ export default function HeroWebGL() {
 
         // Scene setup
         const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
         const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
 
         renderer.setSize(window.innerWidth, window.innerHeight);
@@ -19,15 +19,14 @@ export default function HeroWebGL() {
         containerRef.current.appendChild(renderer.domElement);
 
         // Geometry & Material
-        // Larger plane to cover more area
-        const geometry = new THREE.PlaneGeometry(30, 30, 150, 150);
+        const geometry = new THREE.PlaneGeometry(35, 35, 180, 180);
 
-        // High Intensity Fluid/Noise Shader
+        // High Intensity Fluid/Noise Shader - Ultra Dynamic V4.1
         const material = new THREE.ShaderMaterial({
             uniforms: {
                 uTime: { value: 0 },
                 uColor1: { value: new THREE.Color("#0070f3") }, // Vibrant Blue
-                uColor2: { value: new THREE.Color("#050505") }, // Dark Background
+                uColor2: { value: new THREE.Color("#050505") }, // Dark
                 uMouse: { value: new THREE.Vector2(0, 0) }
             },
             vertexShader: `
@@ -39,16 +38,17 @@ export default function HeroWebGL() {
                     vUv = uv;
                     vec3 pos = position;
                     
-                    // Stronger displacement for visibility
-                    float wave1 = sin(pos.x * 0.3 + uTime * 0.8) * 1.5;
-                    float wave2 = cos(pos.y * 0.4 + uTime * 0.5) * 1.5;
-                    float wave3 = sin((pos.x + pos.y) * 0.2 + uTime * 0.7) * 0.8;
+                    // Ultra dynamic multi-layered waves
+                    float wave1 = sin(pos.x * 0.4 + uTime * 1.2) * 1.8;
+                    float wave2 = cos(pos.y * 0.5 + uTime * 1.0) * 1.8;
+                    float wave3 = sin((pos.x + pos.y) * 0.3 + uTime * 1.5) * 1.2;
+                    float noise = sin(pos.x * 3.0 + uTime) * cos(pos.y * 3.0 + uTime) * 0.5;
                     
-                    // Mouse interaction
-                    float dist = distance(pos.xy, uMouse * 12.0);
-                    float mEffect = smoothstep(6.0, 0.0, dist) * 2.0;
+                    // Interactive magnetism
+                    float dist = distance(pos.xy, uMouse * 15.0);
+                    float mEffect = smoothstep(8.0, 0.0, dist) * 3.0;
                     
-                    pos.z += wave1 + wave2 + wave3 + mEffect;
+                    pos.z += wave1 + wave2 + wave3 + noise + mEffect;
                     
                     gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
                 }
@@ -62,20 +62,21 @@ export default function HeroWebGL() {
                 void main() {
                     vec2 uv = vUv;
                     
-                    // More dynamic color distribution
-                    float n = sin(uv.x * 4.0 + uTime * 0.2) * cos(uv.y * 4.0 + uTime * 0.3);
-                    float strength = smoothstep(-0.2, 0.8, n);
+                    // Highly dynamic color turbulence
+                    float n = sin(uv.x * 5.0 + uTime * 0.4) * cos(uv.y * 5.0 + uTime * 0.5) 
+                             + sin(uv.x * 2.0 - uTime * 0.3);
+                    float strength = smoothstep(-0.5, 1.0, n);
                     
-                    // Brightness control - Increased intensity
-                    vec3 color = mix(uColor2, uColor1, strength * 0.6);
+                    // Vibrant glowing blend
+                    vec3 color = mix(uColor2, uColor1, strength * 0.7);
                     
-                    // Glow highlights
-                    float glow = pow(strength, 3.0) * 0.8;
-                    color += uColor1 * glow;
+                    // Specular-like highlights
+                    float highlight = pow(strength, 5.0) * 1.2;
+                    color += uColor1 * highlight;
                     
-                    // Vignette to avoid harsh edges
+                    // Depth fade
                     float dist = distance(uv, vec2(0.5));
-                    float mask = smoothstep(0.8, 0.2, dist);
+                    float mask = smoothstep(1.0, 0.1, dist);
                     
                     gl_FragColor = vec4(color * mask, 1.0);
                 }
@@ -85,11 +86,11 @@ export default function HeroWebGL() {
         });
 
         const mesh = new THREE.Mesh(geometry, material);
-        mesh.rotation.x = -Math.PI / 3;
-        mesh.position.y = -4;
+        mesh.rotation.x = -Math.PI / 3.2;
+        mesh.position.y = -5;
         scene.add(mesh);
 
-        camera.position.z = 10;
+        camera.position.z = 12;
 
         // Interaction
         const handleMouseMove = (e: MouseEvent) => {
@@ -134,14 +135,14 @@ export default function HeroWebGL() {
             ref={containerRef}
             className="v4-webgl-container"
             style={{
-                position: 'fixed', // Fixed to keep it visible during scroll
+                position: 'fixed',
                 top: 0,
                 left: 0,
                 width: '100vw',
                 height: '100vh',
-                zIndex: -1, // Behind everything
+                zIndex: -1,
                 pointerEvents: 'none',
-                opacity: 1 // Full opacity for the container
+                opacity: 1
             }}
         />
     );

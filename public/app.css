@@ -121,16 +121,24 @@ h4 {
 }
 
 .v3-logo {
-    font-size: 1.75rem;
-    font-weight: 900;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1.25rem;
+    font-weight: 400;
     text-transform: uppercase;
-    letter-spacing: -0.05em;
+    letter-spacing: 0.3em;
     pointer-events: auto;
     color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
-.v3-logo .accent {
+.v3-logo .logo-accent {
+    font-weight: 700;
     color: var(--accent-primary);
+    position: relative;
+    padding-left: 0.5rem;
+    border-left: 1px solid var(--glass-border);
 }
 
 .v3-nav-dock {

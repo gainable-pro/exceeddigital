@@ -3,14 +3,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap");
 
 :root {
-    --bg-deep: #050505;
-    --bg-soft: #0a0a0b;
-    --accent-primary: #9c47d8;
-    --accent-secondary: #6366f1;
+    --bg-deep: #02040a;
+    --bg-soft: #060912;
+    --accent-primary: #0070f3;
+    --accent-secondary: #4f46e5;
     --text-primary: #f8fafc;
-    --text-secondary: #94a3b8;
+    --text-secondary: #8b9bb4;
     --glass-bg: rgba(255, 255, 255, 0.02);
-    --glass-border: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(0, 112, 243, 0.1);
     --glass-blur: blur(24px);
 }
 
@@ -230,7 +230,7 @@ h4 {
 .v3-hero-glow {
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at 50% 50%, rgba(156, 71, 216, 0.08), transparent 70%);
+    background: radial-gradient(circle at 50% 50%, rgba(0, 112, 243, 0.12), transparent 70%);
 }
 
 .v3-hero-grid {
@@ -312,7 +312,7 @@ h4 {
 }
 
 .v3-glitch {
-    filter: drop-shadow(0 0 20px rgba(156, 71, 216, 0.2));
+    filter: drop-shadow(0 0 20px rgba(0, 112, 243, 0.25));
 }
 
 .v3-hero-desc {
@@ -368,7 +368,7 @@ h4 {
 .v3-btn-audit:hover {
     color: #fff;
     transform: translateY(-3px);
-    box-shadow: 0 15px 40px rgba(156, 71, 216, 0.3);
+    box-shadow: 0 15px 40px rgba(0, 112, 243, 0.35);
 }
 
 .v3-btn-audit:hover .overlay {

@@ -1,8 +1,10 @@
 "use client";
 import { Navbar } from "@/components/layout/Navbar";
 import { GsapReveal } from "@/components/ui/GsapReveal";
-import { ResultsSection } from "@/components/sections/ResultsSection";
+import dynamic from "next/dynamic";
 import { ExpertiseSection } from "@/components/sections/ExpertiseSection";
+
+const HeroWebGL = dynamic(() => import("@/components/ui/HeroWebGL"), { ssr: false });
 import { MethodSection } from "@/components/sections/MethodSection";
 import { PortfolioSection } from "@/components/sections/PortfolioSection";
 import { OffresSection } from "@/components/sections/OffresSection";
@@ -13,9 +15,9 @@ export default function Home() {
         <main className="w-full">
             <Navbar />
 
-            {/* Hero Section V3 - Typography First */}
+            {/* Hero Section V4 - Quantum Immersive */}
             <div className="v3-hero">
-                <div className="v3-hero-glow" />
+                <HeroWebGL />
                 <div className="v3-hero-grid" />
 
                 <section className="v3-hero-content">
@@ -54,7 +56,6 @@ export default function Home() {
                 </div>
             </div>
 
-            <ResultsSection />
             <ExpertiseSection />
             <MethodSection />
             <PortfolioSection />

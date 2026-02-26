@@ -7,14 +7,13 @@
     --bg-deep: #050505;
     --bg-soft: #0a0a0b;
     --accent-primary: #9c47d8;
-    /* Sophisticated Purple */
     --accent-secondary: #6366f1;
-    /* Indigo */
     --text-primary: #f8fafc;
     --text-secondary: #94a3b8;
     --glass-bg: rgba(255, 255, 255, 0.02);
     --glass-border: rgba(255, 255, 255, 0.05);
     --glass-blur: blur(24px);
+    --max-width: 1280px;
 }
 
 * {
@@ -26,6 +25,7 @@
 html {
     scroll-behavior: initial;
     /* Managed by Lenis */
+    font-size: 16px;
 }
 
 body {
@@ -34,6 +34,25 @@ body {
     font-family: 'Literata', serif;
     -webkit-font-smoothing: antialiased;
     line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
 }
 
 /* Base Grain/Texture Overlay */
@@ -61,12 +80,237 @@ h4 {
     letter-spacing: -0.02em;
 }
 
+h1 {
+    font-size: 5rem;
+}
+
+@media (min-width: 768px) {
+    h1 {
+        font-size: 8rem;
+    }
+}
+
 .font-sora {
     font-family: 'Sora', sans-serif;
 }
 
 .font-mono {
     font-family: 'Share Tech Mono', monospace;
+}
+
+/* Layout Utilities (Vanilla CSS implementation of common Tailwind classes) */
+.flex {
+    display: flex;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.items-start {
+    align-items: flex-start;
+}
+
+.items-end {
+    align-items: flex-end;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.gap-2 {
+    gap: 0.5rem;
+}
+
+.gap-3 {
+    gap: 0.75rem;
+}
+
+.gap-4 {
+    gap: 1rem;
+}
+
+.gap-6 {
+    gap: 1.5rem;
+}
+
+.gap-8 {
+    gap: 2rem;
+}
+
+.gap-10 {
+    gap: 2.5rem;
+}
+
+.gap-12 {
+    gap: 3rem;
+}
+
+.gap-16 {
+    gap: 4rem;
+}
+
+.gap-24 {
+    gap: 6rem;
+}
+
+.gap-32 {
+    gap: 8rem;
+}
+
+.w-full {
+    width: 100%;
+}
+
+.h-full {
+    height: 100%;
+}
+
+.min-h-screen {
+    min-height: 100vh;
+}
+
+.relative {
+    position: relative;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.fixed {
+    position: fixed;
+}
+
+.inset-0 {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.z-10 {
+    z-index: 10;
+}
+
+.z-100 {
+    z-index: 100;
+}
+
+.px-6 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+.px-8 {
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.px-12 {
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+
+.py-4 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.py-8 {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.mb-4 {
+    margin-bottom: 1rem;
+}
+
+.mb-6 {
+    margin-bottom: 1.5rem;
+}
+
+.mb-8 {
+    margin-bottom: 2rem;
+}
+
+.mb-10 {
+    margin-bottom: 2.5rem;
+}
+
+.mb-12 {
+    margin-bottom: 3rem;
+}
+
+.mb-16 {
+    margin-bottom: 4rem;
+}
+
+.mb-24 {
+    margin-bottom: 6rem;
+}
+
+.mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.max-w-6xl {
+    max-width: 1140px;
+}
+
+.max-w-7xl {
+    max-width: 1280px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.grid {
+    display: grid;
+}
+
+.grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+@media (min-width: 768px) {
+    .md-grid-cols-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .md-grid-cols-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .md-px-16 {
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .lg-grid-cols-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .lg-grid-cols-4 {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
 }
 
 .section-padding {
@@ -96,6 +340,9 @@ h4 {
 }
 
 .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     background: #ffffff;
     color: #000000;
     font-family: 'Sora', sans-serif;
@@ -106,11 +353,24 @@ h4 {
     padding: 1.25rem 2.5rem;
     border-radius: 9999px;
     transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    white-space: nowrap;
 }
 
 .btn-primary:hover {
     transform: scale(1.05);
     box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+}
+
+/* Specific Section Fixes */
+.hero-title {
+    font-size: 4rem;
+    line-height: 0.9;
+}
+
+@media (min-width: 768px) {
+    .hero-title {
+        font-size: 10rem;
+    }
 }
 
 /* Hide Scrollbar */

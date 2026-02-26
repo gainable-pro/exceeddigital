@@ -19,14 +19,15 @@ export default function HeroWebGL() {
         containerRef.current.appendChild(renderer.domElement);
 
         // Geometry & Material
-        const geometry = new THREE.PlaneGeometry(25, 25, 150, 150);
+        // Larger plane to cover more area
+        const geometry = new THREE.PlaneGeometry(30, 30, 150, 150);
 
-        // Intensified Fluid/Noise Shader
+        // High Intensity Fluid/Noise Shader
         const material = new THREE.ShaderMaterial({
             uniforms: {
                 uTime: { value: 0 },
                 uColor1: { value: new THREE.Color("#0070f3") }, // Vibrant Blue
-                uColor2: { value: new THREE.Color("#02040a") }, // Deep Dark
+                uColor2: { value: new THREE.Color("#050505") }, // Dark Background
                 uMouse: { value: new THREE.Vector2(0, 0) }
             },
             vertexShader: `
@@ -38,14 +39,14 @@ export default function HeroWebGL() {
                     vUv = uv;
                     vec3 pos = position;
                     
-                    // Complex wavy displacement
-                    float wave1 = sin(pos.x * 0.4 + uTime * 0.6) * 0.8;
-                    float wave2 = cos(pos.y * 0.3 + uTime * 0.4) * 0.8;
-                    float wave3 = sin((pos.x + pos.y) * 0.2 + uTime * 0.5) * 0.5;
+                    // Stronger displacement for visibility
+                    float wave1 = sin(pos.x * 0.3 + uTime * 0.8) * 1.5;
+                    float wave2 = cos(pos.y * 0.4 + uTime * 0.5) * 1.5;
+                    float wave3 = sin((pos.x + pos.y) * 0.2 + uTime * 0.7) * 0.8;
                     
-                    // Mouse interaction displacement
-                    float dist = distance(pos.xy, uMouse * 10.0);
-                    float mEffect = smoothstep(5.0, 0.0, dist) * 1.5;
+                    // Mouse interaction
+                    float dist = distance(pos.xy, uMouse * 12.0);
+                    float mEffect = smoothstep(6.0, 0.0, dist) * 2.0;
                     
                     pos.z += wave1 + wave2 + wave3 + mEffect;
                     
@@ -61,18 +62,22 @@ export default function HeroWebGL() {
                 void main() {
                     vec2 uv = vUv;
                     
-                    // Plasma-like color mixing
-                    float strength = sin(uv.x * 3.0 + uTime * 0.1) * cos(uv.y * 3.0 + uTime * 0.2);
-                    strength = smoothstep(-0.5, 0.5, strength);
+                    // More dynamic color distribution
+                    float n = sin(uv.x * 4.0 + uTime * 0.2) * cos(uv.y * 4.0 + uTime * 0.3);
+                    float strength = smoothstep(-0.2, 0.8, n);
                     
-                    // Create a more vibrant glow effect
-                    vec3 finalColor = mix(uColor2, uColor1, strength * 0.45);
+                    // Brightness control - Increased intensity
+                    vec3 color = mix(uColor2, uColor1, strength * 0.6);
                     
-                    // Edge fade
-                    float edgeFade = smoothstep(0.0, 0.2, uv.x) * smoothstep(1.0, 0.8, uv.x) * 
-                                    smoothstep(0.0, 0.2, uv.y) * smoothstep(1.0, 0.8, uv.y);
+                    // Glow highlights
+                    float glow = pow(strength, 3.0) * 0.8;
+                    color += uColor1 * glow;
                     
-                    gl_FragColor = vec4(finalColor * edgeFade, 1.0);
+                    // Vignette to avoid harsh edges
+                    float dist = distance(uv, vec2(0.5));
+                    float mask = smoothstep(0.8, 0.2, dist);
+                    
+                    gl_FragColor = vec4(color * mask, 1.0);
                 }
             `,
             transparent: true,
@@ -80,11 +85,11 @@ export default function HeroWebGL() {
         });
 
         const mesh = new THREE.Mesh(geometry, material);
-        mesh.rotation.x = -Math.PI / 2.8;
-        mesh.position.y = -3;
+        mesh.rotation.x = -Math.PI / 3;
+        mesh.position.y = -4;
         scene.add(mesh);
 
-        camera.position.z = 8;
+        camera.position.z = 10;
 
         // Interaction
         const handleMouseMove = (e: MouseEvent) => {
@@ -129,13 +134,14 @@ export default function HeroWebGL() {
             ref={containerRef}
             className="v4-webgl-container"
             style={{
-                position: 'absolute',
+                position: 'fixed', // Fixed to keep it visible during scroll
                 top: 0,
                 left: 0,
-                width: '100%',
-                height: '100%',
-                zIndex: 0,
-                pointerEvents: 'none'
+                width: '100vw',
+                height: '100vh',
+                zIndex: -1, // Behind everything
+                pointerEvents: 'none',
+                opacity: 1 // Full opacity for the container
             }}
         />
     );

@@ -225,6 +225,7 @@ h4 {
     justify-content: center;
     overflow: hidden;
     padding-top: 5rem;
+    background: transparent;
 }
 
 .v3-hero-glow {
@@ -485,7 +486,8 @@ h4 {
 }
 
 .v3-expertise-card {
-    background: var(--bg-soft);
+    background: rgba(6, 9, 18, 0.8);
+    backdrop-filter: blur(10px);
     border: 1px solid var(--glass-border);
     padding: 4rem;
     border-radius: 2.5rem;

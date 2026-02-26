@@ -233,6 +233,20 @@ h4 {
     background: radial-gradient(circle at 50% 50%, rgba(0, 112, 243, 0.12), transparent 70%);
 }
 
+.v4-webgl-container {
+    display: none;
+}
+
+@media (min-width: 1024px) {
+    .v4-webgl-container {
+        display: block !important;
+    }
+
+    .v3-hero-glow {
+        display: none;
+    }
+}
+
 .v3-hero-grid {
     position: absolute;
     inset: 0;

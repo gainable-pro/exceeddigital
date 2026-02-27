@@ -702,7 +702,8 @@ h4 {
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 0.4em;
-    color: var(--text-secondary);
+    color: #fff;
+    opacity: 0.8;
 }
 
 .v3-contact-form input,
@@ -717,6 +718,11 @@ h4 {
     transition: border-color 0.3s ease;
     width: 100%;
     outline: none;
+}
+
+.v3-contact-form input::placeholder,
+.v3-contact-form textarea::placeholder {
+    color: rgba(255, 255, 255, 0.3);
 }
 
 .v3-contact-form input:focus,

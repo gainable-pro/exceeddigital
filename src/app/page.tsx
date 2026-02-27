@@ -4,7 +4,7 @@ import { GsapReveal } from "@/components/ui/GsapReveal";
 import dynamic from "next/dynamic";
 import { ExpertiseSection } from "@/components/sections/ExpertiseSection";
 
-const HeroWebGL = dynamic(() => import("@/components/ui/HeroWebGL"), { ssr: false });
+const QuantumBackground = dynamic(() => import("@/components/ui/QuantumBackground"), { ssr: false });
 import { MethodSection } from "@/components/sections/MethodSection";
 import { PortfolioSection } from "@/components/sections/PortfolioSection";
 import { OffresSection } from "@/components/sections/OffresSection";
@@ -17,7 +17,7 @@ export default function Home() {
 
             {/* Hero Section V4 - Quantum Immersive */}
             <div className="v3-hero">
-                <HeroWebGL />
+                <QuantumBackground />
                 <div className="v3-hero-grid" />
 
                 <section className="v3-hero-content">

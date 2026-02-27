@@ -24,12 +24,12 @@ export default function Home() {
                     <GsapReveal delay={0.2} direction="up">
                         <div className="v3-hero-badge">
                             <span className="dot" />
-                            Digital Excellence Agency
+                            Digital Engineering for Business Growth
                         </div>
 
                         <h1 className="v3-hero-title">
-                            <span className="white">IMPACTFUL</span>
-                            <span className="text-gradient v3-glitch">DIGITAL</span>
+                            <span className="white">VOTRE BUSINESS</span>
+                            <span className="text-gradient v3-glitch">STRUCTURÉ</span>
                         </h1>
 
                         <p className="v3-hero-desc">

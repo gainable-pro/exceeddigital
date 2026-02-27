@@ -1,0 +1,87 @@
+/* Method V3.1 - Enhanced IT Visuals */
+.v3-method-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    margin-top: 5rem;
+}
+
+@media (min-width: 1024px) {
+    .v3-method-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.v3-method-card {
+    position: relative;
+    padding: 5rem 3rem;
+    border-radius: 3rem;
+    background: rgba(6, 9, 18, 0.4);
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border);
+    overflow: hidden;
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    display: flex;
+    flex-direction: column;
+    min-height: 450px;
+}
+
+.v3-method-card:hover {
+    transform: translateY(-15px);
+    border-color: var(--accent-primary);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 112, 243, 0.15);
+}
+
+.v3-method-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.12;
+    transition: transform 1.5s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.8s ease;
+    z-index: 0;
+    filter: saturate(0.5) brightness(0.8);
+}
+
+.v3-method-card:hover .v3-method-bg {
+    transform: scale(1.2);
+    opacity: 0.3;
+}
+
+.v3-method-content {
+    position: relative;
+    z-index: 1;
+}
+
+.v3-method-card .icon-box {
+    margin-bottom: 2.5rem;
+    display: inline-flex;
+    padding: 1.5rem;
+    border-radius: 1.5rem;
+    background: rgba(0, 112, 243, 0.08);
+    border: 1px solid rgba(0, 112, 243, 0.2);
+    transition: all 0.6s ease;
+}
+
+.v3-method-card:hover .icon-box {
+    background: rgba(0, 112, 243, 0.15);
+    border-color: var(--accent-primary);
+    transform: rotate(-5deg) scale(1.1);
+}
+
+.v3-method-card h3 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+}
+
+.v3-method-card .step-num {
+    position: absolute;
+    top: 2.5rem;
+    right: 3rem;
+    font-size: 6rem;
+    font-weight: 900;
+    color: var(--accent-primary);
+    opacity: 0.05;
+    font-family: 'Share Tech Mono', monospace;
+}

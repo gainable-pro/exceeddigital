@@ -15,6 +15,7 @@ export default function RootLayout({
         <html lang="fr">
             <head>
                 <link rel="stylesheet" href="/app.css" />
+                <link rel="stylesheet" href="/method_v31.css" />
             </head>
             <body>
                 <SmoothScroll>

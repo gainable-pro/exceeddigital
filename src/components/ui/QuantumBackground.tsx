@@ -17,86 +17,88 @@ export default function QuantumBackground() {
     const stateRef = useRef({
         index: 0,
         targetIndex: 0,
-        lerpFactor: 0.05 // Inertial easing
+        lerpFactor: 0.04, // Smooth inertial easing
+        morphProgress: 0
     });
 
-    const NODE_COUNT = typeof window !== 'undefined' && window.innerWidth < 768 ? 800 : 2500;
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+    const NODE_COUNT = isMobile ? 600 : 2200;
 
     useEffect(() => {
         if (!containerRef.current) return;
 
-        // Init Scene
+        // --- SCENE SETUP ---
         const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 2000);
-        camera.position.z = 50;
+        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 45;
 
         const renderer = new THREE.WebGLRenderer({
             alpha: true,
             antialias: true,
             powerPreference: "high-performance"
         });
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.6));
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.setClearColor(0x000000, 0);
         containerRef.current.appendChild(renderer.domElement);
         rendererRef.current = renderer;
 
-        // --- NODES SEEDS (6 States) ---
+        // --- NODES SEEDS (6 Distinct States) ---
         const positions = new Float32Array(NODE_COUNT * 3);
         const targetPositions = [
             new Float32Array(NODE_COUNT * 3), // State 0: Sphere
-            new Float32Array(NODE_COUNT * 3), // State 1: Strained
-            new Float32Array(NODE_COUNT * 3), // State 2: Cloud
-            new Float32Array(NODE_COUNT * 3), // State 3: Ring
-            new Float32Array(NODE_COUNT * 3), // State 4: Square
-            new Float32Array(NODE_COUNT * 3)  // State 5: Cluster
+            new Float32Array(NODE_COUNT * 3), // State 1: Stretched Plank (Horizontal)
+            new Float32Array(NODE_COUNT * 3), // State 2: Open Ring
+            new Float32Array(NODE_COUNT * 3), // State 3: Solid Square Grid
+            new Float32Array(NODE_COUNT * 3), // State 4: Dense Cluster (Core)
+            new Float32Array(NODE_COUNT * 3)  // State 5: Vertical Stretch
         ];
 
         for (let i = 0; i < NODE_COUNT; i++) {
             const i3 = i * 3;
 
-            // Sphere
-            const radius = 8.5;
+            // 0: Sphere (Organic distribution)
+            const radius = 12;
             const phi = Math.acos(-1 + (2 * i) / NODE_COUNT);
             const theta = Math.sqrt(NODE_COUNT * Math.PI) * phi;
             targetPositions[0][i3] = radius * Math.cos(theta) * Math.sin(phi);
             targetPositions[0][i3 + 1] = radius * Math.sin(theta) * Math.sin(phi);
             targetPositions[0][i3 + 2] = radius * Math.cos(phi);
 
-            // Strained (Ellipsoid)
-            targetPositions[1][i3] = targetPositions[0][i3] * 2.5;
-            targetPositions[1][i3 + 1] = targetPositions[0][i3 + 1] * 0.4;
-            targetPositions[1][i3 + 2] = targetPositions[0][i3 + 2] * 0.4;
+            // 1: Stretched Plank
+            targetPositions[1][i3] = (Math.random() - 0.5) * 50;
+            targetPositions[1][i3 + 1] = (Math.random() - 0.5) * 4;
+            targetPositions[1][i3 + 2] = (Math.random() - 0.5) * 8;
 
-            // Cloud (Random)
-            targetPositions[2][i3] = (Math.random() - 0.5) * 40;
-            targetPositions[2][i3 + 1] = (Math.random() - 0.5) * 20;
-            targetPositions[2][i3 + 2] = (Math.random() - 0.5) * 10;
+            // 2: Open Ring
+            const rRing = 15;
+            const ang = (i / NODE_COUNT) * Math.PI * 2;
+            targetPositions[2][i3] = Math.cos(ang) * (rRing + (Math.random() - 0.5) * 2);
+            targetPositions[2][i3 + 1] = Math.sin(ang) * (rRing + (Math.random() - 0.5) * 2);
+            targetPositions[2][i3 + 2] = (Math.random() - 0.5) * 3;
 
-            // Ring (Horizontal Circle)
-            const rRing = 12 + Math.random() * 2;
-            const angle = (i / NODE_COUNT) * Math.PI * 2;
-            targetPositions[3][i3] = Math.cos(angle) * rRing;
-            targetPositions[3][i3 + 1] = Math.sin(angle) * rRing;
-            targetPositions[3][i3 + 2] = (Math.random() - 0.5) * 4;
-
-            // Square (Grid-like)
+            // 3: Solid Square (Data Grid)
             const side = Math.ceil(Math.sqrt(NODE_COUNT));
-            const x = i % side;
-            const y = Math.floor(i / side);
-            targetPositions[4][i3] = (x - side / 2) * 0.8;
-            targetPositions[4][i3 + 1] = (y - side / 2) * 0.8;
-            targetPositions[4][i3 + 2] = 0;
+            const gx = i % side;
+            const gy = Math.floor(i / side);
+            targetPositions[3][i3] = (gx - side / 2) * 0.9;
+            targetPositions[3][i3 + 1] = (gy - side / 2) * 0.9;
+            targetPositions[3][i3 + 2] = 0;
 
-            // Cluster (Dense center)
-            const rCluster = Math.random() * 5;
-            const phiC = Math.random() * Math.PI * 2;
-            const thetaC = Math.random() * Math.PI;
-            targetPositions[5][i3] = rCluster * Math.cos(phiC) * Math.sin(thetaC);
-            targetPositions[5][i3 + 1] = rCluster * Math.sin(phiC) * Math.sin(thetaC);
-            targetPositions[5][i3 + 2] = rCluster * Math.cos(thetaC);
+            // 4: Dense Cluster
+            const rC = Math.pow(Math.random(), 0.5) * 8;
+            const pC = Math.random() * Math.PI * 2;
+            const tC = Math.random() * Math.PI;
+            targetPositions[4][i3] = rC * Math.cos(pC) * Math.sin(tC);
+            targetPositions[4][i3 + 1] = rC * Math.sin(pC) * Math.sin(tC);
+            targetPositions[4][i3 + 2] = rC * Math.cos(tC);
 
-            // Initial Position
+            // 5: Vertical Stretch
+            targetPositions[5][i3] = (Math.random() - 0.5) * 6;
+            targetPositions[5][i3 + 1] = (Math.random() - 0.5) * 45;
+            targetPositions[5][i3 + 2] = (Math.random() - 0.5) * 6;
+
+            // Initial
             positions[i3] = targetPositions[0][i3];
             positions[i3 + 1] = targetPositions[0][i3 + 1];
             positions[i3 + 2] = targetPositions[0][i3 + 2];
@@ -105,38 +107,66 @@ export default function QuantumBackground() {
         // --- PARTICLES ---
         const particleGeom = new THREE.BufferGeometry();
         particleGeom.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-        const particleMat = new THREE.PointsMaterial({
-            color: 0x0070f3,
-            size: 0.12,
+
+        // Custom Shader Material for Depth and Pulse
+        const particleMat = new THREE.ShaderMaterial({
+            uniforms: {
+                uTime: { value: 0 },
+                uColor: { value: new THREE.Color("#0070f3") }
+            },
+            vertexShader: `
+                varying float vAlpha;
+                uniform float uTime;
+                void main() {
+                    vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
+                    // Fade based on Z depth in modelView space
+                    float depth = length(mvPosition.xyz);
+                    vAlpha = clamp(1.0 - (depth / 60.0), 0.1, 0.6);
+                    
+                    gl_PointSize = ${isMobile ? '1.5' : '2.5 * (14.0 / length(mvPosition.xyz))'};
+                    gl_Position = projectionMatrix * mvPosition;
+                }
+            `,
+            fragmentShader: `
+                uniform vec3 uColor;
+                varying float vAlpha;
+                void main() {
+                    float dist = length(gl_PointCoord - vec2(0.5));
+                    if (dist > 0.5) discard;
+                    gl_FragColor = vec4(uColor, vAlpha * (1.0 - dist * 2.0));
+                }
+            `,
             transparent: true,
-            opacity: 0.4,
-            blending: THREE.AdditiveBlending
+            blending: THREE.AdditiveBlending,
+            depthWrite: false
         });
+
         const particles = new THREE.Points(particleGeom, particleMat);
         scene.add(particles);
         particlesRef.current = particles;
 
-        // --- LINES (Connections) ---
+        // --- LINES (Minimalist Sparse Network) ---
         const lineIndices: number[] = [];
-        const MAX_CONN = window.innerWidth < 768 ? 2 : 3;
+        const THRESHOLD = 12; // Dynamic thresh
+        const K_MAX = 2; // Strict sparsity
 
         for (let i = 0; i < NODE_COUNT; i++) {
-            let connections = 0;
-            for (let j = i + 1; j < NODE_COUNT && connections < MAX_CONN; j++) {
+            let found = 0;
+            // Scan for neighbors only in first state for base topology
+            for (let j = i + 1; j < NODE_COUNT && found < K_MAX; j++) {
                 const dx = targetPositions[0][i * 3] - targetPositions[0][j * 3];
                 const dy = targetPositions[0][i * 3 + 1] - targetPositions[0][j * 3 + 1];
                 const dz = targetPositions[0][i * 3 + 2] - targetPositions[0][j * 3 + 2];
-                const distSq = dx * dx + dy * dy + dz * dz;
-
-                if (distSq < 15) {
+                const d2 = dx * dx + dy * dy + dz * dz;
+                if (d2 < THRESHOLD) {
                     lineIndices.push(i, j);
-                    connections++;
+                    found++;
                 }
             }
         }
 
         const lineGeom = new THREE.BufferGeometry();
-        lineGeom.setAttribute('position', new THREE.BufferAttribute(new Float32Array(NODE_COUNT * 3), 3));
+        lineGeom.setAttribute('position', particleGeom.getAttribute('position'));
         lineGeom.setIndex(lineIndices);
         lineGeomRef.current = lineGeom;
 
@@ -146,19 +176,19 @@ export default function QuantumBackground() {
                 uColor: { value: new THREE.Color("#0070f3") }
             },
             vertexShader: `
-                varying float vOpacity;
-                uniform float uTime;
+                varying float vAlpha;
                 void main() {
                     vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
+                    float d = length(mvPosition.xyz);
+                    vAlpha = clamp(0.6 - (d / 70.0), 0.05, 0.4);
                     gl_Position = projectionMatrix * mvPosition;
-                    vOpacity = 0.2 + 0.3 * sin(position.x * 0.1 + position.y * 0.1 + uTime * 2.0);
                 }
             `,
             fragmentShader: `
                 uniform vec3 uColor;
-                varying float vOpacity;
+                varying float vAlpha;
                 void main() {
-                    gl_FragColor = vec4(uColor, vOpacity);
+                    gl_FragColor = vec4(uColor, vAlpha * 0.5);
                 }
             `,
             transparent: true,
@@ -171,64 +201,65 @@ export default function QuantumBackground() {
 
         // --- MOUSE TRACKING ---
         const mouse = new THREE.Vector2(0, 0);
-        const targetMouse = new THREE.Vector2(0, 0);
         const handleMouseMove = (e: MouseEvent) => {
-            targetMouse.x = (e.clientX / window.innerWidth) * 2 - 1;
-            targetMouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+            mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+            mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
         };
         window.addEventListener('mousemove', handleMouseMove);
 
-        // --- SCROLL TRIGGER ---
-        const sections = document.querySelectorAll('.section-v3, .v3-hero');
-        sections.forEach((section, i) => {
+        // --- SCROLL ENGINE (Clearly perceived states) ---
+        const sections = document.querySelectorAll('.v3-hero, .section-v3');
+        sections.forEach((sec, i) => {
             ScrollTrigger.create({
-                trigger: section,
+                trigger: sec,
                 start: "top center",
                 end: "bottom center",
-                onEnter: () => { stateRef.current.targetIndex = i % 6; },
-                onEnterBack: () => { stateRef.current.targetIndex = i % 6; }
+                onToggle: (self) => {
+                    if (self.isActive) stateRef.current.targetIndex = i % 6;
+                }
             });
         });
 
-        // --- ANIMATION LOOP ---
+        // --- ANIMATION ---
         let frameId: number;
         const clock = new THREE.Clock();
 
         const animate = () => {
             const time = clock.getElapsedTime();
-            mouse.lerp(targetMouse, 0.05);
-
             const state = stateRef.current;
             const currentPos = particleGeom.attributes.position.array as Float32Array;
             const target = targetPositions[state.targetIndex];
 
+            // Slow Scene Motion
+            scene.rotation.y += 0.0006;
+            scene.rotation.x += 0.0003;
+
             for (let i = 0; i < NODE_COUNT; i++) {
                 const i3 = i * 3;
 
-                // Base Morph
+                // Morph with Inertia
                 currentPos[i3] += (target[i3] - currentPos[i3]) * state.lerpFactor;
                 currentPos[i3 + 1] += (target[i3 + 1] - currentPos[i3 + 1]) * state.lerpFactor;
                 currentPos[i3 + 2] += (target[i3 + 2] - currentPos[i3 + 2]) * state.lerpFactor;
 
-                // Constant Animation
-                currentPos[i3] += Math.sin(time * 0.5 + i) * 0.01;
-                currentPos[i3 + 1] += Math.cos(time * 0.4 + i) * 0.01;
+                // Organic Oscillation (Hypnotic)
+                const noise = Math.sin(time * 0.4 + i) * 0.08;
+                currentPos[i3] += noise;
+                currentPos[i3 + 1] += Math.cos(time * 0.3 + i) * 0.06;
 
-                // Mouse influence
+                // Interaction (Subtle Repulsion)
                 const dx = (mouse.x * 20) - currentPos[i3];
                 const dy = (mouse.y * 10) - currentPos[i3 + 1];
                 const d = Math.sqrt(dx * dx + dy * dy);
-                if (d < 5) {
-                    currentPos[i3] += dx * 0.02 * (1 - d / 5);
-                    currentPos[i3 + 1] += dy * 0.02 * (1 - d / 5);
+                if (d < 6) {
+                    const force = (1 - d / 6) * 0.05;
+                    currentPos[i3] -= dx * force;
+                    currentPos[i3 + 1] -= dy * force;
                 }
             }
-            particleGeom.attributes.position.needsUpdate = true;
-            lineGeom.setAttribute('position', particleGeom.getAttribute('position'));
 
-            lineMat.uniforms.uTime.value = time;
-            scene.rotation.y += 0.001;
-            scene.rotation.x += 0.0005;
+            particleGeom.attributes.position.needsUpdate = true;
+            particleMat.uniforms.uTime.value = time;
 
             renderer.render(scene, camera);
             frameId = requestAnimationFrame(animate);
@@ -251,17 +282,19 @@ export default function QuantumBackground() {
             particleMat.dispose();
             lineGeom.dispose();
             lineMat.dispose();
-            if (containerRef.current) {
-                containerRef.current.removeChild(renderer.domElement);
-            }
+            if (containerRef.current) containerRef.current.removeChild(renderer.domElement);
+            ScrollTrigger.getAll().forEach(t => t.kill());
         };
     }, []);
 
     return (
         <div
             ref={containerRef}
-            className="fixed inset-0 pointer-events-none z-[-5] opacity-40"
-            style={{ filter: 'blur(0.8px)' }}
+            className="fixed inset-0 pointer-events-none z-[-10] bg-transparent opacity-70"
+            style={{
+                background: 'radial-gradient(circle at center, rgba(0,0,0,0.1) 0%, rgba(2,4,10,0.5) 100%)',
+                filter: 'blur(0.3px) contrast(1.1)'
+            }}
         />
     );
 }

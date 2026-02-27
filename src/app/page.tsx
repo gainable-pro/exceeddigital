@@ -33,12 +33,12 @@ export default function Home() {
                         </h1>
 
                         <p className="v3-hero-desc">
-                            Nous fusionnons design de haute couture et performance technologique pour propulser les leaders de demain.
+                            Sites qui convertissent et plateformes métier qui structurent. De la visibilité à l'automatisation, nous concevons les outils qui font réellement avancer votre entreprise.
                         </p>
 
                         <div className="v3-hero-btns">
                             <button className="v3-btn-audit">
-                                <span className="label">Lancer un audit</span>
+                                <span className="label">Diagnostic Gratuit</span>
                                 <div className="overlay" />
                             </button>
                             <button

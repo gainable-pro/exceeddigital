@@ -37,7 +37,7 @@ export function Navbar() {
                     href="#contact"
                     className="v3-btn-init"
                 >
-                    Project Init
+                    Diagnostic Gratuit
                 </Link>
             </GsapReveal>
         </nav>

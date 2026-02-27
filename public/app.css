@@ -123,15 +123,20 @@ h4 {
 }
 
 .v3-logo {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 900;
     text-transform: uppercase;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.1em;
     pointer-events: auto;
     color: #fff;
     display: flex;
     align-items: center;
+    transition: letter-spacing 0.4s ease;
+}
+
+.v3-logo:hover {
+    letter-spacing: 0.2em;
 }
 
 .v3-logo .logo-accent {
@@ -320,16 +325,15 @@ h4 {
 }
 
 .v3-hero-title {
-    font-size: 4rem;
-    margin-bottom: 3.5rem;
-    display: flex;
-    flex-direction: column;
-    line-height: 0.8;
+    font-size: 3.5rem;
+    margin-bottom: 3rem;
+    line-height: 1.0;
+    text-align: center;
 }
 
 @media (min-width: 768px) {
     .v3-hero-title {
-        font-size: 10rem;
+        font-size: 6.5rem;
     }
 }
 

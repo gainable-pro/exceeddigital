@@ -262,6 +262,7 @@ export default function QuantumBackground() {
             renderer.render(scene, camera);
             frameId = requestAnimationFrame(animate);
         };
+        camera.lookAt(0, 0, 0); // Explicit centering
         animate();
 
         // Resize
@@ -287,11 +288,14 @@ export default function QuantumBackground() {
     return (
         <div
             ref={containerRef}
-            className="fixed inset-0 pointer-events-none z-[0] bg-transparent overflow-hidden"
+            className="fixed inset-0 pointer-events-none z-[-1] bg-black overflow-hidden"
             style={{
-                background: 'radial-gradient(circle at center, rgba(2,4,10,0.1) 0%, rgba(1,2,5,0.7) 100%)',
+                background: 'radial-gradient(circle at center, rgba(1,5,15,0.3) 0%, rgba(0,0,0,1) 100%)',
                 width: '100vw',
-                height: '100vh'
+                height: '100vh',
+                position: 'fixed',
+                top: 0,
+                left: 0
             }}
         />
     );

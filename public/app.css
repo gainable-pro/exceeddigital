@@ -27,8 +27,10 @@ html {
 }
 
 body {
-    background: transparent;
+    background: #010208;
     color: var(--text-primary);
+    margin: 0;
+    padding: 0;
     font-family: 'Sora', sans-serif;
     -webkit-font-smoothing: antialiased;
     line-height: 1.6;
@@ -238,37 +240,12 @@ h4 {
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    padding-top: 5rem;
     background: transparent;
 }
 
-.v3-hero-glow {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 50% 50%, rgba(0, 112, 243, 0.12), transparent 70%);
-}
-
-.v4-webgl-container {
-    display: none !important;
-}
-
-@media (min-width: 768px) {
-    .v4-webgl-container {
-        display: block !important;
-    }
-
-    .v3-hero-glow {
-        display: none;
-    }
-}
-
+.v3-hero-glow,
 .v3-hero-grid {
-    position: absolute;
-    inset: 0;
-    opacity: 0.15;
-    pointer-events: none;
-    background-image: radial-gradient(var(--glass-border) 1px, transparent 0);
-    background-size: 40px 40px;
+    display: none !important;
 }
 
 .v3-hero-content {

@@ -230,8 +230,8 @@ export default function QuantumBackground() {
             const target = targetPositions[state.targetIndex];
 
             // Very Slow Hypnotic Rotation
-            scene.rotation.y += 0.0005;
-            scene.rotation.x += 0.0002;
+            scene.rotation.y += 0.00058;
+            scene.rotation.x += 0.00023;
 
             for (let i = 0; i < NODE_COUNT; i++) {
                 const i3 = i * 3;

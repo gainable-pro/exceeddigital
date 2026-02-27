@@ -14,10 +14,10 @@ export default function Home() {
     return (
         <main className="w-full">
             <Navbar />
+            <QuantumBackground />
 
             {/* Hero Section V4 - Quantum Immersive */}
             <div className="v3-hero">
-                <QuantumBackground />
                 <div className="v3-hero-grid" />
 
                 <section className="v3-hero-content">

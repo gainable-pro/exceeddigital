@@ -99,7 +99,8 @@ h4 {
 }
 
 .bg-soft {
-    background-color: var(--bg-soft);
+    background-color: rgba(6, 9, 18, 0.4);
+    backdrop-filter: blur(5px);
 }
 
 /* Navbar V3 */
@@ -639,7 +640,8 @@ h4 {
 }
 
 .v3-pricing-card {
-    background: var(--bg-deep);
+    background: rgba(2, 4, 10, 0.6);
+    backdrop-filter: blur(10px);
     border: 1px solid var(--glass-border);
     padding: 5rem 4rem;
     border-radius: 3rem;

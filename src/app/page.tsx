@@ -28,8 +28,8 @@ export default function Home() {
                         </div>
 
                         <h1 className="v3-hero-title">
-                            <span className="white">VOTRE BUSINESS</span>
-                            <span className="text-gradient v3-glitch">STRUCTURÉ</span>
+                            <span className="white">TRANSFORMEZ VOTRE PRÉSENCE DIGITALE</span>
+                            <span className="text-gradient v3-glitch">EN LEVIER DE CROISSANCE</span>
                         </h1>
 
                         <p className="v3-hero-desc">

@@ -9,19 +9,24 @@ export function ExpertiseSection() {
 
                 <div className="v3-expertise-grid">
                     <div className="v3-expertise-card">
-                        <Code2 className="icon" size={48} />
-                        <h3>Fullstack Engineering</h3>
-                        <p className="font-sora text-secondary">Architectures robustes et scalables en Next.js, Node.js et intégration API complexe.</p>
-                    </div>
-                    <div className="v3-expertise-card">
                         <Globe className="icon" size={48} />
-                        <h3>Immersive Experience</h3>
-                        <p className="font-sora text-secondary">Web design haut de gamme avec GSAP et Three.js pour une mémorabilité absolue.</p>
+                        <h3>Web & SEO Performance</h3>
+                        <p className="font-sora text-secondary">Sites rapides (statiques ou dynamiques) et SEO natif pensés pour convertir. De l'audit à l'indexation, nous transformons votre site en levier d'acquisition.</p>
                     </div>
                     <div className="v3-expertise-card">
                         <Cpu className="icon" size={48} />
-                        <h3>Performance & Automation</h3>
-                        <p className="font-sora text-secondary">Optimisation Core Web Vitals et automatisation des processus métier via IA.</p>
+                        <h3>ERP & Plateformes</h3>
+                        <p className="font-sora text-secondary">Développement d'outils sur mesure pour centraliser vos données, automatiser vos opérations et piloter votre activité en temps réel avec efficacité.</p>
+                    </div>
+                    <div className="v3-expertise-card">
+                        <Cpu className="icon" size={48} />
+                        <h3>ChatBot & IA</h3>
+                        <p className="font-sora text-secondary">Automatisation de vos échanges clients et qualification de prospects via des chatbots intelligents. Gain de temps et disponibilité 24/7 garantie.</p>
+                    </div>
+                    <div className="v3-expertise-card">
+                        <Globe className="icon" size={48} />
+                        <h3>Stratégie & Image</h3>
+                        <p className="font-sora text-secondary">Identity visuelle, stratégie de contenu et community management. Nous structurons votre présence digitale pour une image de marque forte.</p>
                     </div>
                 </div>
             </GsapReveal>

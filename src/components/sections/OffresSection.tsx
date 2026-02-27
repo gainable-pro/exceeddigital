@@ -2,9 +2,9 @@ import { GsapReveal } from "@/components/ui/GsapReveal";
 import { Check } from "lucide-react";
 
 const packs = [
-    { name: "Stratégie", price: "2.5k", features: ["Audit SEO complet", "Branding Identity", "Landing Page Optimized"] },
-    { name: "Excellence", price: "7.5k", features: ["Sur-mesure Next.js", "Animations GSAP HD", "Automation Process"] },
-    { name: "Command", price: "Sur Devis", features: ["Écosystème Digital", "Data Visualization", "Support 24/7"] },
+    { name: "Stratégie", features: ["Audit SEO complet", "Branding Identity", "Landing Page Optimized"] },
+    { name: "Excellence", features: ["Sur-mesure Next.js", "Animations GSAP HD", "Automation Process"] },
+    { name: "Command", features: ["Écosystème Digital", "Data Visualization", "Support 24/7"] },
 ];
 
 export function OffresSection() {
@@ -17,7 +17,6 @@ export function OffresSection() {
                     {packs.map((pack, i) => (
                         <div key={i} className="v3-pricing-card">
                             <span className="pack-name font-mono">{pack.name}</span>
-                            <div className="price">{pack.price}</div>
                             <ul className="features">
                                 {pack.features.map((f, j) => (
                                     <li key={j} className="font-sora"><Check size={14} className="icon" /> {f}</li>

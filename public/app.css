@@ -27,7 +27,7 @@ html {
 }
 
 body {
-    background-color: var(--bg-deep);
+    background: transparent;
     color: var(--text-primary);
     font-family: 'Sora', sans-serif;
     -webkit-font-smoothing: antialiased;

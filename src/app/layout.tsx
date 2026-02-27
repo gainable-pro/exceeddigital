@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
+import { BackgroundShell } from "@/components/ui/BackgroundShell";
 
 export const metadata: Metadata = {
     title: "Xceed Digital — Premium Digital Agency Experience",
@@ -18,9 +19,12 @@ export default function RootLayout({
                 <link rel="stylesheet" href="/method_v31.css" />
             </head>
             <body>
-                <SmoothScroll>
-                    {children}
-                </SmoothScroll>
+                <BackgroundShell />
+                <div style={{ position: 'relative', zIndex: 10 }}>
+                    <SmoothScroll>
+                        {children}
+                    </SmoothScroll>
+                </div>
             </body>
         </html>
     );

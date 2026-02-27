@@ -56,7 +56,7 @@ export default function QuantumBackground() {
             const i3 = i * 3;
 
             // Sphere
-            const radius = 10;
+            const radius = 8.5; // Slightly smaller
             const phi = Math.acos(-1 + (2 * i) / NODE_COUNT);
             const theta = Math.sqrt(NODE_COUNT * Math.PI) * phi;
             targetPositions[0][i3] = radius * Math.cos(theta) * Math.sin(phi);
@@ -107,9 +107,9 @@ export default function QuantumBackground() {
         particleGeom.setAttribute('position', new THREE.BufferAttribute(positions, 3));
         const particleMat = new THREE.PointsMaterial({
             color: 0x0070f3,
-            size: 0.15,
+            size: 0.12,
             transparent: true,
-            opacity: 0.8,
+            opacity: 0.4, // More subtle
             blending: THREE.AdditiveBlending
         });
         const particles = new THREE.Points(particleGeom, particleMat);
@@ -260,8 +260,8 @@ export default function QuantumBackground() {
     return (
         <div
             ref={containerRef}
-            className="fixed inset-0 pointer-events-none z-[-1] opacity-60"
-            style={{ filter: 'blur(0.5px)' }}
+            className="fixed inset-0 pointer-events-none z-[-5] opacity-40"
+            style={{ filter: 'blur(0.8px)' }}
         />
     );
 }

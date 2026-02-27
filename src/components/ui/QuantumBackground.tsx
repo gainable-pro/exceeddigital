@@ -27,15 +27,15 @@ export default function QuantumBackground() {
 
         // Init Scene
         const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-        camera.position.z = 25;
+        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 2000);
+        camera.position.z = 50;
 
         const renderer = new THREE.WebGLRenderer({
             alpha: true,
             antialias: true,
             powerPreference: "high-performance"
         });
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.8));
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.setClearColor(0x000000, 0);
         containerRef.current.appendChild(renderer.domElement);
@@ -56,7 +56,7 @@ export default function QuantumBackground() {
             const i3 = i * 3;
 
             // Sphere
-            const radius = 8.5; // Slightly smaller
+            const radius = 8.5;
             const phi = Math.acos(-1 + (2 * i) / NODE_COUNT);
             const theta = Math.sqrt(NODE_COUNT * Math.PI) * phi;
             targetPositions[0][i3] = radius * Math.cos(theta) * Math.sin(phi);
@@ -109,7 +109,7 @@ export default function QuantumBackground() {
             color: 0x0070f3,
             size: 0.12,
             transparent: true,
-            opacity: 0.4, // More subtle
+            opacity: 0.4,
             blending: THREE.AdditiveBlending
         });
         const particles = new THREE.Points(particleGeom, particleMat);

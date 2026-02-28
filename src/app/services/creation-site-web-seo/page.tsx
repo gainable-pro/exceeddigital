@@ -43,68 +43,78 @@ export default function WebSeoServicePage() {
                 </div>
             </section>
 
-            {/* --- CONCEPTION PROCESS --- */}
-            <section className="section-v3 bg-soft/10">
+            {/* --- CONCEPTION PROCESS (ZIG-ZAG) --- */}
+            <section className="section-v3 overflow-hidden">
                 <GsapReveal>
-                    <h2 className="section-title-v3">NOTRE <br /><span className="text-gradient">PROCESSUS DE CONCEPTION</span></h2>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        {[
-                            {
-                                step: "01",
-                                title: "Audit & Besoins",
-                                desc: "Immersion totale pour comprendre votre vision et vos enjeux commerciaux.",
-                                details: ["Audit technique SEO", "Analyse de l'existant", "Cadrage des objectifs ROI"],
-                                icon: Users
-                            },
-                            {
-                                step: "02",
-                                title: "Étude Concurrentielle",
-                                desc: "Identification des failles et des opportunités chez vos rivaux directs.",
-                                details: ["Benchmark concurrentiel", "Analyse des opportunités", "Reverse engineering"],
-                                icon: Search
-                            },
-                            {
-                                step: "03",
-                                title: "Mots-Clés Stratégiques",
-                                desc: "Mapping sémantique précis pour capter l'intention réelle de vos clients.",
-                                details: ["Keyword research", "Analyse des intentions", "Mapping de contenu"],
-                                icon: BarChart3
-                            },
-                            {
-                                step: "04",
-                                title: "Méthode d'Acquisition",
-                                desc: "Architecture pensée pour transformer chaque clic en opportunité.",
-                                details: ["Architecture de conversion", "Optimisation UX/CRO", "Tracking & Analytics"],
-                                icon: MousePointer2
-                            }
-                        ].map((item, i) => (
-                            <div key={i} className="v3-expertise-card group !p-6 border border-glass-border/50 hover:border-accent-primary/40 transition-all bg-bg-deep/40 backdrop-blur-sm relative overflow-hidden h-full">
-                                <div className="absolute top-2 right-4 text-7xl font-bold opacity-5 pointer-events-none font-mono">
-                                    {item.step}
-                                </div>
-                                <div className="relative z-10 h-full flex flex-col">
-                                    <div className="w-12 h-12 bg-accent-primary/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-accent-primary group-hover:text-white transition-all">
-                                        <item.icon size={24} className="text-accent-primary group-hover:text-white" />
-                                    </div>
-                                    <h3 className="!text-lg !mb-3 group-hover:text-accent-primary transition-colors">{item.title}</h3>
-                                    <p className="text-secondary text-xs leading-relaxed mb-6">{item.desc}</p>
-
-                                    <div className="mt-auto pt-4 border-t border-glass-border/30">
-                                        <ul className="space-y-2">
-                                            {item.details.map((detail, idx) => (
-                                                <li key={idx} className="flex items-center gap-2 text-[10px] text-secondary/80">
-                                                    <div className="w-1 h-1 bg-accent-primary rounded-full" />
-                                                    {detail}
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
+                    <h2 className="section-title-v3 mb-24">NOTRE <br /><span className="text-gradient">PROCESSUS DE CONCEPTION</span></h2>
                 </GsapReveal>
+
+                <div className="space-y-32">
+                    {[
+                        {
+                            step: "01",
+                            title: "Écoute & Analyse de vos besoins",
+                            desc: "Tout commence par une immersion totale dans votre univers pour comprendre vos objectifs réels et les besoins spécifiques de vos clients.",
+                            details: "Nous réalisons un diagnostic complet de votre situation actuelle et définissons ensemble les indicateurs de réussite de votre futur site pour qu'il réponde à vos ambitions commerciales.",
+                            img: "/assets/expertise/strategy.png",
+                            icon: Users
+                        },
+                        {
+                            step: "02",
+                            title: "Étude de votre Marché et du SEO",
+                            desc: "Nous analysons ce que font les meilleurs de votre secteur pour identifier les opportunités que vous pouvez saisir pour les dépasser stratégiquement.",
+                            details: "Cette étude nous permet de comprendre comment vos clients vous cherchent sur Google et de structurer un site qui répond parfaitement à leurs attentes tout en dominant vos concurrents.",
+                            img: "/assets/expertise/web.png",
+                            icon: Search
+                        },
+                        {
+                            step: "03",
+                            title: "Stratégie de Mots-Clés et de Contenu",
+                            desc: "Nous ne créons pas seulement des pages, nous créons des points de rencontre entre vos services et vos futurs clients.",
+                            details: "En sélectionnant les termes de recherche les plus performants, nous bâtissons une architecture de contenu qui rassure Google et séduit vos visiteurs par sa pertinence et sa clarté.",
+                            img: "/assets/expertise/chatbot.png",
+                            icon: BarChart3
+                        },
+                        {
+                            step: "04",
+                            title: "Lancement & Acquisition de Clients",
+                            desc: "Votre site est conçu comme un véritable moteur de croissance, prêt à transformer chaque visiteur en contact qualifié.",
+                            details: "Dès sa mise en ligne, nous déployons une stratégie de visibilité globale pour que votre site devienne votre meilleur commercial, disponible 24h/24 pour générer des opportunités concrètes.",
+                            img: "/assets/expertise/erp.png",
+                            icon: MousePointer2
+                        }
+                    ].map((item, i) => (
+                        <div key={i} className={`flex flex-col ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-12 md:gap-24`}>
+                            <GsapReveal direction={i % 2 === 0 ? "left" : "right"} className="w-full md:w-1/2">
+                                <div className="relative aspect-[16/10] rounded-3xl overflow-hidden border border-glass-border group">
+                                    <Image
+                                        src={item.img}
+                                        alt={item.title}
+                                        fill
+                                        className="object-cover opacity-40 group-hover:scale-105 transition-transform duration-1000"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-br from-accent-primary/20 to-transparent mix-blend-overlay" />
+                                    <div className="absolute top-8 left-8">
+                                        <div className="w-12 h-12 bg-accent-primary/20 backdrop-blur-md rounded-xl flex items-center justify-center border border-accent-primary/30">
+                                            <span className="font-mono text-accent-primary font-bold">{item.step}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </GsapReveal>
+
+                            <GsapReveal direction={i % 2 === 0 ? "right" : "left"} delay={0.2} className="w-full md:w-1/2 text-left">
+                                <item.icon className="text-accent-primary mb-6" size={40} />
+                                <h3 className="!text-3xl !mb-6 text-white">{item.title}</h3>
+                                <p className="text-xl font-medium text-white/90 mb-6 leading-relaxed">
+                                    {item.desc}
+                                </p>
+                                <p className="text-secondary leading-relaxed text-lg">
+                                    {item.details}
+                                </p>
+                            </GsapReveal>
+                        </div>
+                    ))}
+                </div>
             </section>
 
             {/* --- ADVANCED FEATURES --- */}

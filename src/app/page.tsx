@@ -7,6 +7,7 @@ import { ExpertiseSection } from "@/components/sections/ExpertiseSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { MethodSection } from "@/components/sections/MethodSection";
 import { PortfolioSection } from "@/components/sections/PortfolioSection";
+import { TypewriterText } from "@/components/ui/TypewriterText";
 
 export default function Home() {
     return (
@@ -25,8 +26,12 @@ export default function Home() {
                         </div>
 
                         <h1 className="v3-hero-title">
-                            <span className="white">TRANSFORMEZ VOTRE PRÉSENCE DIGITALE</span>
-                            <span className="text-gradient v3-glitch">EN LEVIER DE CROISSANCE</span>
+                            <span className="white">
+                                <TypewriterText text="TRANSFORMEZ VOTRE PRÉSENCE DIGITALE" delay={0.4} />
+                            </span>
+                            <span className="text-gradient v3-glitch">
+                                <TypewriterText text="EN LEVIER DE CROISSANCE" delay={1.2} />
+                            </span>
                         </h1>
 
                         <p className="v3-hero-desc">

@@ -17,6 +17,7 @@ import {
     Sparkles
 } from "lucide-react";
 import Image from "next/image";
+import { TypewriterText } from "@/components/ui/TypewriterText";
 
 export default function ChatbotServicePage() {
     return (
@@ -32,8 +33,12 @@ export default function ChatbotServicePage() {
                             Intelligence Artificielle & Automatisation
                         </div>
                         <h1 className="v3-hero-title">
-                            <span className="white">CHATBOT &</span><br />
-                            <span className="text-gradient v3-glitch">AUTOMATISATION IA</span>
+                            <span className="white">
+                                <TypewriterText text="CHATBOT &" delay={0.4} />
+                            </span><br />
+                            <span className="text-gradient v3-glitch">
+                                <TypewriterText text="AUTOMATISATION IA" delay={1.2} />
+                            </span>
                         </h1>
                         <p className="v3-hero-desc !max-w-3xl">
                             Ne laissez plus aucune opportunité s'échapper. Nous intégrons l'intelligence artificielle pour automatiser votre relation client et vos processus internes, libérant ainsi votre temps pour l'humain.

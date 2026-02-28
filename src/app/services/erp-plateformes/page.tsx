@@ -17,6 +17,7 @@ import {
     Workflow
 } from "lucide-react";
 import Image from "next/image";
+import { TypewriterText } from "@/components/ui/TypewriterText";
 
 export default function ErpServicePage() {
     return (
@@ -32,8 +33,12 @@ export default function ErpServicePage() {
                             Optimisation & Maîtrise Opérationnelle
                         </div>
                         <h1 className="v3-hero-title">
-                            <span className="white">ERP & PLATEFORMES</span><br />
-                            <span className="text-gradient v3-glitch">SUR MESURE</span>
+                            <span className="white">
+                                <TypewriterText text="ERP & PLATEFORMES" delay={0.4} />
+                            </span><br />
+                            <span className="text-gradient v3-glitch">
+                                <TypewriterText text="SUR MESURE" delay={1.2} />
+                            </span>
                         </h1>
                         <p className="v3-hero-desc !max-w-3xl">
                             Reprenez le contrôle total de votre activité. Nous concevons des outils intelligents qui simplifient vos processus complexes pour vous permettre de vous concentrer sur l'essentiel : votre croissance.

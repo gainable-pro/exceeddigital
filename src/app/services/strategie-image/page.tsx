@@ -17,6 +17,7 @@ import {
     Share2
 } from "lucide-react";
 import Image from "next/image";
+import { TypewriterText } from "@/components/ui/TypewriterText";
 
 export default function StrategieServicePage() {
     return (
@@ -32,8 +33,12 @@ export default function StrategieServicePage() {
                             Notoriété & Image de Marque
                         </div>
                         <h1 className="v3-hero-title">
-                            <span className="white">STRATÉGIE DIGITALE</span><br />
-                            <span className="text-gradient v3-glitch">& IMAGE DE MARQUE</span>
+                            <span className="white">
+                                <TypewriterText text="STRATÉGIE DIGITALE" delay={0.4} />
+                            </span><br />
+                            <span className="text-gradient v3-glitch">
+                                <TypewriterText text="& IMAGE DE MARQUE" delay={1.2} />
+                            </span>
                         </h1>
                         <p className="v3-hero-desc !max-w-3xl">
                             Ne soyez pas juste une option, devenez une évidence. Nous sculptons votre identité digitale pour captiver votre audience et ancrer votre marque dans l'esprit de vos futurs clients.

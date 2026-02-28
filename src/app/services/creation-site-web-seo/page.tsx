@@ -3,6 +3,7 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { GsapReveal } from "@/components/ui/GsapReveal";
 import { ContactSection } from "@/components/sections/ContactSection";
+import { DiagnosticForm } from "@/components/shared/DiagnosticForm";
 import {
     Globe,
     Search,
@@ -15,11 +16,21 @@ import {
     CheckCircle2,
     Layers,
     MousePointer2,
-    Laptop
+    Laptop,
+    Check,
+    Sparkles,
+    BrainCircuit,
+    Clock,
+    TrendingUp
 } from "lucide-react";
 import Image from "next/image";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { TypewriterText } from "@/components/ui/TypewriterText";
 
 export default function WebSeoServicePage() {
+    const [isDiagnosticOpen, setIsDiagnosticOpen] = useState(false);
+
     return (
         <main className="w-full">
             <Navbar />
@@ -33,8 +44,12 @@ export default function WebSeoServicePage() {
                             Performance & Visibilité Maximale
                         </div>
                         <h1 className="v3-hero-title">
-                            <span className="white">CRÉATION SITE WEB</span><br />
-                            <span className="text-gradient v3-glitch">& PERFORMANCE SEO</span>
+                            <span className="white">
+                                <TypewriterText text="CRÉATION SITE WEB" delay={0.4} />
+                            </span><br />
+                            <span className="text-gradient v3-glitch">
+                                <TypewriterText text="& PERFORMANCE SEO" delay={1.2} />
+                            </span>
                         </h1>
                         <p className="v3-hero-desc !max-w-3xl">
                             Un site web sans visibilité est comme une vitrine dans le désert. Nous concevons des plateformes haute performance qui captent l'attention et convertissent vos visiteurs en clients fidèles.
@@ -111,6 +126,147 @@ export default function WebSeoServicePage() {
                         </div>
                     ))}
                 </div>
+            </section>
+
+            {/* --- POINTS CLÉS & MÉTHODE --- */}
+            <section className="section-v3 bg-soft/5">
+                <GsapReveal>
+                    <div className="bg-glass-bg border border-glass-border rounded-[2.5rem] p-8 md:p-16 overflow-hidden relative">
+                        <div className="absolute top-0 right-0 w-96 h-96 bg-accent-primary/10 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2" />
+
+                        <div className="relative z-10">
+                            <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-12 uppercase">
+                                Points clés & <span className="text-accent-primary">Méthode</span>
+                            </h2>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24">
+                                {/* Ce que nous apportons */}
+                                <div>
+                                    <h3 className="text-accent-primary font-bold text-xl mb-8 uppercase tracking-widest">
+                                        Ce que nous apportons
+                                    </h3>
+                                    <ul className="space-y-6">
+                                        {[
+                                            "Sites 100% codés et ultra rapides",
+                                            "Optimisés pour le référencement naturel",
+                                            "Conçus stratégiquement pour convertir",
+                                            "Accompagnement pro & vision résultats"
+                                        ].map((item, i) => (
+                                            <li key={i} className="flex items-center gap-4 text-white group">
+                                                <div className="w-6 h-6 rounded-full bg-accent-primary/20 flex items-center justify-center border border-accent-primary/30 group-hover:scale-110 transition-transform">
+                                                    <Check className="text-accent-primary" size={14} />
+                                                </div>
+                                                <span className="text-lg font-medium">{item}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+
+                                {/* Notre processus */}
+                                <div>
+                                    <h3 className="text-white/50 font-bold text-xl mb-8 uppercase tracking-widest">
+                                        Notre processus
+                                    </h3>
+                                    <ul className="space-y-6">
+                                        {[
+                                            "Analyse & stratégie d'acquisition",
+                                            "Architecture, UX & Design sur mesure",
+                                            "Développement codé & SEO natif",
+                                            "Optimisation & Suivi continu"
+                                        ].map((item, i) => (
+                                            <li key={i} className="flex items-center gap-5 text-white">
+                                                <div className="w-8 h-8 rounded-lg bg-accent-primary text-white flex items-center justify-center font-bold text-sm shadow-[0_0_15px_rgba(0,112,243,0.4)]">
+                                                    {i + 1}
+                                                </div>
+                                                <span className="text-lg font-medium">{item}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </div>
+
+                            {/* CTA Bar */}
+                            <div className="mt-16 md:mt-24 bg-white/5 border border-white/10 rounded-2xl md:rounded-full p-2 md:pr-2 pl-8 flex flex-col md:flex-row items-center justify-between gap-6 group hover:border-accent-primary/30 transition-all cursor-pointer" onClick={() => setIsDiagnosticOpen(true)}>
+                                <div className="flex items-center gap-4 py-4 md:py-0">
+                                    <div className="w-10 h-10 rounded-xl bg-accent-primary/20 flex items-center justify-center text-accent-primary">
+                                        <CheckCircle2 size={24} />
+                                    </div>
+                                    <div>
+                                        <h4 className="text-white font-bold">Évaluez votre projet web en 2 minutes</h4>
+                                        <p className="text-secondary text-sm">Questionnaire rapide — diagnostic personnalisé + recommandations.</p>
+                                    </div>
+                                </div>
+                                <button className="w-full md:w-auto px-8 py-4 bg-accent-primary rounded-xl md:rounded-full text-white font-extrabold flex items-center justify-center gap-2 group-hover:scale-105 transition-all shadow-xl">
+                                    Lancer le diagnostic gratuit <ArrowRight size={20} />
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </GsapReveal>
+            </section>
+
+            {/* --- NOTRE MÉTHODE (4 CARDS) --- */}
+            <section className="section-v3 overflow-hidden">
+                <GsapReveal>
+                    <h2 className="section-title-v3">NOTRE <br /><span className="text-gradient">MÉTHODE</span></h2>
+                    <div className="w-full h-1 bg-white/5 rounded-full mb-16 relative overflow-hidden">
+                        <motion.div
+                            className="absolute inset-y-0 left-0 bg-accent-primary shadow-[0_0_15px_rgba(0,112,243,1)]"
+                            initial={{ width: "0%" }}
+                            whileInView={{ width: "100%" }}
+                            transition={{ duration: 1.5, ease: "easeInOut" }}
+                        />
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        {[
+                            {
+                                step: "01",
+                                title: "Validation du besoin",
+                                desc: "Appel de 30 à 45 minutes pour clarifier vos objectifs et identifier votre cible. Audit rapide et identification des leviers prioritaires.",
+                                footer: "Livrables : synthèse, recommandations et proposition budgétaire.",
+                                icon: Sparkles
+                            },
+                            {
+                                step: "02",
+                                title: "Cadrage du projet",
+                                desc: "Définition de votre identité visuelle, arborescence du site, wireframes et choix des technologies. Définition des KPIs (trafic, conversions).",
+                                footer: "Objectif : mesurer l'efficacité dès le lancement.",
+                                icon: BrainCircuit
+                            },
+                            {
+                                step: "03",
+                                title: "Production & itérations hebdo",
+                                desc: "Développement responsive (mobile-first), animations fluides, rédaction de contenus SEO et optimisations techniques.",
+                                footer: "Accès staging pour suivre l'avancement en temps réel.",
+                                icon: Clock
+                            },
+                            {
+                                step: "04",
+                                title: "Lancement & accélération",
+                                desc: "Mise en ligne avec checklist qualité complète. Configuration des outils Analytics, formation à la gestion du site et plan SEO continue.",
+                                footer: "Support post-lancement pour une transition sereine.",
+                                icon: TrendingUp
+                            }
+                        ].map((item, i) => (
+                            <div key={i} className="v3-expertise-card group !p-8 !min-h-[400px] flex flex-col">
+                                <span className="text-white/10 font-bold text-6xl absolute top-6 left-6 group-hover:text-accent-primary/20 transition-colors">{item.step}</span>
+                                <div className="relative z-10 flex flex-col h-full">
+                                    <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-accent-primary mb-8 group-hover:scale-110 group-hover:border-accent-primary/50 transition-all">
+                                        <item.icon size={28} />
+                                    </div>
+                                    <h3 className="text-2xl font-bold text-white mb-6 !text-left">{item.title}</h3>
+                                    <p className="text-secondary text-sm leading-relaxed mb-6 flex-1">
+                                        {item.desc}
+                                    </p>
+                                    <p className="text-accent-primary/80 text-xs font-mono border-t border-white/5 pt-6">
+                                        {item.footer}
+                                    </p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </GsapReveal>
             </section>
 
             {/* --- ADVANCED FEATURES --- */}
@@ -244,6 +400,13 @@ export default function WebSeoServicePage() {
 
             {/* --- CONTACT FORM --- */}
             <ContactSection />
+
+            {/* --- DIAGNOSTIC MODAL --- */}
+            <AnimatePresence>
+                {isDiagnosticOpen && (
+                    <DiagnosticForm isOpen={isDiagnosticOpen} onClose={() => setIsDiagnosticOpen(false)} />
+                )}
+            </AnimatePresence>
         </main>
     );
 }

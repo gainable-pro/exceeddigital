@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { BackgroundShell } from "@/components/ui/BackgroundShell";
+import { FloatingDiagnostic } from "@/components/shared/FloatingDiagnostic";
 
 export const metadata: Metadata = {
     title: "Xceed Digital — Premium Digital Agency Experience",

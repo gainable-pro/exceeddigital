@@ -81,7 +81,7 @@ export function ContactSection() {
                                 </div>
                                 <div className="flex flex-col ml-4">
                                     <span className="text-xs text-secondary/60 uppercase font-mono tracking-widest">Email</span>
-                                    <span className="font-sora text-white">contact@xceed-digital.com</span>
+                                    <span className="font-sora text-white">contact@exceeddigital.fr</span>
                                 </div>
                             </div>
 

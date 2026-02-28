@@ -43,7 +43,7 @@ export default function PolitiqueConfidentialite() {
                             </p>
                             <p className="text-secondary/80 text-sm leading-relaxed">
                                 Ces droits peuvent être exercés en contactant Exceed Digital à l’adresse :<br />
-                                <span className="text-white font-mono mt-2 block">contact@xceed-digital.com</span>
+                                <span className="text-accent-primary font-mono lowercase">contact@exceeddigital.fr</span>
                             </p>
                         </div>
 

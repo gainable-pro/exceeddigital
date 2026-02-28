@@ -69,26 +69,37 @@ export function Navbar() {
                                     transition={{ duration: 0.2, ease: "easeOut" }}
                                     className="absolute top-full left-1/2 -translate-x-1/2 pt-6 z-50 pointer-events-auto"
                                 >
-                                    <div className="bg-[#0a0a0a]/90 backdrop-blur-2xl border border-white/10 rounded-3xl p-3 min-w-[280px] shadow-[0_20px_40px_rgba(0,0,0,0.5)] overflow-hidden">
+                                    <div className="bg-[#0a0a0a]/95 backdrop-blur-2xl border border-white/10 rounded-[2rem] p-4 min-w-[340px] shadow-[0_25px_60px_rgba(0,0,0,0.8)] overflow-hidden">
                                         {/* Premium Glow effect */}
-                                        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-accent-primary to-transparent opacity-50" />
+                                        <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-accent-primary/50 to-transparent" />
 
-                                        <div className="grid grid-cols-1 gap-1">
+                                        <div className="flex flex-col gap-2">
                                             {services.map((service, i) => (
                                                 <Link
                                                     key={i}
                                                     href={service.href}
-                                                    className="flex items-center gap-4 p-4 rounded-2xl hover:bg-white/5 transition-all group/item"
+                                                    className="flex items-center gap-5 p-4 rounded-2xl hover:bg-white/[0.03] border border-transparent hover:border-white/5 transition-all group/item"
                                                 >
-                                                    <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 group-hover/item:border-accent-primary/30 group-hover/item:bg-accent-primary/10 transition-all">
-                                                        <service.icon size={20} className="text-secondary/60 group-hover/item:text-accent-primary" />
+                                                    <div className="w-11 h-11 rounded-xl bg-white/[0.03] flex items-center justify-center border border-white/5 group-hover/item:border-accent-primary/20 group-hover/item:bg-accent-primary/10 transition-all shrink-0">
+                                                        <service.icon size={22} className="text-secondary/40 group-hover/item:text-accent-primary transition-colors" />
                                                     </div>
-                                                    <div className="flex flex-col">
-                                                        <span className="text-[11px] font-bold text-white uppercase tracking-wider">{service.name}</span>
-                                                        <span className="text-[9px] text-secondary/40 font-mono">DÉCOUVRIR L'EXPERTISE</span>
+                                                    <div className="flex flex-col gap-0.5">
+                                                        <span className="text-[10px] font-bold text-white uppercase tracking-[0.15em] group-hover/item:text-accent-primary transition-colors whitespace-nowrap">
+                                                            {service.name}
+                                                        </span>
+                                                        <span className="text-[8px] text-secondary/30 font-mono flex items-center gap-2">
+                                                            L'EXPERTISE DIGITALE
+                                                            <div className="w-1 h-1 bg-accent-primary opacity-0 group-hover/item:opacity-100 rounded-full transition-opacity" />
+                                                        </span>
                                                     </div>
                                                 </Link>
                                             ))}
+                                        </div>
+
+                                        <div className="mt-2 pt-4 border-t border-white/5 px-4 pb-2">
+                                            <div className="text-[8px] text-secondary/20 font-mono tracking-widest uppercase">
+                                                Exceed Digital Solutions ®
+                                            </div>
                                         </div>
                                     </div>
                                 </motion.div>

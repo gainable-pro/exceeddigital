@@ -12,9 +12,10 @@ interface GsapRevealProps {
     children: React.ReactNode;
     delay?: number;
     direction?: "up" | "down" | "left" | "right";
+    className?: string;
 }
 
-export function GsapReveal({ children, delay = 0, direction = "up" }: GsapRevealProps) {
+export function GsapReveal({ children, delay = 0, direction = "up", className = "" }: GsapRevealProps) {
     const revealRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -53,5 +54,5 @@ export function GsapReveal({ children, delay = 0, direction = "up" }: GsapReveal
         );
     }, [delay, direction]);
 
-    return <div ref={revealRef} className="will-change-transform">{children}</div>;
+    return <div ref={revealRef} className={`will-change-transform ${className}`}>{children}</div>;
 }

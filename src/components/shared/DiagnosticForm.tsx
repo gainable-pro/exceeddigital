@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
     X,
@@ -540,6 +541,20 @@ export function DiagnosticForm({ isOpen, onClose }: { isOpen: boolean; onClose: 
                                                     <span className="text-secondary/60 uppercase text-[10px] font-mono">Avez-vous une charte graphique ?</span>
                                                     <span className="text-white text-right font-medium">{brandingOptions.find(o => o.val === formData.branding)?.label || "-"}</span>
                                                 </div>
+                                            </div>
+
+                                            <div className="flex items-start gap-3 mt-8 p-4 bg-white/5 border border-white/5 rounded-xl">
+                                                <div className="relative flex items-center h-5">
+                                                    <input
+                                                        id="diag-gdpr"
+                                                        type="checkbox"
+                                                        required
+                                                        className="w-4 h-4 bg-zinc-900 border border-white/20 rounded accent-accent-primary cursor-pointer"
+                                                    />
+                                                </div>
+                                                <label htmlFor="diag-gdpr" className="text-[10px] text-secondary/40 leading-tight cursor-pointer hover:text-secondary/60 transition-colors">
+                                                    Je consens au traitement de mes informations par EXCEED DIGITAL pour l'élaboration de mon devis, conformément à la <Link href="/politique-confidentialite" className="text-accent-primary hover:underline">politique de confidentialité</Link>.
+                                                </label>
                                             </div>
                                         </div>
                                     </div>

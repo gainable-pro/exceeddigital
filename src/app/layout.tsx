@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { BackgroundShell } from "@/components/ui/BackgroundShell";
 import { FloatingDiagnostic } from "@/components/shared/FloatingDiagnostic";
+import { Footer } from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
     title: "Xceed Digital — Premium Digital Agency Experience",
@@ -24,6 +25,7 @@ export default function RootLayout({
                 <div style={{ position: 'relative', zIndex: 10, minHeight: '100vh' }}>
                     <SmoothScroll>
                         {children}
+                        <Footer />
                     </SmoothScroll>
                 </div>
             </body>

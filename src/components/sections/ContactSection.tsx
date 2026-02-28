@@ -12,6 +12,7 @@ import {
     MessageSquare,
     Sparkles
 } from "lucide-react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface ContactFormData {
@@ -90,7 +91,7 @@ export function ContactSection() {
                                 </div>
                                 <div className="flex flex-col ml-4">
                                     <span className="text-xs text-secondary/60 uppercase font-mono tracking-widest">Téléphone</span>
-                                    <span className="font-sora text-white">+33 (0)6 12 34 56 78</span>
+                                    <span className="font-sora text-white">+33 6 15 62 21 88</span>
                                 </div>
                             </div>
                         </div>
@@ -105,7 +106,7 @@ export function ContactSection() {
                 </GsapReveal>
 
                 <GsapReveal delay={0.2}>
-                    <div className="v3-contact-form-container bg-white/[0.02] backdrop-blur-[20px] border border-white/10 rounded-3xl p-8 md:p-10 shadow-[0_0_50px_rgba(0,112,243,0.1)] relative overflow-hidden">
+                    <div className="v3-contact-form-container bg-zinc-950/40 backdrop-blur-xl border border-white/10 rounded-3xl p-8 md:p-10 shadow-2xl relative overflow-hidden">
                         {/* Strong blue background glows - no violet */}
                         <div className="absolute -top-24 -right-24 w-64 h-64 bg-accent-primary/30 blur-[100px] pointer-events-none" />
                         <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-accent-primary/20 blur-[120px] pointer-events-none" />
@@ -140,7 +141,7 @@ export function ContactSection() {
                                                     placeholder="Votre nom"
                                                     value={formData.name}
                                                     onChange={e => setFormData({ ...formData, name: e.target.value })}
-                                                    className="w-full bg-white/[0.05] border border-white/10 rounded-xl py-4 px-5 text-white focus:border-accent-primary focus:bg-white/[0.08] outline-none transition-all placeholder:text-white/20 shadow-inner"
+                                                    className="w-full bg-[#1a1a1a] border border-white/10 rounded-xl py-4 px-5 text-white focus:border-accent-primary focus:bg-[#222] outline-none transition-all placeholder:text-white/20 shadow-inner"
                                                 />
                                             </div>
                                         </div>
@@ -155,7 +156,7 @@ export function ContactSection() {
                                                     placeholder="votre@email.com"
                                                     value={formData.email}
                                                     onChange={e => setFormData({ ...formData, email: e.target.value })}
-                                                    className="w-full bg-white/[0.05] border border-white/10 rounded-xl py-4 px-5 text-white focus:border-accent-primary focus:bg-white/[0.08] outline-none transition-all placeholder:text-white/20 shadow-inner"
+                                                    className="w-full bg-[#1a1a1a] border border-white/10 rounded-xl py-4 px-5 text-white focus:border-accent-primary focus:bg-[#222] outline-none transition-all placeholder:text-white/20 shadow-inner"
                                                 />
                                             </div>
                                         </div>
@@ -171,7 +172,7 @@ export function ContactSection() {
                                                 placeholder="Nom de votre entreprise"
                                                 value={formData.company}
                                                 onChange={e => setFormData({ ...formData, company: e.target.value })}
-                                                className="w-full bg-white/[0.05] border border-white/10 rounded-xl py-4 px-5 text-white focus:border-accent-primary focus:bg-white/[0.08] outline-none transition-all placeholder:text-white/20 shadow-inner"
+                                                className="w-full bg-[#1a1a1a] border border-white/10 rounded-xl py-4 px-5 text-white focus:border-accent-primary focus:bg-[#222] outline-none transition-all placeholder:text-white/20 shadow-inner"
                                             />
                                         </div>
                                     </div>
@@ -184,11 +185,11 @@ export function ContactSection() {
                                             <select
                                                 value={formData.projectType}
                                                 onChange={e => setFormData({ ...formData, projectType: e.target.value })}
-                                                className="w-full bg-white/[0.05] border border-white/10 rounded-xl py-4 px-5 text-white focus:border-accent-primary focus:bg-white/[0.08] outline-none transition-all appearance-none cursor-pointer shadow-inner pr-12"
+                                                className="w-full bg-[#1a1a1a] border border-white/10 rounded-xl py-4 px-5 text-white focus:border-accent-primary focus:bg-[#222] outline-none transition-all appearance-none cursor-pointer shadow-inner pr-12"
                                             >
-                                                <option value="" disabled className="bg-zinc-900">Sélectionnez un type de projet</option>
+                                                <option value="" disabled className="bg-[#1a1a1a]">Sélectionnez un type de projet</option>
                                                 {projectTypes.map(type => (
-                                                    <option key={type} value={type} className="bg-zinc-900">{type}</option>
+                                                    <option key={type} value={type} className="bg-[#1a1a1a]">{type}</option>
                                                 ))}
                                             </select>
                                             <ChevronDown className="absolute right-5 top-1/2 -translate-y-1/2 text-secondary/40 pointer-events-none" size={18} />
@@ -206,9 +207,23 @@ export function ContactSection() {
                                                 placeholder="Décrivez votre projet, vos objectifs..."
                                                 value={formData.message}
                                                 onChange={e => setFormData({ ...formData, message: e.target.value })}
-                                                className="w-full bg-white/[0.05] border border-white/10 rounded-xl p-5 text-white focus:border-accent-primary focus:bg-white/[0.08] outline-none transition-all placeholder:text-white/20 resize-none shadow-inner"
+                                                className="w-full bg-[#1a1a1a] border border-white/10 rounded-xl p-5 text-white focus:border-accent-primary focus:bg-[#222] outline-none transition-all placeholder:text-white/20 resize-none shadow-inner"
                                             />
                                         </div>
+                                    </div>
+
+                                    <div className="flex items-start gap-3 mt-4">
+                                        <div className="relative flex items-center h-5">
+                                            <input
+                                                id="gdpr"
+                                                type="checkbox"
+                                                required
+                                                className="w-4 h-4 bg-zinc-900 border border-white/20 rounded accent-accent-primary cursor-pointer"
+                                            />
+                                        </div>
+                                        <label htmlFor="gdpr" className="text-[10px] text-secondary/40 leading-tight cursor-pointer hover:text-secondary/60 transition-colors">
+                                            En cochant cette case, j'accepte que mes données soient traitées conformément à la <Link href="/politique-confidentialite" className="text-accent-primary hover:underline">politique de confidentialité</Link> de EXCEED DIGITAL.
+                                        </label>
                                     </div>
 
                                     <button

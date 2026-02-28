@@ -4,11 +4,9 @@ import { GsapReveal } from "@/components/ui/GsapReveal";
 import dynamic from "next/dynamic";
 import { ExpertiseSection } from "@/components/sections/ExpertiseSection";
 
-const QuantumBackground = dynamic(() => import("@/components/ui/QuantumBackground"), { ssr: false });
+import { ContactSection } from "@/components/sections/ContactSection";
 import { MethodSection } from "@/components/sections/MethodSection";
 import { PortfolioSection } from "@/components/sections/PortfolioSection";
-import { OffresSection } from "@/components/sections/OffresSection";
-import { ContactSection } from "@/components/sections/ContactSection";
 
 export default function Home() {
     return (
@@ -58,7 +56,6 @@ export default function Home() {
             <ExpertiseSection />
             <MethodSection />
             <PortfolioSection />
-            <OffresSection />
             <ContactSection />
         </main>
     );

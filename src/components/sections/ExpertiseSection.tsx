@@ -14,19 +14,22 @@ const services = [
         title: "ERP & Plateformes",
         desc: "Développement d'outils sur mesure pour centraliser vos données, automatiser vos opérations et piloter votre activité en temps réel avec efficacité.",
         icon: Database,
-        img: "/assets/expertise/erp.png"
+        img: "/assets/expertise/erp.png",
+        href: "/services/erp-plateformes"
     },
     {
         title: "ChatBot & IA",
         desc: "Automatisation de vos échanges clients et qualification de prospects via des chatbots intelligents. Gain de temps et disponibilité 24/7 garantie.",
         icon: MessageSquare,
-        img: "/assets/expertise/chatbot.png"
+        img: "/assets/expertise/chatbot.png",
+        href: "/services/chatbot-automatisation"
     },
     {
         title: "Stratégie & Image",
         desc: "Identity visuelle, stratégie de contenu et community management. Nous structurons votre présence digitale pour une image de marque forte.",
         icon: Megaphone,
-        img: "/assets/expertise/strategy.png"
+        img: "/assets/expertise/strategy.png",
+        href: "/services/strategie-image"
     },
 ];
 

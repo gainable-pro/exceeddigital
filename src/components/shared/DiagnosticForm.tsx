@@ -177,7 +177,7 @@ export function DiagnosticForm({ isOpen, onClose }: { isOpen: boolean; onClose: 
                                                     placeholder="Ex: Alexandre"
                                                     value={formData.name}
                                                     onChange={e => setFormData({ ...formData, name: e.target.value })}
-                                                    className="w-full bg-white/5 border border-white/10 rounded-xl py-4 pl-12 pr-4 text-white focus:border-accent-primary outline-none transition-all"
+                                                    className="w-full bg-zinc-900/80 border border-white/10 rounded-xl py-4 pl-12 pr-4 text-white focus:border-accent-primary focus:bg-zinc-900 outline-none transition-all shadow-inner"
                                                 />
                                             </div>
                                         </div>
@@ -190,7 +190,7 @@ export function DiagnosticForm({ isOpen, onClose }: { isOpen: boolean; onClose: 
                                                     placeholder="votre@mail.com"
                                                     value={formData.email}
                                                     onChange={e => setFormData({ ...formData, email: e.target.value })}
-                                                    className="w-full bg-white/5 border border-white/10 rounded-xl py-4 pl-12 pr-4 text-white focus:border-accent-primary outline-none transition-all"
+                                                    className="w-full bg-zinc-900/80 border border-white/10 rounded-xl py-4 pl-12 pr-4 text-white focus:border-accent-primary focus:bg-zinc-900 outline-none transition-all shadow-inner"
                                                 />
                                             </div>
                                         </div>

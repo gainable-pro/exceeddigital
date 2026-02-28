@@ -48,7 +48,7 @@ export default function ErpServicePage() {
                     <h2 className="section-title-v3 mb-24">NOTRE <br /><span className="text-gradient">APPROCHE MÉTIER</span></h2>
                 </GsapReveal>
 
-                <div className="space-y-32">
+                <div className="v3-zigzag-container">
                     {[
                         {
                             step: "01",
@@ -83,28 +83,24 @@ export default function ErpServicePage() {
                             icon: BarChart3
                         }
                     ].map((item, i) => (
-                        <div key={i} className={`flex flex-col ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-12 md:gap-24`}>
-                            <GsapReveal direction={i % 2 === 0 ? "left" : "right"} className="w-full md:w-1/2">
-                                <div className="relative aspect-[16/10] rounded-3xl overflow-hidden border border-glass-border group">
-                                    <Image
-                                        src={item.img}
-                                        alt={item.title}
-                                        fill
-                                        className="object-cover opacity-40 group-hover:scale-105 transition-transform duration-1000"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-br from-accent-primary/20 to-transparent mix-blend-overlay" />
-                                    <div className="absolute top-8 left-8">
-                                        <div className="w-12 h-12 bg-accent-primary/20 backdrop-blur-md rounded-xl flex items-center justify-center border border-accent-primary/30">
-                                            <span className="font-mono text-accent-primary font-bold">{item.step}</span>
-                                        </div>
-                                    </div>
-                                </div>
+                        <div key={i} className={`v3-zigzag-item ${i % 2 !== 0 ? 'reverse' : ''}`}>
+                            <GsapReveal direction={i % 2 === 0 ? "left" : "right"} className="v3-zigzag-img-box">
+                                <Image
+                                    src={item.img}
+                                    alt={item.title}
+                                    fill
+                                    className="object-cover"
+                                />
+                                <div className="v3-step-badge">{item.step}</div>
+                                <div className="absolute inset-0 bg-gradient-to-br from-accent-primary/20 to-transparent mix-blend-overlay" />
                             </GsapReveal>
 
-                            <GsapReveal direction={i % 2 === 0 ? "right" : "left"} delay={0.2} className="w-full md:w-1/2 text-left">
-                                <item.icon className="text-accent-primary mb-6" size={40} />
-                                <h3 className="!text-3xl !mb-6 text-white">{item.title}</h3>
-                                <p className="text-xl font-medium text-white/90 mb-6 leading-relaxed">
+                            <GsapReveal direction={i % 2 === 0 ? "right" : "left"} delay={0.2} className="v3-zigzag-content">
+                                <div className="v3-icon-animate text-accent-primary mb-6">
+                                    <item.icon size={50} />
+                                </div>
+                                <h3 className="text-white">{item.title}</h3>
+                                <p className="text-xl text-white mb-6 leading-relaxed">
                                     {item.desc}
                                 </p>
                                 <p className="text-secondary leading-relaxed text-lg">

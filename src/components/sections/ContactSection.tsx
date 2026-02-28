@@ -1,19 +1,95 @@
 "use client";
+
+import React, { useState } from "react";
 import { GsapReveal } from "@/components/ui/GsapReveal";
-import { TypewriterText } from "@/components/ui/TypewriterText";
-import { Mail, Phone, Send } from "lucide-react";
+import {
+    Mail,
+    Phone,
+    Send,
+    ChevronRight,
+    ChevronLeft,
+    Check,
+    Globe,
+    Zap,
+    ShieldCheck,
+    Layers,
+    Rocket,
+    Clock,
+    Target,
+    Sparkles,
+    Users
+} from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+
+interface ContactFormData {
+    name: string;
+    email: string;
+    ambition: string;
+    challenges: string[];
+    deadline: string;
+    message: string;
+}
+
+const initialContactData: ContactFormData = {
+    name: "",
+    email: "",
+    ambition: "",
+    challenges: [],
+    deadline: "",
+    message: "",
+};
 
 export function ContactSection() {
+    const [step, setStep] = useState(1);
+    const [formData, setFormData] = useState<ContactFormData>(initialContactData);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isSuccess, setIsSuccess] = useState(false);
+
+    const totalSteps = 4;
+
+    const ambitions = [
+        { id: "web", label: "Web & SEO Performance", icon: Globe },
+        { id: "erp", label: "ERP & Plateformes Métier", icon: ShieldCheck },
+        { id: "chatbot", label: "Chatbot & Automatisation IA", icon: Zap },
+        { id: "brand", label: "Stratégie & Image de Marque", icon: Layers },
+    ];
+
+    const challenges = [
+        { id: "visibility", label: "Manque de visibilité en ligne", icon: Target },
+        { id: "process", label: "Processus internes inefficaces", icon: Rocket },
+        { id: "conversion", label: "Faible taux de conversion", icon: Sparkles },
+        { id: "tech", label: "Dette technique / Site obsolète", icon: Clock },
+    ];
+
+    const handleNext = () => setStep(s => Math.min(s + 1, totalSteps));
+    const handleBack = () => setStep(s => Math.max(s - 1, 1));
+
+    const toggleChallenge = (id: string) => {
+        setFormData(prev => ({
+            ...prev,
+            challenges: prev.challenges.includes(id)
+                ? prev.challenges.filter(c => c !== id)
+                : [...prev.challenges, id]
+        }));
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        // Simulate API call
+        await new Promise(r => setTimeout(r, 2000));
+        setIsSubmitting(false);
+        setIsSuccess(true);
+    };
+
     return (
         <section id="contact" className="section-v3">
             <div className="v3-contact-grid">
                 <GsapReveal delay={0.1}>
                     <div className="contact-info">
                         <h2 className="section-title-v3">
-                            <TypewriterText text="PARLONS" delay={0.2} /><br />
-                            <span className="text-gradient">
-                                <TypewriterText text="PROJET" delay={0.8} />
-                            </span>
+                            PARLONS <br />
+                            <span className="text-gradient">PROJET</span>
                         </h2>
                         <p className="font-sora text-secondary mb-12">Donnez une nouvelle dimension à votre présence digitale.</p>
 
@@ -25,25 +101,200 @@ export function ContactSection() {
                             <Phone className="icon" />
                             <span className="font-sora">+33 (0)6 12 34 56 78</span>
                         </div>
+
+                        {/* Visual Progress for Interactive Form */}
+                        {!isSuccess && (
+                            <div className="mt-12 hidden md:block">
+                                <div className="flex items-center gap-4 mb-4">
+                                    <div className="h-1 flex-1 bg-white/5 rounded-full overflow-hidden">
+                                        <motion.div
+                                            className="h-full bg-accent-primary"
+                                            initial={{ width: 0 }}
+                                            animate={{ width: `${(step / totalSteps) * 100}%` }}
+                                        />
+                                    </div>
+                                    <span className="text-xs font-mono text-accent-primary">0{step} / 0{totalSteps}</span>
+                                </div>
+                                <p className="text-xs text-secondary/60 uppercase tracking-widest">Parcours de qualification</p>
+                            </div>
+                        )}
                     </div>
                 </GsapReveal>
 
-                <GsapReveal delay={0.2}>
-                    <form className="v3-contact-form" onSubmit={(e) => e.preventDefault()}>
-                        <div className="form-group">
-                            <label className="font-mono">Full Name</label>
-                            <input type="text" placeholder="John Doe" />
-                        </div>
-                        <div className="form-group">
-                            <label className="font-mono">Email ID</label>
-                            <input type="email" placeholder="john@xceed.com" />
-                        </div>
-                        <div className="form-group">
-                            <label className="font-mono">Message</label>
-                            <textarea rows={4} placeholder="Your vision..." />
-                        </div>
-                        <button className="v3-btn-init w-full">Send Inquiry <Send size={14} /></button>
-                    </form>
+                <GsapReveal delay={0.2} className="relative">
+                    <div className="v3-contact-form-container min-h-[500px] flex flex-col justify-center">
+                        <AnimatePresence mode="wait">
+                            {!isSuccess ? (
+                                <motion.div
+                                    key={`step-${step}`}
+                                    initial={{ opacity: 0, x: 20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    exit={{ opacity: 0, x: -20 }}
+                                    transition={{ duration: 0.3 }}
+                                    className="w-full"
+                                >
+                                    {step === 1 && (
+                                        <div className="space-y-6">
+                                            <h3 className="text-2xl font-bold text-white mb-8">Quelle est la nature de votre ambition ?</h3>
+                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                {ambitions.map(opt => (
+                                                    <button
+                                                        key={opt.id}
+                                                        onClick={() => setFormData({ ...formData, ambition: opt.id })}
+                                                        className={`p-6 rounded-2xl border flex items-center gap-4 transition-all text-left relative group ${formData.ambition === opt.id ? 'bg-accent-primary/20 border-accent-primary text-white shadow-[0_0_20px_rgba(0,112,243,0.2)]' : 'bg-white/5 border-white/10 text-secondary hover:border-white/30'}`}
+                                                    >
+                                                        <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-colors ${formData.ambition === opt.id ? 'bg-accent-primary text-white' : 'bg-white/5 text-accent-primary group-hover:bg-white/10'}`}>
+                                                            <opt.icon size={24} />
+                                                        </div>
+                                                        <span className="font-bold text-sm tracking-tight">{opt.label}</span>
+
+                                                        {/* Interactive Check Indicator */}
+                                                        <div className={`absolute top-4 right-4 w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all ${formData.ambition === opt.id ? 'border-accent-primary bg-accent-primary' : 'border-white/20'}`}>
+                                                            {formData.ambition === opt.id && <Check size={12} className="text-white" strokeWidth={3} />}
+                                                        </div>
+                                                    </button>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {step === 2 && (
+                                        <div className="space-y-6">
+                                            <h3 className="text-2xl font-bold text-white mb-8">Quels sont les défis que nous devons relever ?</h3>
+                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                {challenges.map(opt => (
+                                                    <button
+                                                        key={opt.id}
+                                                        onClick={() => toggleChallenge(opt.id)}
+                                                        className={`p-6 rounded-2xl border flex items-center gap-4 transition-all text-left relative group ${formData.challenges.includes(opt.id) ? 'bg-accent-primary/20 border-accent-primary text-white shadow-[0_0_20px_rgba(0,112,243,0.2)]' : 'bg-white/5 border-white/10 text-secondary hover:border-white/30'}`}
+                                                    >
+                                                        <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-colors ${formData.challenges.includes(opt.id) ? 'bg-accent-primary text-white' : 'bg-white/5 text-accent-primary group-hover:bg-white/10'}`}>
+                                                            <opt.icon size={24} />
+                                                        </div>
+                                                        <span className="font-bold text-sm tracking-tight">{opt.label}</span>
+
+                                                        {/* Interactive Multi-Check Indicator */}
+                                                        <div className={`absolute top-4 right-4 w-5 h-5 rounded-md border-2 flex items-center justify-center transition-all ${formData.challenges.includes(opt.id) ? 'border-accent-primary bg-accent-primary' : 'border-white/20'}`}>
+                                                            {formData.challenges.includes(opt.id) && <Check size={12} className="text-white" strokeWidth={3} />}
+                                                        </div>
+                                                    </button>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {step === 3 && (
+                                        <div className="space-y-6">
+                                            <h3 className="text-2xl font-bold text-white mb-8">Quel est votre horizon temporel ?</h3>
+                                            <div className="grid grid-cols-1 gap-4">
+                                                {[
+                                                    { id: "asap", label: "Urgent - Lancement sous 30 jours", desc: "Priorité maximale pour saisir une opportunité de marché." },
+                                                    { id: "standard", label: "Stratégique - 1 à 3 mois", desc: "Temps nécessaire pour une conception sur-mesure et soignée." },
+                                                    { id: "long", label: "Vision long terme", desc: "Planification en amont pour un projet d'envergure." }
+                                                ].map(opt => (
+                                                    <button
+                                                        key={opt.id}
+                                                        onClick={() => setFormData({ ...formData, deadline: opt.id })}
+                                                        className={`p-6 rounded-2xl border flex flex-col gap-1 transition-all text-left relative group ${formData.deadline === opt.id ? 'bg-accent-primary/20 border-accent-primary text-white shadow-[0_0_20px_rgba(0,112,243,0.2)]' : 'bg-white/5 border-white/10 text-secondary hover:border-white/30'}`}
+                                                    >
+                                                        <span className="font-bold text-lg tracking-tight">{opt.label}</span>
+                                                        <span className="text-xs text-secondary/60">{opt.desc}</span>
+
+                                                        <div className={`absolute top-1/2 -translate-y-1/2 right-6 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all ${formData.deadline === opt.id ? 'border-accent-primary bg-accent-primary' : 'border-white/20'}`}>
+                                                            {formData.deadline === opt.id && <Check size={14} className="text-white" strokeWidth={3} />}
+                                                        </div>
+                                                    </button>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {step === 4 && (
+                                        <div className="space-y-6">
+                                            <h3 className="text-2xl font-bold text-white mb-8">Coordonnées de l'ambassadeur</h3>
+                                            <div className="space-y-4">
+                                                <div className="relative">
+                                                    <Users className="absolute left-4 top-1/2 -translate-y-1/2 text-accent-primary/50" size={18} />
+                                                    <input
+                                                        type="text"
+                                                        placeholder="Votre nom complet"
+                                                        value={formData.name}
+                                                        onChange={e => setFormData({ ...formData, name: e.target.value })}
+                                                        className="w-full bg-white/5 border border-white/10 rounded-xl py-4 pl-12 pr-4 text-white focus:border-accent-primary outline-none transition-all placeholder:text-white/20"
+                                                    />
+                                                </div>
+                                                <div className="relative">
+                                                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-accent-primary/50" size={18} />
+                                                    <input
+                                                        type="email"
+                                                        placeholder="votre@pro.com"
+                                                        value={formData.email}
+                                                        onChange={e => setFormData({ ...formData, email: e.target.value })}
+                                                        className="w-full bg-white/5 border border-white/10 rounded-xl py-4 pl-12 pr-4 text-white focus:border-accent-primary outline-none transition-all placeholder:text-white/20"
+                                                    />
+                                                </div>
+                                                <div className="relative">
+                                                    <textarea
+                                                        rows={4}
+                                                        placeholder="Décrivez brièvement votre vision..."
+                                                        value={formData.message}
+                                                        onChange={e => setFormData({ ...formData, message: e.target.value })}
+                                                        className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white focus:border-accent-primary outline-none transition-all placeholder:text-white/20 resize-none"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {/* Navigation Buttons */}
+                                    <div className="mt-12 flex items-center justify-between gap-4">
+                                        <button
+                                            onClick={handleBack}
+                                            disabled={step === 1}
+                                            className={`flex items-center gap-2 text-sm font-bold uppercase tracking-wider transition-all ${step === 1 ? 'opacity-0 pointer-events-none' : 'text-secondary hover:text-white'}`}
+                                        >
+                                            <ChevronLeft size={20} />
+                                            Précédent
+                                        </button>
+
+                                        <button
+                                            onClick={step === totalSteps ? handleSubmit : handleNext}
+                                            disabled={isSubmitting}
+                                            className="v3-btn-init !scale-100 flex-1 md:flex-none md:min-w-[200px] flex items-center justify-center gap-3 disabled:opacity-50"
+                                        >
+                                            {isSubmitting ? (
+                                                <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                                            ) : step === totalSteps ? (
+                                                <>Propulser mon projet <Send size={18} /></>
+                                            ) : (
+                                                <>Continuer <ChevronRight size={18} /></>
+                                            )}
+                                        </button>
+                                    </div>
+                                </motion.div>
+                            ) : (
+                                <motion.div
+                                    initial={{ opacity: 0, scale: 0.9 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    className="text-center py-12"
+                                >
+                                    <div className="w-20 h-20 bg-accent-primary/20 rounded-full flex items-center justify-center mx-auto mb-8 border border-accent-primary/30">
+                                        <Check className="text-accent-primary" size={40} strokeWidth={3} />
+                                    </div>
+                                    <h3 className="text-3xl font-bold text-white mb-4">Message Envoyé !</h3>
+                                    <p className="text-secondary max-w-sm mx-auto">
+                                        Merci {formData.name.split(' ')[0]}, votre vision a été transmise à nos experts. Nous reviendrons vers vous sous 24h.
+                                    </p>
+                                    <button
+                                        onClick={() => { setIsSuccess(false); setStep(1); setFormData(initialContactData); }}
+                                        className="mt-8 text-accent-primary font-bold hover:text-white transition-colors"
+                                    >
+                                        Envoyer un autre message
+                                    </button>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+                    </div>
                 </GsapReveal>
             </div>
         </section>

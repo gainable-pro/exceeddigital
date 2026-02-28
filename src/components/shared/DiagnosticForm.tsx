@@ -202,9 +202,14 @@ export function DiagnosticForm({ isOpen, onClose }: { isOpen: boolean; onClose: 
                                                 <button
                                                     key={s}
                                                     onClick={() => setFormData({ ...formData, sector: s })}
-                                                    className={`p-3 text-sm rounded-xl border text-center transition-all ${formData.sector === s ? 'bg-accent-primary border-accent-primary text-white shadow-[0_0_15px_rgba(0,112,243,0.3)]' : 'bg-white/5 border-white/10 text-secondary hover:border-white/30'}`}
+                                                    className={`p-3 text-sm rounded-xl border text-center transition-all relative ${formData.sector === s ? 'bg-accent-primary border-accent-primary text-white shadow-[0_0_15px_rgba(0,112,243,0.3)]' : 'bg-white/5 border-white/10 text-secondary hover:border-white/30'}`}
                                                 >
                                                     {s}
+                                                    {formData.sector === s && (
+                                                        <div className="absolute -top-2 -right-2 w-5 h-5 bg-white text-accent-primary rounded-full flex items-center justify-center shadow-lg">
+                                                            <Check size={12} strokeWidth={4} />
+                                                        </div>
+                                                    )}
                                                 </button>
                                             ))}
                                         </div>
@@ -226,10 +231,10 @@ export function DiagnosticForm({ isOpen, onClose }: { isOpen: boolean; onClose: 
                                                 <button
                                                     key={opt.val}
                                                     onClick={() => setFormData({ ...formData, hasWebsite: opt.val })}
-                                                    className={`p-4 rounded-2xl border flex items-center gap-4 transition-all ${formData.hasWebsite === opt.val ? 'bg-accent-primary/20 border-accent-primary text-white' : 'bg-white/5 border-white/10 text-secondary hover:border-white/30'}`}
+                                                    className={`p-4 rounded-2xl border flex items-center gap-4 transition-all relative ${formData.hasWebsite === opt.val ? 'bg-accent-primary/20 border-accent-primary text-white' : 'bg-white/5 border-white/10 text-secondary hover:border-white/30'}`}
                                                 >
-                                                    <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${formData.hasWebsite === opt.val ? 'border-accent-primary' : 'border-white/20'}`}>
-                                                        {formData.hasWebsite === opt.val && <div className="w-2.5 h-2.5 bg-accent-primary rounded-full" />}
+                                                    <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${formData.hasWebsite === opt.val ? 'border-accent-primary bg-accent-primary' : 'border-white/20'}`}>
+                                                        {formData.hasWebsite === opt.val && <Check size={12} className="text-white" strokeWidth={3} />}
                                                     </div>
                                                     <span className="text-sm font-medium">{opt.label}</span>
                                                 </button>
@@ -239,15 +244,21 @@ export function DiagnosticForm({ isOpen, onClose }: { isOpen: boolean; onClose: 
 
                                     <div className="space-y-4">
                                         <label className="text-sm font-medium text-white/70 ml-1">Points de blocage identifiés :</label>
-                                        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                                             {problems.map(p => (
                                                 <button
                                                     key={p.id}
                                                     onClick={() => toggleArrayItem('problems', p.id)}
-                                                    className={`p-3 text-sm rounded-xl border flex items-center gap-3 transition-all ${formData.problems.includes(p.id) ? 'bg-accent-primary border-accent-primary text-white shadow-[0_0_10px_rgba(0,112,243,0.2)]' : 'bg-white/5 border-white/10 text-secondary hover:border-white/30'}`}
+                                                    className={`p-4 text-sm rounded-xl border flex items-center gap-4 transition-all relative ${formData.problems.includes(p.id) ? 'bg-accent-primary/20 border-accent-primary text-white shadow-[0_0_10px_rgba(0,112,243,0.2)]' : 'bg-white/5 border-white/10 text-secondary hover:border-white/30'}`}
                                                 >
-                                                    <p.icon size={16} className={formData.problems.includes(p.id) ? 'text-white' : 'text-accent-primary'} />
-                                                    {p.label}
+                                                    <div className={`w-10 h-10 rounded-lg flex items-center justify-center transition-colors ${formData.problems.includes(p.id) ? 'bg-accent-primary text-white' : 'bg-white/5 text-accent-primary'}`}>
+                                                        <p.icon size={20} />
+                                                    </div>
+                                                    <span className="font-bold">{p.label}</span>
+
+                                                    <div className={`absolute top-4 right-4 w-5 h-5 rounded-md border-2 flex items-center justify-center transition-all ${formData.problems.includes(p.id) ? 'border-accent-primary bg-accent-primary' : 'border-white/20'}`}>
+                                                        {formData.problems.includes(p.id) && <Check size={12} className="text-white" strokeWidth={3} />}
+                                                    </div>
                                                 </button>
                                             ))}
                                         </div>
@@ -264,10 +275,16 @@ export function DiagnosticForm({ isOpen, onClose }: { isOpen: boolean; onClose: 
                                                 <button
                                                     key={opt.id}
                                                     onClick={() => setFormData({ ...formData, mainGoal: opt.id })}
-                                                    className={`p-5 rounded-2xl border flex items-center gap-5 transition-all ${formData.mainGoal === opt.id ? 'bg-accent-primary/20 border-accent-primary text-white' : 'bg-white/5 border-white/10 text-secondary hover:border-white/30'}`}
+                                                    className={`p-5 rounded-2xl border flex items-center gap-5 transition-all relative ${formData.mainGoal === opt.id ? 'bg-accent-primary/20 border-accent-primary text-white' : 'bg-white/5 border-white/10 text-secondary hover:border-white/30'}`}
                                                 >
-                                                    <opt.icon className={formData.mainGoal === opt.id ? 'text-accent-primary' : 'text-white/20'} size={24} />
+                                                    <div className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-colors ${formData.mainGoal === opt.id ? 'bg-accent-primary text-white' : 'bg-white/5 text-accent-primary'}`}>
+                                                        <opt.icon size={28} />
+                                                    </div>
                                                     <span className="text-lg font-bold">{opt.label}</span>
+
+                                                    <div className={`absolute top-1/2 -translate-y-1/2 right-6 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all ${formData.mainGoal === opt.id ? 'border-accent-primary bg-accent-primary' : 'border-white/20'}`}>
+                                                        {formData.mainGoal === opt.id && <Check size={14} className="text-white" strokeWidth={3} />}
+                                                    </div>
                                                 </button>
                                             ))}
                                         </div>
@@ -284,9 +301,14 @@ export function DiagnosticForm({ isOpen, onClose }: { isOpen: boolean; onClose: 
                                                 <button
                                                     key={curr}
                                                     onClick={() => setFormData({ ...formData, budget: curr })}
-                                                    className={`p-4 rounded-xl border text-center font-bold transition-all ${formData.budget === curr ? 'bg-accent-primary border-accent-primary text-white' : 'bg-white/5 border-white/10 text-secondary hover:border-white/30'}`}
+                                                    className={`p-4 rounded-xl border text-center font-bold transition-all relative ${formData.budget === curr ? 'bg-accent-primary border-accent-primary text-white shadow-[0_0_15px_rgba(0,112,243,0.3)]' : 'bg-white/5 border-white/10 text-secondary hover:border-white/30'}`}
                                                 >
                                                     {curr}
+                                                    {formData.budget === curr && (
+                                                        <div className="absolute -top-2 -right-2 w-5 h-5 bg-white text-accent-primary rounded-full flex items-center justify-center shadow-lg">
+                                                            <Check size={12} strokeWidth={4} />
+                                                        </div>
+                                                    )}
                                                 </button>
                                             ))}
                                         </div>
@@ -304,9 +326,14 @@ export function DiagnosticForm({ isOpen, onClose }: { isOpen: boolean; onClose: 
                                                 <button
                                                     key={opt.val}
                                                     onClick={() => setFormData({ ...formData, deadline: opt.val })}
-                                                    className={`p-4 rounded-xl border text-center transition-all ${formData.deadline === opt.val ? 'bg-accent-primary border-accent-primary text-white' : 'bg-white/5 border-white/10 text-secondary hover:border-white/30'}`}
+                                                    className={`p-4 rounded-xl border text-center transition-all relative ${formData.deadline === opt.val ? 'bg-accent-primary border-accent-primary text-white shadow-[0_0_15px_rgba(0,112,243,0.3)]' : 'bg-white/5 border-white/10 text-secondary hover:border-white/30'}`}
                                                 >
                                                     {opt.label}
+                                                    {formData.deadline === opt.val && (
+                                                        <div className="absolute -top-2 -right-2 w-5 h-5 bg-white text-accent-primary rounded-full flex items-center justify-center shadow-lg">
+                                                            <Check size={12} strokeWidth={4} />
+                                                        </div>
+                                                    )}
                                                 </button>
                                             ))}
                                         </div>
@@ -318,15 +345,21 @@ export function DiagnosticForm({ isOpen, onClose }: { isOpen: boolean; onClose: 
                                 <div className="space-y-6 animate-in slide-in-from-right-10 duration-500">
                                     <div className="space-y-4">
                                         <label className="text-sm font-medium text-white/70 ml-1">Développements spécifiques requis :</label>
-                                        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                                             {features.map(f => (
                                                 <button
                                                     key={f.id}
                                                     onClick={() => toggleArrayItem('features', f.id)}
-                                                    className={`p-3 text-sm rounded-xl border flex items-center gap-3 transition-all ${formData.features.includes(f.id) ? 'bg-accent-primary border-accent-primary text-white shadow-[0_0_10px_rgba(0,112,243,0.1)]' : 'bg-white/5 border-white/10 text-secondary hover:border-white/30'}`}
+                                                    className={`p-4 text-sm rounded-xl border flex items-center gap-4 transition-all relative ${formData.features.includes(f.id) ? 'bg-accent-primary/20 border-accent-primary text-white shadow-[0_0_10px_rgba(0,112,243,0.1)]' : 'bg-white/5 border-white/10 text-secondary hover:border-white/30'}`}
                                                 >
-                                                    <f.icon size={16} className={formData.features.includes(f.id) ? 'text-white' : 'text-accent-primary'} />
-                                                    {f.label}
+                                                    <div className={`w-10 h-10 rounded-lg flex items-center justify-center transition-colors ${formData.features.includes(f.id) ? 'bg-accent-primary text-white' : 'bg-white/5 text-accent-primary'}`}>
+                                                        <f.icon size={20} />
+                                                    </div>
+                                                    <span className="font-bold">{f.label}</span>
+
+                                                    <div className={`absolute top-4 right-4 w-5 h-5 rounded-md border-2 flex items-center justify-center transition-all ${formData.features.includes(f.id) ? 'border-accent-primary bg-accent-primary' : 'border-white/20'}`}>
+                                                        {formData.features.includes(f.id) && <Check size={12} className="text-white" strokeWidth={3} />}
+                                                    </div>
                                                 </button>
                                             ))}
                                         </div>
@@ -343,9 +376,14 @@ export function DiagnosticForm({ isOpen, onClose }: { isOpen: boolean; onClose: 
                                                 <button
                                                     key={opt.val}
                                                     onClick={() => setFormData({ ...formData, branding: opt.val })}
-                                                    className={`p-3 text-sm rounded-xl border text-center transition-all ${formData.branding === opt.val ? 'bg-accent-primary border-accent-primary text-white' : 'bg-white/5 border-white/10 text-secondary hover:border-white/30'}`}
+                                                    className={`p-3 text-sm rounded-xl border text-center transition-all relative ${formData.branding === opt.val ? 'bg-accent-primary border-accent-primary text-white shadow-[0_0_15px_rgba(0,112,243,0.3)]' : 'bg-white/5 border-white/10 text-secondary hover:border-white/30'}`}
                                                 >
                                                     {opt.label}
+                                                    {formData.branding === opt.val && (
+                                                        <div className="absolute -top-2 -right-2 w-5 h-5 bg-white text-accent-primary rounded-full flex items-center justify-center shadow-lg">
+                                                            <Check size={12} strokeWidth={4} />
+                                                        </div>
+                                                    )}
                                                 </button>
                                             ))}
                                         </div>

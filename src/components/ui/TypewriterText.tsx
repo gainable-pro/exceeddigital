@@ -47,7 +47,8 @@ export function TypewriterText({ text, className = "", delay = 0, speed = 0.05 }
             style={{ display: "inline-block", overflow: "hidden" }}
             variants={container}
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
             className={className}
         >
             {characters.map((char, index) => (

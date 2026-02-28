@@ -1,4 +1,6 @@
 import { GsapReveal } from "@/components/ui/GsapReveal";
+import { TypewriterText } from "@/components/ui/TypewriterText";
+import { ArrowUpRight } from "lucide-react";
 
 const projects = [
     {
@@ -27,8 +29,16 @@ const projects = [
 export function PortfolioSection() {
     return (
         <section id="portfolio" className="section-v3">
-            <GsapReveal delay={0.1}>
-                <h2 className="section-title-v3">RÉALISATIONS <br /><span className="text-gradient">SÉLECTIONNÉES</span></h2>
+            <GsapReveal>
+                <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+                    <h2 className="section-title-v3 !mb-0">
+                        <TypewriterText text="RÉALISATIONS" delay={0.2} /><br />
+                        <span className="text-gradient">
+                            <TypewriterText text="SÉLECTIONNÉES" delay={1.0} />
+                        </span>
+                    </h2>
+                    <p className="text-secondary opacity-60 font-mono tracking-widest uppercase text-xs">Scroll to explore catalog — 2024</p>
+                </div>
 
                 <div className="v3-portfolio-grid">
                     {projects.map((project, i) => (

@@ -61,7 +61,12 @@ export default function WebSeoServicePage() {
             {/* --- CONCEPTION PROCESS (ZIG-ZAG) --- */}
             <section className="section-v3 overflow-hidden">
                 <GsapReveal>
-                    <h2 className="section-title-v3 mb-24">NOTRE <br /><span className="text-gradient">PROCESSUS DE CONCEPTION</span></h2>
+                    <h2 className="section-title-v3 mb-24 uppercase">
+                        <TypewriterText text="NOTRE" delay={0.2} /><br />
+                        <span className="text-gradient">
+                            <TypewriterText text="PROCESSUS DE CONCEPTION" delay={0.6} />
+                        </span>
+                    </h2>
                 </GsapReveal>
 
                 <div className="v3-zigzag-container">
@@ -69,34 +74,34 @@ export default function WebSeoServicePage() {
                         {
                             step: "01",
                             title: "Écoute & Analyse de vos besoins",
-                            desc: "Tout commence par une immersion totale dans votre univers pour comprendre vos objectifs réels et les besoins spécifiques de vos clients.",
-                            details: "Nous réalisons un diagnostic complet de votre situation actuelle et définissons ensemble les indicateurs de réussite de votre futur site pour qu'il réponde à vos ambitions commerciales.",
+                            desc: "Nous débutons par une immersion totale dans votre univers pour comprendre vos objectifs métiers et vos enjeux spécifiques.",
+                            details: "Cette phase d'audit nous permet de définir le socle stratégique de votre projet et d'aligner nos solutions sur vos ambitions de croissance.",
                             img: "/assets/expertise/strategy.png",
                             icon: Users
                         },
                         {
                             step: "02",
                             title: "Étude de votre Marché et du SEO",
-                            desc: "Nous analysons ce que font les meilleurs de votre secteur pour identifier les opportunités que vous pouvez saisir pour les dépasser stratégiquement.",
-                            details: "Cette étude nous permet de comprendre comment vos clients vous cherchent sur Google et de structurer un site qui répond parfaitement à leurs attentes tout en dominant vos concurrents.",
+                            desc: "Une analyse chirurgicale de votre concurrence et des intentions de recherche de vos clients cibles.",
+                            details: "Nous identifions les opportunités de positionnement inexploitées pour garantir que votre futur site soit visible là où vos clients vous cherchent réellement.",
                             img: "/assets/expertise/web.png",
                             icon: Search
                         },
                         {
                             step: "03",
                             title: "Stratégie de Mots-Clés et de Contenu",
-                            desc: "Nous ne créons pas seulement des pages, nous créons des points de rencontre entre vos services et vos futurs clients.",
-                            details: "En sélectionnant les termes de recherche les plus performants, nous bâtissons une architecture de contenu qui rassure Google et séduit vos visiteurs par sa pertinence et sa clarté.",
-                            img: "/assets/expertise/chatbot.png",
-                            icon: BarChart3
+                            desc: "Architecture sémantique et design orienté conversion. Nous créons la structure qui captivera l'algorithme et vos visiteurs.",
+                            details: "Chaque page est pensée comme un entonnoir de conversion, combinant storytelling de marque et optimisation technique de pointe.",
+                            img: "/assets/expertise/erp.png",
+                            icon: Layers
                         },
                         {
                             step: "04",
                             title: "Lancement & Acquisition de Clients",
-                            desc: "Votre site est conçu comme un véritable moteur de croissance, prêt à transformer chaque visiteur en contact qualifié.",
-                            details: "Dès sa mise en ligne, nous déployons une stratégie de visibilité globale pour que votre site devienne votre meilleur commercial, disponible 24h/24 pour générer des opportunités concrètes.",
-                            img: "/assets/expertise/erp.png",
-                            icon: MousePointer2
+                            desc: "Mise en ligne et monitoring de performance. Nous propulsons votre plateforme vers ses premiers résultats concrets.",
+                            details: "Le lancement n'est que le début. Nous suivons l'indexation et le comportement utilisateur pour affiner continuellement votre stratégie d'acquisition.",
+                            img: "/assets/expertise/chatbot.png",
+                            icon: TrendingUp
                         }
                     ].map((item, i) => (
                         <div key={i} className={`v3-zigzag-item ${i % 2 !== 0 ? 'reverse' : ''}`}>
@@ -112,10 +117,9 @@ export default function WebSeoServicePage() {
                             </GsapReveal>
 
                             <GsapReveal direction={i % 2 === 0 ? "right" : "left"} delay={0.2} className="v3-zigzag-content">
-                                <div className="v3-icon-animate text-accent-primary mb-6">
-                                    <item.icon size={50} />
-                                </div>
-                                <h3 className="text-white">{item.title}</h3>
+                                <h3 className="text-white">
+                                    <TypewriterText text={item.title} delay={0.4 + i * 0.2} />
+                                </h3>
                                 <p className="text-xl text-white mb-6 leading-relaxed">
                                     {item.desc}
                                 </p>
@@ -208,7 +212,12 @@ export default function WebSeoServicePage() {
             {/* --- NOTRE MÉTHODE (4 CARDS) --- */}
             <section className="section-v3 overflow-hidden">
                 <GsapReveal>
-                    <h2 className="section-title-v3">NOTRE <br /><span className="text-gradient">MÉTHODE</span></h2>
+                    <h2 className="section-title-v3">
+                        <TypewriterText text="NOTRE" delay={0.2} /><br />
+                        <span className="text-gradient">
+                            <TypewriterText text="MÉTHODE" delay={0.6} />
+                        </span>
+                    </h2>
                     <div className="w-full h-1 bg-white/5 rounded-full mb-16 relative overflow-hidden">
                         <motion.div
                             className="absolute inset-y-0 left-0 bg-accent-primary shadow-[0_0_15px_rgba(0,112,243,1)]"

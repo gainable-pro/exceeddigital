@@ -1,5 +1,17 @@
 import { GsapReveal } from "@/components/ui/GsapReveal";
-import { Globe, Database, MessageSquare, Megaphone } from "lucide-react";
+import { TypewriterText } from "@/components/ui/TypewriterText";
+import {
+    Globe,
+    Database,
+    Palette,
+    Bot,
+    ArrowRight,
+    Search,
+    Zap,
+    Users,
+    MessageSquare,
+    Megaphone
+} from "lucide-react";
 import Link from "next/link";
 
 const services = [
@@ -36,8 +48,13 @@ const services = [
 export function ExpertiseSection() {
     return (
         <section id="services" className="section-v3">
-            <GsapReveal delay={0.1}>
-                <h2 className="section-title-v3">NOTRE <br /><span className="text-gradient">SAVOIR-FAIRE</span></h2>
+            <GsapReveal>
+                <h2 className="section-title-v3">
+                    <TypewriterText text="NOTRE" delay={0.2} /><br />
+                    <span className="text-gradient">
+                        <TypewriterText text="SAVOIR-FAIRE" delay={0.6} />
+                    </span>
+                </h2>
 
                 <div className="v3-expertise-grid">
                     {services.map((service, i) => {

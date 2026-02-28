@@ -1,5 +1,6 @@
 "use client";
 import { GsapReveal } from "@/components/ui/GsapReveal";
+import { TypewriterText } from "@/components/ui/TypewriterText";
 import { Mail, Phone, Send } from "lucide-react";
 
 export function ContactSection() {
@@ -8,7 +9,12 @@ export function ContactSection() {
             <div className="v3-contact-grid">
                 <GsapReveal delay={0.1}>
                     <div className="contact-info">
-                        <h2 className="section-title-v3">PARLONS <br /><span className="text-gradient">PROJET</span></h2>
+                        <h2 className="section-title-v3">
+                            <TypewriterText text="PARLONS" delay={0.2} /><br />
+                            <span className="text-gradient">
+                                <TypewriterText text="PROJET" delay={0.8} />
+                            </span>
+                        </h2>
                         <p className="font-sora text-secondary mb-12">Donnez une nouvelle dimension à votre présence digitale.</p>
 
                         <div className="info-item">

@@ -1,24 +1,28 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
     X,
-    ArrowRight,
     ChevronLeft,
     Check,
-    User,
-    Mail,
-    Building2,
+    Users,
     Globe,
-    Users2,
-    Target,
-    Wallet,
+    Zap,
+    Search,
+    TrendingUp,
+    ShieldCheck,
+    MessageSquare,
+    Crown,
+    Bot,
+    BarChart3,
+    Palette,
+    ShoppingCart,
     Calendar,
-    Settings,
-    Layout,
-    CheckCircle2,
-    Send
+    Sparkles,
+    Navigation,
+    Send,
+    ArrowRight
 } from "lucide-react";
 
 interface FormData {
@@ -55,7 +59,7 @@ const initialData: FormData = {
 
 export function DiagnosticForm({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
     const [step, setStep] = useState(1);
-    const [data, setData] = useState<FormData>(initialData);
+    const [formData, setFormData] = useState<FormData>(initialData);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
 
@@ -63,24 +67,39 @@ export function DiagnosticForm({ isOpen, onClose }: { isOpen: boolean; onClose: 
     const progress = (step / totalSteps) * 100;
 
     const sectors = ["E-commerce", "BTP / Immobilier", "Santé & Bien-être", "Startups & Tech", "Conseil & Services", "Commerces de proximité", "Autre"];
-    const problems = ["Site trop lent", "Visibilité Google (SEO) faible", "Design daté / non-pro", "Inadapté sur mobile", "Pas assez de conversions", "Autre"];
-    const goals = [
-        { label: "Booster ma visibilité & trafic", val: "traffic", icon: Target },
-        { label: "Générer des leads qualifiés", val: "leads", icon: Users2 },
-        { label: "Vendre mes services/produits", val: "sales", icon: Wallet },
-        { label: "Professionnaliser mon image", val: "brand", icon: Layout }
+    const problems = [
+        { id: "ghost", label: "Je suis invisible sur Google", icon: Search },
+        { id: "conversion", label: "Mon site ne me rapporte aucun client", icon: TrendingUp },
+        { id: "design", label: "Mon image de marque est vieillissante", icon: Palette },
+        { id: "performance", label: "Mon site est lent et buggé", icon: Zap },
+        { id: "not-started", label: "Je n'ai pas encore de site web", icon: Globe },
     ];
-    const features = ["Espace client sécurisé", "Vente en ligne / Boutique", "Prise de rendez-vous", "Blog & Actualités", "Tchat & Support", "Multi-langues"];
+
+    const goals = [
+        { id: "leads", label: "Générer des leads qualifiés chaque jour", icon: Users },
+        { id: "sales", label: "Exploser mon taux de transformation", icon: TrendingUp },
+        { id: "authority", label: "Devenir la référence de mon secteur", icon: Crown },
+        { id: "process", label: "Automatiser mes tâches répétitives", icon: Bot },
+        { id: "growth", label: "Mailler mon SEO pour dominer le marché", icon: Navigation },
+    ];
+
+    const features = [
+        { id: "ecom", label: "Vente en ligne (E-commerce)", icon: ShoppingCart },
+        { id: "booking", label: "Prise de RDV / Réservation", icon: Calendar },
+        { id: "dash", label: "Tableau de bord sur-mesure", icon: BarChart3 },
+        { id: "ia", label: "Chatbot IA Intelligent", icon: MessageSquare },
+        { id: "portal", label: "Espace Client sécurisé", icon: ShieldCheck },
+    ];
 
     const handleNext = () => setStep(s => Math.min(s + 1, totalSteps));
     const handleBack = () => setStep(s => Math.max(s - 1, 1));
 
-    const toggleArrayItem = (key: keyof FormData, item: string) => {
-        setData(prev => {
+    const toggleArrayItem = (key: keyof FormData, itemId: string) => {
+        setFormData(prev => {
             const current = (prev[key] as string[]) || [];
-            const updated = current.includes(item)
-                ? current.filter(i => i !== item)
-                : [...current, item];
+            const updated = current.includes(itemId)
+                ? current.filter(i => i !== itemId)
+                : [...current, itemId];
             return { ...prev, [key]: updated };
         });
     };
@@ -152,12 +171,12 @@ export function DiagnosticForm({ isOpen, onClose }: { isOpen: boolean; onClose: 
                                         <div className="space-y-2">
                                             <label className="text-sm font-medium text-white/70 ml-1">Nom ou Prénom *</label>
                                             <div className="relative">
-                                                <User className="absolute left-4 top-1/2 -translate-y-1/2 text-accent-primary" size={18} />
+                                                <Users className="absolute left-4 top-1/2 -translate-y-1/2 text-accent-primary" size={18} />
                                                 <input
                                                     type="text"
                                                     placeholder="Ex: Alexandre"
-                                                    value={data.name}
-                                                    onChange={e => setData({ ...data, name: e.target.value })}
+                                                    value={formData.name}
+                                                    onChange={e => setFormData({ ...formData, name: e.target.value })}
                                                     className="w-full bg-white/5 border border-white/10 rounded-xl py-4 pl-12 pr-4 text-white focus:border-accent-primary outline-none transition-all"
                                                 />
                                             </div>
@@ -165,12 +184,12 @@ export function DiagnosticForm({ isOpen, onClose }: { isOpen: boolean; onClose: 
                                         <div className="space-y-2">
                                             <label className="text-sm font-medium text-white/70 ml-1">Adresse Email *</label>
                                             <div className="relative">
-                                                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-accent-primary" size={18} />
+                                                <Sparkles className="absolute left-4 top-1/2 -translate-y-1/2 text-accent-primary" size={18} />
                                                 <input
                                                     type="email"
                                                     placeholder="votre@mail.com"
-                                                    value={data.email}
-                                                    onChange={e => setData({ ...data, email: e.target.value })}
+                                                    value={formData.email}
+                                                    onChange={e => setFormData({ ...formData, email: e.target.value })}
                                                     className="w-full bg-white/5 border border-white/10 rounded-xl py-4 pl-12 pr-4 text-white focus:border-accent-primary outline-none transition-all"
                                                 />
                                             </div>
@@ -182,8 +201,8 @@ export function DiagnosticForm({ isOpen, onClose }: { isOpen: boolean; onClose: 
                                             {sectors.map(s => (
                                                 <button
                                                     key={s}
-                                                    onClick={() => setData({ ...data, sector: s })}
-                                                    className={`p-3 text-sm rounded-xl border text-center transition-all ${data.sector === s ? 'bg-accent-primary border-accent-primary text-white shadow-[0_0_15px_rgba(0,112,243,0.3)]' : 'bg-white/5 border-white/10 text-secondary hover:border-white/30'}`}
+                                                    onClick={() => setFormData({ ...formData, sector: s })}
+                                                    className={`p-3 text-sm rounded-xl border text-center transition-all ${formData.sector === s ? 'bg-accent-primary border-accent-primary text-white shadow-[0_0_15px_rgba(0,112,243,0.3)]' : 'bg-white/5 border-white/10 text-secondary hover:border-white/30'}`}
                                                 >
                                                     {s}
                                                 </button>
@@ -206,11 +225,11 @@ export function DiagnosticForm({ isOpen, onClose }: { isOpen: boolean; onClose: 
                                             ].map(opt => (
                                                 <button
                                                     key={opt.val}
-                                                    onClick={() => setData({ ...data, hasWebsite: opt.val })}
-                                                    className={`p-4 rounded-2xl border flex items-center gap-4 transition-all ${data.hasWebsite === opt.val ? 'bg-accent-primary/20 border-accent-primary text-white' : 'bg-white/5 border-white/10 text-secondary hover:border-white/30'}`}
+                                                    onClick={() => setFormData({ ...formData, hasWebsite: opt.val })}
+                                                    className={`p-4 rounded-2xl border flex items-center gap-4 transition-all ${formData.hasWebsite === opt.val ? 'bg-accent-primary/20 border-accent-primary text-white' : 'bg-white/5 border-white/10 text-secondary hover:border-white/30'}`}
                                                 >
-                                                    <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${data.hasWebsite === opt.val ? 'border-accent-primary' : 'border-white/20'}`}>
-                                                        {data.hasWebsite === opt.val && <div className="w-2.5 h-2.5 bg-accent-primary rounded-full" />}
+                                                    <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${formData.hasWebsite === opt.val ? 'border-accent-primary' : 'border-white/20'}`}>
+                                                        {formData.hasWebsite === opt.val && <div className="w-2.5 h-2.5 bg-accent-primary rounded-full" />}
                                                     </div>
                                                     <span className="text-sm font-medium">{opt.label}</span>
                                                 </button>
@@ -220,17 +239,15 @@ export function DiagnosticForm({ isOpen, onClose }: { isOpen: boolean; onClose: 
 
                                     <div className="space-y-4">
                                         <label className="text-sm font-medium text-white/70 ml-1">Points de blocage identifiés :</label>
-                                        <div className="grid grid-cols-2 gap-3">
+                                        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                                             {problems.map(p => (
                                                 <button
-                                                    key={p}
-                                                    onClick={() => toggleArrayItem('problems', p)}
-                                                    className={`p-3 text-sm rounded-xl border flex items-center gap-3 transition-all ${data.problems.includes(p) ? 'bg-accent-primary border-accent-primary text-white shadow-[0_0_10px_rgba(0,112,243,0.2)]' : 'bg-white/5 border-white/10 text-secondary hover:border-white/30'}`}
+                                                    key={p.id}
+                                                    onClick={() => toggleArrayItem('problems', p.id)}
+                                                    className={`p-3 text-sm rounded-xl border flex items-center gap-3 transition-all ${formData.problems.includes(p.id) ? 'bg-accent-primary border-accent-primary text-white shadow-[0_0_10px_rgba(0,112,243,0.2)]' : 'bg-white/5 border-white/10 text-secondary hover:border-white/30'}`}
                                                 >
-                                                    <div className={`w-4 h-4 rounded border flex items-center justify-center transition-colors ${data.problems.includes(p) ? 'bg-accent-primary border-accent-primary' : 'border-white/20'}`}>
-                                                        {data.problems.includes(p) && <Check size={12} className="text-white" />}
-                                                    </div>
-                                                    {p}
+                                                    <p.icon size={16} className={formData.problems.includes(p.id) ? 'text-white' : 'text-accent-primary'} />
+                                                    {p.label}
                                                 </button>
                                             ))}
                                         </div>
@@ -245,11 +262,11 @@ export function DiagnosticForm({ isOpen, onClose }: { isOpen: boolean; onClose: 
                                         <div className="grid grid-cols-1 gap-4">
                                             {goals.map(opt => (
                                                 <button
-                                                    key={opt.val}
-                                                    onClick={() => setData({ ...data, mainGoal: opt.val })}
-                                                    className={`p-5 rounded-2xl border flex items-center gap-5 transition-all ${data.mainGoal === opt.val ? 'bg-accent-primary/20 border-accent-primary text-white' : 'bg-white/5 border-white/10 text-secondary hover:border-white/30'}`}
+                                                    key={opt.id}
+                                                    onClick={() => setFormData({ ...formData, mainGoal: opt.id })}
+                                                    className={`p-5 rounded-2xl border flex items-center gap-5 transition-all ${formData.mainGoal === opt.id ? 'bg-accent-primary/20 border-accent-primary text-white' : 'bg-white/5 border-white/10 text-secondary hover:border-white/30'}`}
                                                 >
-                                                    <opt.icon className={data.mainGoal === opt.val ? 'text-accent-primary' : 'text-white/20'} size={24} />
+                                                    <opt.icon className={formData.mainGoal === opt.id ? 'text-accent-primary' : 'text-white/20'} size={24} />
                                                     <span className="text-lg font-bold">{opt.label}</span>
                                                 </button>
                                             ))}
@@ -266,8 +283,8 @@ export function DiagnosticForm({ isOpen, onClose }: { isOpen: boolean; onClose: 
                                             {["2 000€ - 5 000€", "5 000€ - 10 000€", "10 000€ - 20 000€", "Expert sur mesure"].map(curr => (
                                                 <button
                                                     key={curr}
-                                                    onClick={() => setData({ ...data, budget: curr })}
-                                                    className={`p-4 rounded-xl border text-center font-bold transition-all ${data.budget === curr ? 'bg-accent-primary border-accent-primary text-white' : 'bg-white/5 border-white/10 text-secondary hover:border-white/30'}`}
+                                                    onClick={() => setFormData({ ...formData, budget: curr })}
+                                                    className={`p-4 rounded-xl border text-center font-bold transition-all ${formData.budget === curr ? 'bg-accent-primary border-accent-primary text-white' : 'bg-white/5 border-white/10 text-secondary hover:border-white/30'}`}
                                                 >
                                                     {curr}
                                                 </button>
@@ -286,8 +303,8 @@ export function DiagnosticForm({ isOpen, onClose }: { isOpen: boolean; onClose: 
                                             ].map(opt => (
                                                 <button
                                                     key={opt.val}
-                                                    onClick={() => setData({ ...data, deadline: opt.val })}
-                                                    className={`p-4 rounded-xl border text-center transition-all ${data.deadline === opt.val ? 'bg-accent-primary border-accent-primary text-white' : 'bg-white/5 border-white/10 text-secondary hover:border-white/30'}`}
+                                                    onClick={() => setFormData({ ...formData, deadline: opt.val })}
+                                                    className={`p-4 rounded-xl border text-center transition-all ${formData.deadline === opt.val ? 'bg-accent-primary border-accent-primary text-white' : 'bg-white/5 border-white/10 text-secondary hover:border-white/30'}`}
                                                 >
                                                     {opt.label}
                                                 </button>
@@ -301,17 +318,15 @@ export function DiagnosticForm({ isOpen, onClose }: { isOpen: boolean; onClose: 
                                 <div className="space-y-6 animate-in slide-in-from-right-10 duration-500">
                                     <div className="space-y-4">
                                         <label className="text-sm font-medium text-white/70 ml-1">Développements spécifiques requis :</label>
-                                        <div className="grid grid-cols-2 gap-3">
+                                        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                                             {features.map(f => (
                                                 <button
-                                                    key={f}
-                                                    onClick={() => toggleArrayItem('features', f)}
-                                                    className={`p-3 text-sm rounded-xl border flex items-center gap-3 transition-all ${data.features.includes(f) ? 'bg-accent-primary border-accent-primary text-white' : 'bg-white/5 border-white/10 text-secondary hover:border-white/30'}`}
+                                                    key={f.id}
+                                                    onClick={() => toggleArrayItem('features', f.id)}
+                                                    className={`p-3 text-sm rounded-xl border flex items-center gap-3 transition-all ${formData.features.includes(f.id) ? 'bg-accent-primary border-accent-primary text-white shadow-[0_0_10px_rgba(0,112,243,0.1)]' : 'bg-white/5 border-white/10 text-secondary hover:border-white/30'}`}
                                                 >
-                                                    <div className={`w-4 h-4 rounded border flex items-center justify-center transition-colors ${data.features.includes(f) ? 'bg-accent-primary border-accent-primary' : 'border-white/20'}`}>
-                                                        {data.features.includes(f) && <Check size={12} className="text-white" />}
-                                                    </div>
-                                                    {f}
+                                                    <f.icon size={16} className={formData.features.includes(f.id) ? 'text-white' : 'text-accent-primary'} />
+                                                    {f.label}
                                                 </button>
                                             ))}
                                         </div>
@@ -327,8 +342,8 @@ export function DiagnosticForm({ isOpen, onClose }: { isOpen: boolean; onClose: 
                                             ].map(opt => (
                                                 <button
                                                     key={opt.val}
-                                                    onClick={() => setData({ ...data, branding: opt.val })}
-                                                    className={`p-3 text-sm rounded-xl border text-center transition-all ${data.branding === opt.val ? 'bg-accent-primary border-accent-primary text-white' : 'bg-white/5 border-white/10 text-secondary hover:border-white/30'}`}
+                                                    onClick={() => setFormData({ ...formData, branding: opt.val })}
+                                                    className={`p-3 text-sm rounded-xl border text-center transition-all ${formData.branding === opt.val ? 'bg-accent-primary border-accent-primary text-white' : 'bg-white/5 border-white/10 text-secondary hover:border-white/30'}`}
                                                 >
                                                     {opt.label}
                                                 </button>
@@ -342,25 +357,25 @@ export function DiagnosticForm({ isOpen, onClose }: { isOpen: boolean; onClose: 
                                 <div className="space-y-6 animate-in slide-in-from-right-10 duration-500">
                                     <div className="bg-white/5 border border-white/10 rounded-2xl p-6 space-y-4">
                                         <h4 className="text-accent-primary font-bold flex items-center gap-2">
-                                            <CheckCircle2 size={20} />
+                                            <Sparkles size={20} />
                                             Vérifiez vos informations
                                         </h4>
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-8 text-sm">
                                             <div>
                                                 <span className="text-secondary block mb-1">Identité</span>
-                                                <p className="text-white font-medium">{data.name} — {data.email}</p>
+                                                <p className="text-white font-medium">{formData.name} — {formData.email}</p>
                                             </div>
                                             <div>
                                                 <span className="text-secondary block mb-1">Situation</span>
-                                                <p className="text-white font-medium">{data.hasWebsite || "Non précisé"}</p>
+                                                <p className="text-white font-medium">{formData.hasWebsite || "Non précisé"}</p>
                                             </div>
                                             <div>
                                                 <span className="text-secondary block mb-1">Objectif</span>
-                                                <p className="text-white font-medium">{data.mainGoal || "Non précisé"}</p>
+                                                <p className="text-white font-medium">{formData.mainGoal || "Non précisé"}</p>
                                             </div>
                                             <div>
                                                 <span className="text-secondary block mb-1">Budget</span>
-                                                <p className="text-white font-medium">{data.budget || "Non précisé"}</p>
+                                                <p className="text-white font-medium">{formData.budget || "Non précisé"}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -384,7 +399,7 @@ export function DiagnosticForm({ isOpen, onClose }: { isOpen: boolean; onClose: 
                             <div>
                                 <h3 className="text-2xl font-bold text-white mb-2">Diagnostic Envoyé !</h3>
                                 <p className="text-secondary max-w-sm">
-                                    Merci {data.name.split(' ')[0]}, nous avons bien reçu vos éléments. Notre équipe revient vers vous très rapidement.
+                                    Merci {formData.name.split(' ')[0]}, nous avons bien reçu vos éléments. Notre équipe revient vers vous très rapidement.
                                 </p>
                             </div>
                             <button

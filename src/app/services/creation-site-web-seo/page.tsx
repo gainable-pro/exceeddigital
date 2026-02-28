@@ -48,38 +48,59 @@ export default function WebSeoServicePage() {
                 <GsapReveal>
                     <h2 className="section-title-v3">NOTRE <br /><span className="text-gradient">PROCESSUS DE CONCEPTION</span></h2>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                         {[
                             {
                                 step: "01",
                                 title: "Audit & Besoins",
-                                desc: "Récupération de vos besoins et immersion dans votre univers pour comprendre vos objectifs business réels.",
+                                desc: "Immersion totale pour comprendre votre vision et vos enjeux commerciaux.",
+                                details: ["Audit technique SEO", "Analyse de l'existant", "Cadrage des objectifs ROI"],
                                 icon: Users
                             },
                             {
                                 step: "02",
                                 title: "Étude Concurrentielle",
-                                desc: "Analyse des stratégies de vos concurrents pour identifier les opportunités de dépassement.",
+                                desc: "Identification des failles et des opportunités chez vos rivaux directs.",
+                                details: ["Benchmark concurrentiel", "Analyse des opportunités", "Reverse engineering"],
                                 icon: Search
                             },
                             {
                                 step: "03",
                                 title: "Mots-Clés Stratégiques",
-                                desc: "Identification des intentions de recherche de vos futurs clients pour structurer votre contenu.",
+                                desc: "Mapping sémantique précis pour capter l'intention réelle de vos clients.",
+                                details: ["Keyword research", "Analyse des intentions", "Mapping de contenu"],
                                 icon: BarChart3
                             },
                             {
                                 step: "04",
                                 title: "Méthode d'Acquisition",
-                                desc: "Mise en place d'un tunnel de conversion optimisé dès la première ligne de code.",
+                                desc: "Architecture pensée pour transformer chaque clic en opportunité.",
+                                details: ["Architecture de conversion", "Optimisation UX/CRO", "Tracking & Analytics"],
                                 icon: MousePointer2
                             }
                         ].map((item, i) => (
-                            <div key={i} className="v3-expertise-card !p-8 group hover:border-accent-primary transition-all">
-                                <span className="font-mono text-accent-primary text-sm mb-4 block">{item.step}</span>
-                                <item.icon className="text-white mb-6 group-hover:scale-110 transition-transform" size={32} />
-                                <h3 className="!text-xl !mb-4">{item.title}</h3>
-                                <p className="text-secondary text-sm leading-relaxed">{item.desc}</p>
+                            <div key={i} className="v3-expertise-card group !p-6 border border-glass-border/50 hover:border-accent-primary/40 transition-all bg-bg-deep/40 backdrop-blur-sm relative overflow-hidden h-full">
+                                <div className="absolute top-2 right-4 text-7xl font-bold opacity-5 pointer-events-none font-mono">
+                                    {item.step}
+                                </div>
+                                <div className="relative z-10 h-full flex flex-col">
+                                    <div className="w-12 h-12 bg-accent-primary/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-accent-primary group-hover:text-white transition-all">
+                                        <item.icon size={24} className="text-accent-primary group-hover:text-white" />
+                                    </div>
+                                    <h3 className="!text-lg !mb-3 group-hover:text-accent-primary transition-colors">{item.title}</h3>
+                                    <p className="text-secondary text-xs leading-relaxed mb-6">{item.desc}</p>
+
+                                    <div className="mt-auto pt-4 border-t border-glass-border/30">
+                                        <ul className="space-y-2">
+                                            {item.details.map((detail, idx) => (
+                                                <li key={idx} className="flex items-center gap-2 text-[10px] text-secondary/80">
+                                                    <div className="w-1 h-1 bg-accent-primary rounded-full" />
+                                                    {detail}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                         ))}
                     </div>

@@ -37,20 +37,20 @@ export function Navbar({ onAuditClick }: { onAuditClick: () => void }) {
         <nav className="v3-navbar">
             <GsapReveal delay={0.1} direction="down">
                 <Link href="/" className="v3-logo flex flex-col items-center group">
-                    <div className="flex items-center text-[2.1rem] sm:text-[2.3rem] tracking-tight leading-none mb-2">
-                        <span className="font-black text-white">EXCEED</span>
+                    <div className="flex items-center text-[2.2rem] sm:text-[2.5rem] tracking-tight leading-none mb-1.5 uppercase font-black">
+                        <span className="text-white">EXCEED</span>
                         <span className="font-light text-accent-primary pl-3 opacity-90">DIGITAL</span>
                     </div>
 
                     <div className="flex items-center gap-2 w-full max-w-[200px]">
-                        <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-accent-primary/40 to-accent-primary/60" />
+                        <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-accent-primary/50 to-accent-primary/70" />
                         <TypewriterText
                             text="Exceed Your Limits."
                             delay={0.8}
                             speed={0.07}
-                            className="text-[5px] sm:text-[6px] text-white/60 font-medium tracking-[0.05em] uppercase whitespace-nowrap"
+                            className="text-[5px] sm:text-[5.5px] text-white/70 font-medium tracking-[0.1em] normal-case whitespace-nowrap"
                         />
-                        <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent via-accent-primary/40 to-accent-primary/60" />
+                        <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent via-accent-primary/50 to-accent-primary/70" />
                     </div>
                 </Link>
             </GsapReveal>

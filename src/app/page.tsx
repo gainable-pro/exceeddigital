@@ -46,7 +46,7 @@ export default function Home() {
                             <button
                                 onClick={() => document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' })}
                                 className="v3-btn-explorer">
-                                Explorer le Lab
+                                Nos réalisations
                             </button>
                         </div>
                     </GsapReveal>

@@ -36,21 +36,21 @@ export function Navbar({ onAuditClick }: { onAuditClick: () => void }) {
     return (
         <nav className="v3-navbar">
             <GsapReveal delay={0.1} direction="down">
-                <Link href="/" className="v3-logo group">
-                    <div className="flex items-center text-[1.8rem] sm:text-[2rem] tracking-tight leading-none mb-1">
+                <Link href="/" className="v3-logo flex flex-col items-center group">
+                    <div className="flex items-center text-[1.8rem] sm:text-[2rem] tracking-tight leading-none mb-2">
                         <span className="font-black text-white">EXCEED</span>
                         <span className="font-light text-accent-primary pl-3 opacity-90">DIGITAL</span>
                     </div>
 
-                    <div className="flex items-center gap-3 w-full max-w-[280px]">
-                        <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-accent-primary/60 to-accent-primary" />
+                    <div className="flex items-center gap-4 w-full max-w-[320px]">
+                        <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-accent-primary/40 to-accent-primary/60" />
                         <TypewriterText
                             text="Exceed Your Limits."
                             delay={0.8}
                             speed={0.07}
-                            className="text-[10px] sm:text-[11px] text-white/90 font-medium tracking-wide whitespace-nowrap"
+                            className="text-[10px] sm:text-[11px] text-white/80 font-medium tracking-[0.05em] whitespace-nowrap"
                         />
-                        <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent via-accent-primary/60 to-accent-primary" />
+                        <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent via-accent-primary/40 to-accent-primary/60" />
                     </div>
                 </Link>
             </GsapReveal>

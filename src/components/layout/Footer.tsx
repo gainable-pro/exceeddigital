@@ -19,14 +19,14 @@ export function Footer() {
                     <div className="hidden md:block w-1 h-1 bg-white/10 rounded-full" />
 
                     <div className="flex flex-col items-center gap-3">
-                        <div className="flex items-center tracking-tight uppercase font-black" style={{ fontSize: '2rem', display: 'flex', alignItems: 'center', textTransform: 'uppercase', fontWeight: 900 }}>
-                            <span className="text-white">EXCEED</span>
+                        <div className="flex items-center tracking-tight uppercase" style={{ fontSize: '1.8rem', display: 'flex', alignItems: 'center', textTransform: 'uppercase' }}>
+                            <span className="text-white" style={{ fontWeight: 500 }}>EXCEED</span>
                             <span className="font-light text-accent-primary pl-2 opacity-90" style={{ fontWeight: 300, color: '#0070f3' }}>DIGITAL</span>
                         </div>
 
-                        <div className="flex items-center gap-2 w-full max-w-[220px] opacity-30" style={{ display: 'flex', alignItems: 'center', width: '100%', gap: '0.5rem', opacity: 0.3 }}>
+                        <div className="flex items-center gap-2 w-full max-w-[200px] opacity-30" style={{ display: 'flex', alignItems: 'center', width: '100%', gap: '0.5rem', opacity: 0.3 }}>
                             <div className="h-[1px] flex-1 bg-accent-primary/40" style={{ height: '1px', flex: 1, backgroundColor: 'rgba(0, 112, 243, 0.4)' }} />
-                            <span className="tracking-wide whitespace-nowrap normal-case" style={{ fontSize: '11px', textTransform: 'none' }}>Exceed Your Limits.</span>
+                            <span className="tracking-wide whitespace-nowrap normal-case" style={{ fontSize: '10px', textTransform: 'none' }}>Exceed Your Limits.</span>
                             <div className="h-[1px] flex-1 bg-accent-primary/40" style={{ height: '1px', flex: 1, backgroundColor: 'rgba(0, 112, 243, 0.4)' }} />
                         </div>
 

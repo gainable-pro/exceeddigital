@@ -18,8 +18,9 @@ export function Footer() {
 
                     <div className="hidden md:block w-1 h-1 bg-white/10 rounded-full" />
 
-                    <p className="uppercase">
-                        © {currentYear} EXCEED DIGITAL <span className="text-accent-primary opacity-80">®</span> TOUS DROITS RÉSERVÉS.
+                    <p className="uppercase flex flex-col items-center md:items-start gap-1">
+                        <span>© {currentYear} EXCEED DIGITAL <span className="text-accent-primary opacity-80">®</span></span>
+                        <span className="text-[10px] lowercase italic opacity-40 font-normal tracking-normal" style={{ fontFamily: "'Great Vibes', cursive" }}>Exceed Your Limits</span>
                     </p>
                 </div>
             </div>

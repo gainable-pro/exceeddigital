@@ -8,9 +8,10 @@ interface TypewriterTextProps {
     className?: string;
     delay?: number;
     speed?: number;
+    style?: React.CSSProperties;
 }
 
-export function TypewriterText({ text, className = "", delay = 0, speed = 0.05 }: TypewriterTextProps) {
+export function TypewriterText({ text, className = "", delay = 0, speed = 0.05, style }: TypewriterTextProps) {
     const characters = text.split("");
 
     const container = {
@@ -44,7 +45,7 @@ export function TypewriterText({ text, className = "", delay = 0, speed = 0.05 }
 
     return (
         <motion.span
-            style={{ display: "inline-block", overflow: "hidden" }}
+            style={{ display: "inline-block", overflow: "hidden", ...style }}
             variants={container}
             initial="hidden"
             whileInView="visible"

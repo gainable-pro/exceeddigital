@@ -5,6 +5,7 @@ import Link from "next/link";
 import { GsapReveal } from "@/components/ui/GsapReveal";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, Globe, Database, Bot, Megaphone } from "lucide-react";
+import { TypewriterText } from "@/components/ui/TypewriterText";
 
 const services = [
     {
@@ -35,13 +36,18 @@ export function Navbar({ onAuditClick }: { onAuditClick: () => void }) {
     return (
         <nav className="v3-navbar">
             <GsapReveal delay={0.1} direction="down">
-                <Link href="/" className="v3-logo flex flex-col items-start leading-none gap-0">
-                    <div className="flex items-center text-[1.9rem] sm:text-[2.2rem]">
-                        EXCEED <span className="logo-accent">DIGITAL</span>
+                <Link href="/" className="v3-logo flex flex-col items-center leading-none gap-0 group">
+                    <div className="flex items-center text-[1.9rem] sm:text-[2.2rem] transition-all duration-500 group-hover:tracking-[0.15em]">
+                        EXCEED <span className="logo-accent pl-2">DIGITAL</span>
                     </div>
-                    <span className="text-[7px] sm:text-[9px] text-accent-primary uppercase tracking-[0.4em] font-bold mt-1 opacity-80">
-                        Exceed Expectations.
-                    </span>
+                    <div className="h-[1px] w-0 group-hover:w-full bg-gradient-to-r from-transparent via-accent-primary/50 to-transparent transition-all duration-700 mt-1 mb-1" />
+                    <TypewriterText
+                        text="Exceed Your Limits"
+                        delay={0.8}
+                        speed={0.08}
+                        className="text-[14px] sm:text-[16px] text-white/90 lowercase tracking-normal font-normal opacity-90 italic"
+                        style={{ fontFamily: "'Great Vibes', cursive" }}
+                    />
                 </Link>
             </GsapReveal>
 

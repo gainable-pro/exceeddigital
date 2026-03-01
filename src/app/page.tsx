@@ -23,11 +23,6 @@ export default function Home() {
 
                 <section className="v3-hero-content">
                     <GsapReveal delay={0.2} direction="up">
-                        <div className="v3-hero-badge">
-                            <span className="dot" />
-                            Digital Engineering for Business Growth
-                        </div>
-
                         <h1 className="v3-hero-title">
                             <span className="white">
                                 <TypewriterText text="TRANSFORMEZ VOTRE PRÉSENCE DIGITALE" delay={0.4} />

@@ -74,26 +74,26 @@ export function ContactSection() {
                             Transformez vos défis en opportunités numériques. Notre équipe d'experts est prête à propulser votre croissance.
                         </p>
 
-                        <div className="space-y-8">
+                        <div className="space-y-10">
                             <div className="info-item group flex items-start">
-                                <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-accent-primary transition-all shrink-0">
-                                    <Mail className="text-accent-primary" size={20} />
+                                <div className="w-14 h-14 rounded-2xl bg-white/[0.03] flex items-center justify-center border border-white/10 group-hover:border-accent-primary group-hover:bg-accent-primary/5 transition-all shrink-0">
+                                    <Mail className="text-secondary/40 group-hover:text-accent-primary transition-colors" size={24} />
                                 </div>
                                 <div className="flex flex-col ml-6">
-                                    <span className="text-[10px] text-secondary/40 uppercase font-mono tracking-[0.2em] mb-1">EMAIL</span>
-                                    <a href="mailto:contact@exceeddigital.fr" className="font-sora text-white text-lg hover:text-accent-primary transition-colors">
+                                    <span className="text-[10px] text-accent-primary uppercase font-bold tracking-[0.3em] mb-2 opacity-50">EMAIL</span>
+                                    <a href="mailto:contact@exceeddigital.fr" className="font-sora text-white text-xl hover:text-accent-primary transition-all tracking-tight">
                                         contact@exceeddigital.fr
                                     </a>
                                 </div>
                             </div>
 
                             <div className="info-item group flex items-start">
-                                <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-accent-primary transition-all shrink-0">
-                                    <Phone className="text-accent-primary" size={20} />
+                                <div className="w-14 h-14 rounded-2xl bg-white/[0.03] flex items-center justify-center border border-white/10 group-hover:border-accent-primary group-hover:bg-accent-primary/5 transition-all shrink-0">
+                                    <Phone className="text-secondary/40 group-hover:text-accent-primary transition-colors" size={24} />
                                 </div>
                                 <div className="flex flex-col ml-6">
-                                    <span className="text-[10px] text-secondary/40 uppercase font-mono tracking-[0.2em] mb-1">TÉLÉPHONE</span>
-                                    <a href="tel:+33615622188" className="font-sora text-white text-lg hover:text-accent-primary transition-colors">
+                                    <span className="text-[10px] text-accent-primary uppercase font-bold tracking-[0.3em] mb-2 opacity-50">TÉLÉPHONE</span>
+                                    <a href="tel:+33615622188" className="font-sora text-white text-xl hover:text-accent-primary transition-all tracking-tight">
                                         +33 6 15 62 21 88
                                     </a>
                                 </div>

@@ -29,7 +29,7 @@ const services = [
     },
 ];
 
-export function Navbar() {
+export function Navbar({ onAuditClick }: { onAuditClick: () => void }) {
     const [isHovered, setIsHovered] = useState(false);
 
     return (
@@ -118,12 +118,12 @@ export function Navbar() {
             </div>
 
             <GsapReveal delay={0.4} direction="down">
-                <Link
-                    href="#contact"
+                <button
+                    onClick={onAuditClick}
                     className="v3-btn-init"
                 >
                     Diagnostic Gratuit
-                </Link>
+                </button>
             </GsapReveal>
         </nav>
     );

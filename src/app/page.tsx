@@ -1,8 +1,9 @@
 "use client";
 import { Navbar } from "@/components/layout/Navbar";
 import { GsapReveal } from "@/components/ui/GsapReveal";
-import dynamic from "next/dynamic";
+import React, { useState } from "react";
 import { ExpertiseSection } from "@/components/sections/ExpertiseSection";
+import { DiagnosticForm } from "@/components/shared/DiagnosticForm";
 
 import { ContactSection } from "@/components/sections/ContactSection";
 import { MethodSection } from "@/components/sections/MethodSection";
@@ -10,9 +11,11 @@ import { PortfolioSection } from "@/components/sections/PortfolioSection";
 import { TypewriterText } from "@/components/ui/TypewriterText";
 
 export default function Home() {
+    const [isDiagnosticOpen, setIsDiagnosticOpen] = useState(false);
+
     return (
         <main className="w-full">
-            <Navbar />
+            <Navbar onAuditClick={() => setIsDiagnosticOpen(true)} />
 
             {/* Hero Section V4 - Quantum Immersive */}
             <div className="v3-hero">
@@ -39,7 +42,10 @@ export default function Home() {
                         </p>
 
                         <div className="v3-hero-btns">
-                            <button className="v3-btn-audit">
+                            <button
+                                onClick={() => setIsDiagnosticOpen(true)}
+                                className="v3-btn-audit"
+                            >
                                 <span className="label">Diagnostic Gratuit</span>
                                 <div className="overlay" />
                             </button>
@@ -62,6 +68,11 @@ export default function Home() {
             <MethodSection />
             <PortfolioSection />
             <ContactSection />
+
+            <DiagnosticForm
+                isOpen={isDiagnosticOpen}
+                onClose={() => setIsDiagnosticOpen(false)}
+            />
         </main>
     );
 }

@@ -41,7 +41,7 @@ export default function Home() {
                                 onClick={() => setIsDiagnosticOpen(true)}
                                 className="v3-btn-audit"
                             >
-                                <span className="label">Diagnostic Gratuit</span>
+                                <span className="label">Audit Site Web</span>
                                 <div className="overlay" />
                             </button>
                             <button

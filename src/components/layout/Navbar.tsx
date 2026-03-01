@@ -35,7 +35,7 @@ export function Navbar({ onAuditClick }: { onAuditClick: () => void }) {
     return (
         <nav className="v3-navbar">
             <GsapReveal delay={0.1} direction="down">
-                <Link href="/" className="v3-logo !flex !flex-col !items-start !leading-none gap-0">
+                <Link href="/" className="v3-logo flex flex-col items-start leading-none gap-0">
                     <div className="flex items-center">
                         EXCEED <span className="logo-accent">DIGITAL</span>
                     </div>
@@ -124,10 +124,10 @@ export function Navbar({ onAuditClick }: { onAuditClick: () => void }) {
 
             <GsapReveal delay={0.4} direction="down">
                 <button
-                    onClick={onAuditClick}
+                    onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
                     className="v3-btn-init"
                 >
-                    Diagnostic Gratuit
+                    Contactez-nous
                 </button>
             </GsapReveal>
         </nav>

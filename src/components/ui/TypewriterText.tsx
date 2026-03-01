@@ -46,7 +46,7 @@ export function TypewriterText({ text, className = "", delay = 0, speed = 0.05, 
     return (
         <motion.div
             style={{
-                display: "block",
+                display: "inline-block",
                 overflow: "visible",
                 ...style
             }}

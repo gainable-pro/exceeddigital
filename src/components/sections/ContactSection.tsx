@@ -160,7 +160,7 @@ export function ContactSection() {
                                                     placeholder="Votre nom"
                                                     value={formData.name}
                                                     onChange={e => setFormData({ ...formData, name: e.target.value })}
-                                                    className="w-full bg-[#1a1a1a] border border-white/10 rounded-xl py-4 px-5 text-white focus:border-accent-primary focus:bg-[#222] outline-none transition-all placeholder:text-white/20 shadow-inner"
+                                                    className="w-full bg-white border border-white/10 rounded-xl py-4 px-5 text-black focus:border-accent-primary focus:bg-gray-50 outline-none transition-all placeholder:text-black/40 shadow-inner"
                                                 />
                                             </div>
                                         </div>
@@ -175,7 +175,7 @@ export function ContactSection() {
                                                     placeholder="votre@email.com"
                                                     value={formData.email}
                                                     onChange={e => setFormData({ ...formData, email: e.target.value })}
-                                                    className="w-full bg-[#1a1a1a] border border-white/10 rounded-xl py-4 px-5 text-white focus:border-accent-primary focus:bg-[#222] outline-none transition-all placeholder:text-white/20 shadow-inner"
+                                                    className="w-full bg-white border border-white/10 rounded-xl py-4 px-5 text-black focus:border-accent-primary focus:bg-gray-50 outline-none transition-all placeholder:text-black/40 shadow-inner"
                                                 />
                                             </div>
                                         </div>
@@ -191,7 +191,7 @@ export function ContactSection() {
                                                 placeholder="Nom de votre entreprise"
                                                 value={formData.company}
                                                 onChange={e => setFormData({ ...formData, company: e.target.value })}
-                                                className="w-full bg-[#1a1a1a] border border-white/10 rounded-xl py-4 px-5 text-white focus:border-accent-primary focus:bg-[#222] outline-none transition-all placeholder:text-white/20 shadow-inner"
+                                                className="w-full bg-white border border-white/10 rounded-xl py-4 px-5 text-black focus:border-accent-primary focus:bg-gray-50 outline-none transition-all placeholder:text-black/40 shadow-inner"
                                             />
                                         </div>
                                     </div>
@@ -204,7 +204,7 @@ export function ContactSection() {
                                             <select
                                                 value={formData.projectType}
                                                 onChange={e => setFormData({ ...formData, projectType: e.target.value })}
-                                                className="w-full bg-[#1a1a1a] border border-white/10 rounded-xl py-4 px-5 text-white focus:border-accent-primary focus:bg-[#222] outline-none transition-all appearance-none cursor-pointer shadow-inner pr-12"
+                                                className="w-full bg-white border border-white/10 rounded-xl py-4 px-5 text-black focus:border-accent-primary focus:bg-gray-50 outline-none transition-all appearance-none cursor-pointer shadow-inner pr-12"
                                             >
                                                 <option value="" disabled className="bg-[#1a1a1a]">Sélectionnez un type de projet</option>
                                                 {projectTypes.map(type => (
@@ -226,7 +226,7 @@ export function ContactSection() {
                                                 placeholder="Décrivez votre projet, vos objectifs..."
                                                 value={formData.message}
                                                 onChange={e => setFormData({ ...formData, message: e.target.value })}
-                                                className="w-full bg-[#1a1a1a] border border-white/10 rounded-xl p-5 text-white focus:border-accent-primary focus:bg-[#222] outline-none transition-all placeholder:text-white/20 resize-none shadow-inner"
+                                                className="w-full bg-white border border-white/10 rounded-xl p-5 text-black focus:border-accent-primary focus:bg-gray-50 outline-none transition-all placeholder:text-black/40 resize-none shadow-inner"
                                             />
                                         </div>
                                     </div>

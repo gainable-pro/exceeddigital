@@ -36,17 +36,22 @@ export function Navbar({ onAuditClick }: { onAuditClick: () => void }) {
     return (
         <nav className="v3-navbar">
             <GsapReveal delay={0.1} direction="down">
-                <Link href="/" className="v3-logo flex flex-col items-start leading-none gap-0.5 group">
-                    <div className="flex items-center text-[1.9rem] sm:text-[2.2rem] transition-all duration-500 group-hover:tracking-[0.05em]">
-                        EXCEED <span className="logo-accent pl-2">DIGITAL</span>
+                <Link href="/" className="v3-logo flex flex-col items-center leading-none gap-2 group">
+                    <div className="flex items-center text-[1.8rem] sm:text-[2rem] tracking-tight">
+                        <span className="font-black text-white">EXCEED</span>
+                        <span className="font-light text-accent-primary pl-3 opacity-90">DIGITAL</span>
                     </div>
-                    <TypewriterText
-                        text="Exceed Your Limits"
-                        delay={0.4}
-                        speed={0.06}
-                        className="text-[12px] sm:text-[14px] text-white/50 font-normal tracking-normal italic"
-                        style={{ fontFamily: "'Great Vibes', cursive", marginLeft: '2px' }}
-                    />
+
+                    <div className="flex items-center gap-3 w-full max-w-[280px]">
+                        <div className="h-[1px] flex-1 bg-accent-primary/40" />
+                        <TypewriterText
+                            text="Exceed Your Limits."
+                            delay={0.6}
+                            speed={0.07}
+                            className="text-[10px] sm:text-[11px] text-white/90 tracking-wide whitespace-nowrap"
+                        />
+                        <div className="h-[1px] flex-1 bg-accent-primary/40" />
+                    </div>
                 </Link>
             </GsapReveal>
 

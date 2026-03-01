@@ -7,9 +7,9 @@ import React from "react";
 export default function AuditPage() {
     return (
         <main className="min-h-screen bg-[#050505] relative overflow-x-hidden flex flex-col">
-            <Navbar onAuditClick={() => { }} />
+            <Navbar onAuditClick={() => { }} isCompact={true} />
 
-            <div className="flex-1 relative flex items-center justify-center p-4 min-h-[calc(100vh-100px)]">
+            <div className="flex-1 relative flex items-center justify-center p-4 pt-[180px] md:pt-[220px] min-h-screen">
                 {/* Background elements to maintain site style */}
                 <div className="absolute inset-0 overflow-hidden pointer-events-none">
                     <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-accent-primary/20 blur-[120px] rounded-full opacity-50" />

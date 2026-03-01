@@ -82,7 +82,7 @@ export function Navbar({ onAuditClick, isCompact = false }: { onAuditClick?: () 
                                 }
                             }
                         }}
-                        className="v3-btn-init hidden md:flex"
+                        className="v3-btn-init hidden md:flex hidden-mobile"
                     >
                         Contactez-nous
                     </button>

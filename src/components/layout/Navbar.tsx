@@ -35,11 +35,11 @@ export function Navbar({ onAuditClick }: { onAuditClick: () => void }) {
     return (
         <nav className="v3-navbar">
             <GsapReveal delay={0.1} direction="down">
-                <Link href="/" className="v3-logo group flex flex-col items-start leading-none">
-                    <div>
+                <Link href="/" className="v3-logo !flex !flex-col !items-start !leading-none gap-0">
+                    <div className="flex items-center">
                         EXCEED <span className="logo-accent">DIGITAL</span>
                     </div>
-                    <span className="text-[10px] text-accent-primary uppercase tracking-[0.2em] font-bold mt-1.5 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-1 group-hover:translate-y-0">
+                    <span className="text-[8px] text-accent-primary uppercase tracking-[0.3em] font-bold mt-1 opacity-80">
                         Exceed Expectations.
                     </span>
                 </Link>

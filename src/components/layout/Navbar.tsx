@@ -37,18 +37,18 @@ export function Navbar({ onAuditClick }: { onAuditClick: () => void }) {
         <nav className="v3-navbar">
             <GsapReveal delay={0.1} direction="down">
                 <Link href="/" className="v3-logo flex flex-col items-center group">
-                    <div className="flex items-center text-[2.2rem] sm:text-[2.25rem] tracking-tight leading-none mb-2 uppercase font-black">
+                    <div className="flex items-center text-[2rem] sm:text-[3.8rem] tracking-tighter leading-none mb-2 uppercase font-black">
                         <span className="text-white">EXCEED</span>
                         <span className="font-light text-accent-primary pl-3 opacity-90">DIGITAL</span>
                     </div>
 
-                    <div className="flex items-center gap-4 w-full max-w-[320px]">
+                    <div className="flex items-center gap-4 w-full max-w-[450px]">
                         <div className="h-[1px] flex-1 bg-accent-primary/50" />
                         <TypewriterText
                             text="Exceed Your Limits."
                             delay={0.8}
                             speed={0.07}
-                            className="text-[11px] sm:text-[12px] text-white/80 font-medium tracking-wide normal-case whitespace-nowrap"
+                            className="text-[11px] sm:text-[21px] text-white/80 font-medium tracking-wide normal-case whitespace-nowrap"
                         />
                         <div className="h-[1px] flex-1 bg-accent-primary/50" />
                     </div>

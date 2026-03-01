@@ -19,14 +19,14 @@ export function Footer() {
                     <div className="hidden md:block w-1 h-1 bg-white/10 rounded-full" />
 
                     <div className="flex flex-col items-center gap-3">
-                        <div className="flex items-center text-[1.6rem] tracking-tight uppercase font-black">
+                        <div className="flex items-center text-[1.8rem] sm:text-[2rem] tracking-tight uppercase font-black">
                             <span className="text-white">EXCEED</span>
                             <span className="font-light text-accent-primary pl-2 opacity-90">DIGITAL</span>
                         </div>
 
-                        <div className="flex items-center gap-2 w-full max-w-[180px] opacity-30">
+                        <div className="flex items-center gap-2 w-full max-w-[220px] opacity-30">
                             <div className="h-[1px] flex-1 bg-accent-primary/40" />
-                            <span className="text-[9px] tracking-wide whitespace-nowrap normal-case">Exceed Your Limits.</span>
+                            <span className="text-[10px] sm:text-[11px] tracking-wide whitespace-nowrap normal-case">Exceed Your Limits.</span>
                             <div className="h-[1px] flex-1 bg-accent-primary/40" />
                         </div>
 

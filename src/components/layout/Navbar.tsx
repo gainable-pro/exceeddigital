@@ -36,21 +36,30 @@ export function Navbar({ onAuditClick }: { onAuditClick: () => void }) {
     return (
         <nav className="v3-navbar">
             <GsapReveal delay={0.1} direction="down">
-                <Link href="/" className="v3-logo flex flex-col items-center group">
-                    <div className="flex items-center text-[2rem] sm:text-[3.8rem] tracking-tighter leading-none mb-2 uppercase font-black">
-                        <span className="text-white">EXCEED</span>
-                        <span className="font-light text-accent-primary pl-3 opacity-90">DIGITAL</span>
+                <Link href="/" className="v3-logo flex flex-col items-center group" style={{ textDecoration: 'none' }}>
+                    <div
+                        className="flex items-center tracking-tighter leading-none mb-2 uppercase font-black"
+                        style={{ fontSize: 'min(3.8rem, 10vw)', display: 'flex', alignItems: 'center' }}
+                    >
+                        <span className="text-white" style={{ fontWeight: 900 }}>EXCEED</span>
+                        <span className="font-light text-accent-primary pl-3 opacity-90" style={{ fontWeight: 300, color: '#0070f3' }}>DIGITAL</span>
                     </div>
 
-                    <div className="flex items-center gap-4 w-full max-w-[450px]">
-                        <div className="h-[1px] flex-1 bg-accent-primary/50" />
+                    <div className="flex items-center gap-4 w-full max-w-[450px]" style={{ display: 'flex', alignItems: 'center', width: '100%', gap: '1rem' }}>
+                        <div className="h-[1px] flex-1 bg-accent-primary/50" style={{ height: '1px', flex: 1, backgroundColor: 'rgba(0, 112, 243, 0.5)' }} />
                         <TypewriterText
                             text="Exceed Your Limits."
                             delay={0.8}
                             speed={0.07}
-                            className="text-[11px] sm:text-[21px] text-white/80 font-medium tracking-wide normal-case whitespace-nowrap"
+                            className="font-medium tracking-wide normal-case whitespace-nowrap text-center"
+                            style={{
+                                fontSize: 'min(21px, 3.5vw)',
+                                color: 'rgba(255, 255, 255, 0.8)',
+                                display: 'inline-block',
+                                textTransform: 'none'
+                            }}
                         />
-                        <div className="h-[1px] flex-1 bg-accent-primary/50" />
+                        <div className="h-[1px] flex-1 bg-accent-primary/50" style={{ height: '1px', flex: 1, backgroundColor: 'rgba(0, 112, 243, 0.5)' }} />
                     </div>
                 </Link>
             </GsapReveal>

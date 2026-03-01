@@ -36,10 +36,10 @@ export function Navbar({ onAuditClick }: { onAuditClick: () => void }) {
         <nav className="v3-navbar">
             <GsapReveal delay={0.1} direction="down">
                 <Link href="/" className="v3-logo flex flex-col items-start leading-none gap-0">
-                    <div className="flex items-center">
+                    <div className="flex items-center text-[1.9rem] sm:text-[2.2rem]">
                         EXCEED <span className="logo-accent">DIGITAL</span>
                     </div>
-                    <span className="text-[8px] text-accent-primary uppercase tracking-[0.3em] font-bold mt-1 opacity-80">
+                    <span className="text-[7px] sm:text-[9px] text-accent-primary uppercase tracking-[0.4em] font-bold mt-1 opacity-80">
                         Exceed Expectations.
                     </span>
                 </Link>
@@ -124,7 +124,14 @@ export function Navbar({ onAuditClick }: { onAuditClick: () => void }) {
 
             <GsapReveal delay={0.4} direction="down">
                 <button
-                    onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                    onClick={() => {
+                        const contactSection = document.getElementById('contact');
+                        if (contactSection) {
+                            contactSection.scrollIntoView({ behavior: 'smooth' });
+                        } else {
+                            window.location.href = '/#contact';
+                        }
+                    }}
                     className="v3-btn-init"
                 >
                     Contactez-nous

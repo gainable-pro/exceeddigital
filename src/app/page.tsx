@@ -1,21 +1,20 @@
 "use client";
 import { Navbar } from "@/components/layout/Navbar";
 import { GsapReveal } from "@/components/ui/GsapReveal";
-import React, { useState } from "react";
+import React from "react";
+import { useRouter } from "next/navigation";
 import { ExpertiseSection } from "@/components/sections/ExpertiseSection";
-import { DiagnosticForm } from "@/components/shared/DiagnosticForm";
-
 import { ContactSection } from "@/components/sections/ContactSection";
 import { MethodSection } from "@/components/sections/MethodSection";
 import { PortfolioSection } from "@/components/sections/PortfolioSection";
 import { TypewriterText } from "@/components/ui/TypewriterText";
 
 export default function Home() {
-    const [isDiagnosticOpen, setIsDiagnosticOpen] = useState(false);
+    const router = useRouter();
 
     return (
         <main className="w-full">
-            <Navbar onAuditClick={() => setIsDiagnosticOpen(true)} />
+            <Navbar onAuditClick={() => router.push('/audit-site-web')} />
 
             {/* Hero Section V4 - Quantum Immersive */}
             <div className="v3-hero">
@@ -38,7 +37,7 @@ export default function Home() {
 
                         <div className="v3-hero-btns">
                             <button
-                                onClick={() => setIsDiagnosticOpen(true)}
+                                onClick={() => router.push('/audit-site-web')}
                                 className="v3-btn-audit"
                             >
                                 <span className="label">Audit Site Web</span>
@@ -63,11 +62,6 @@ export default function Home() {
             <MethodSection />
             <PortfolioSection />
             <ContactSection />
-
-            <DiagnosticForm
-                isOpen={isDiagnosticOpen}
-                onClose={() => setIsDiagnosticOpen(false)}
-            />
         </main>
     );
 }

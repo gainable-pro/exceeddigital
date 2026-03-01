@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
-import { BackgroundShell } from "@/components/ui/BackgroundShell";
-import { FloatingDiagnostic } from "@/components/shared/FloatingDiagnostic";
-import { Footer } from "@/components/layout/Footer";
+import { ConditionalBackground } from "@/components/ui/ConditionalBackground";
+import { ConditionalFooter } from "@/components/layout/ConditionalFooter";
 
 export const metadata: Metadata = {
     title: "Xceed Digital — Premium Digital Agency Experience",
@@ -19,13 +18,14 @@ export default function RootLayout({
             <head>
                 <link rel="stylesheet" href="/app.css" />
                 <link rel="stylesheet" href="/method_v31.css" />
+                <link rel="stylesheet" href="/interactive_hub.css" />
             </head>
             <body>
-                <BackgroundShell />
+                <ConditionalBackground />
                 <div style={{ position: 'relative', zIndex: 10, minHeight: '100vh' }}>
                     <SmoothScroll>
                         {children}
-                        <Footer />
+                        <ConditionalFooter />
                     </SmoothScroll>
                 </div>
             </body>

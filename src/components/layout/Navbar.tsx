@@ -11,15 +11,15 @@ export function Navbar({ onAuditClick, isCompact = false }: { onAuditClick: () =
             <GsapReveal delay={0.1} direction="down">
                 <Link href="/" className="v3-logo flex flex-col items-center group" style={{ textDecoration: 'none' }}>
                     <div
-                        className="flex items-center tracking-tighter leading-none mb-1 uppercase"
-                        style={{ 
-                            fontSize: isCompact ? 'min(2rem, 6vw)' : 'min(3.4rem, 10vw)', 
-                            display: 'flex', 
-                            alignItems: 'center' 
+                        className="flex items-center tracking-tighter leading-none mb-0 uppercase"
+                        style={{
+                            fontSize: isCompact ? 'min(1.4rem, 5vw)' : 'min(3.4rem, 10vw)',
+                            display: 'flex',
+                            alignItems: 'center'
                         }}
                     >
                         <span className="text-white" style={{ fontWeight: 500 }}>EXCEED</span>
-                        <span className="font-light text-accent-primary pl-2 opacity-90" style={{ fontWeight: 300, color: '#0070f3' }}>DIGITAL</span>
+                        <span className="font-light text-accent-primary opacity-90" style={{ fontWeight: 300, color: '#0070f3', marginLeft: '0.4rem' }}>DIGITAL</span>
                     </div>
 
                     {!isCompact && (

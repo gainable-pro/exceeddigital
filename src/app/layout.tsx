@@ -6,8 +6,12 @@ import { BRAND } from "@/lib/seo-dataset";
 
 export const metadata: Metadata = {
     title: "Xceed Digital — Premium Digital Agency Experience",
-    description: "Stratégie, design et technologie pour transformer votre présence en ligne en moteur de croissance.",
+    description: "Architectures digitales haute performance, SEO stratégique et automatisations métiers pour entreprises ambitieuses.",
     metadataBase: new URL(`https://${BRAND.domain}`),
+    verification: {
+        google: "TD_a3pv1_mHcpbjG7E7AkEF87XR5fqpCu26JQ-tngV0",
+    },
+    alternates: {},
 };
 
 export default function RootLayout({

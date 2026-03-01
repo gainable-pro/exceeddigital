@@ -4,8 +4,13 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { GsapReveal } from "@/components/ui/GsapReveal";
 import { TypewriterText } from "@/components/ui/TypewriterText";
+import { Menu, X } from "lucide-react";
 
 export function Navbar({ onAuditClick, isCompact = false }: { onAuditClick?: () => void; isCompact?: boolean }) {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
     return (
         <nav className={`v3-navbar ${isCompact ? 'py-4 md:py-6' : ''}`} style={isCompact ? { padding: '1rem 1.5rem' } : {}}>
             <GsapReveal delay={0.1} direction="down">
@@ -31,7 +36,7 @@ export function Navbar({ onAuditClick, isCompact = false }: { onAuditClick?: () 
                                 speed={0.07}
                                 className="font-medium tracking-wide normal-case whitespace-nowrap text-center"
                                 style={{
-                                    fontSize: 'min(19px, 3.5vw)',
+                                    fontSize: 'min(14px, 3.5vw)',
                                     color: 'rgba(255, 255, 255, 0.8)',
                                     display: 'inline-block',
                                     textTransform: 'none'
@@ -43,6 +48,7 @@ export function Navbar({ onAuditClick, isCompact = false }: { onAuditClick?: () 
                 </Link>
             </GsapReveal>
 
+            {/* Desktop Nav */}
             <div className="v3-nav-dock">
                 <GsapReveal delay={0.2} direction="down">
                     <Link href="/services/creation-site-web-seo" className="v3-nav-link">Web & SEO</Link>
@@ -61,25 +67,60 @@ export function Navbar({ onAuditClick, isCompact = false }: { onAuditClick?: () 
                 </GsapReveal>
             </div>
 
-            <GsapReveal delay={0.4} direction="down">
+            <div className="flex items-center gap-4">
+                <GsapReveal delay={0.4} direction="down">
+                    <button
+                        onClick={() => {
+                            if (onAuditClick) {
+                                onAuditClick();
+                            } else {
+                                const contactSection = document.getElementById('contact');
+                                if (contactSection) {
+                                    contactSection.scrollIntoView({ behavior: 'smooth' });
+                                } else {
+                                    window.location.href = '/#contact';
+                                }
+                            }
+                        }}
+                        className="v3-btn-init hidden md:flex"
+                    >
+                        Contactez-nous
+                    </button>
+                </GsapReveal>
+
+                {/* Mobile Hamburger Button */}
                 <button
-                    onClick={() => {
-                        if (onAuditClick) {
-                            onAuditClick();
-                        } else {
-                            const contactSection = document.getElementById('contact');
-                            if (contactSection) {
-                                contactSection.scrollIntoView({ behavior: 'smooth' });
+                    className="v3-mobile-toggle flex lg:hidden"
+                    onClick={toggleMenu}
+                    aria-label="Toggle Menu"
+                >
+                    {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+                </button>
+            </div>
+
+            {/* Mobile Menu Overlay */}
+            <div className={`v3-mobile-menu ${isMenuOpen ? 'active' : ''}`}>
+                <div className="v3-mobile-menu-content">
+                    <Link href="/services/creation-site-web-seo" className="v3-mobile-link" onClick={toggleMenu}>Web & SEO</Link>
+                    <Link href="/services/erp-plateformes" className="v3-mobile-link" onClick={toggleMenu}>ERP & Plateformes</Link>
+                    <Link href="/services/strategie-image" className="v3-mobile-link" onClick={toggleMenu}>Stratégie & Image</Link>
+                    <Link href="/services/chatbot-automatisation" className="v3-mobile-link" onClick={toggleMenu}>IA & Chatbot</Link>
+
+                    <button
+                        onClick={() => {
+                            toggleMenu();
+                            if (onAuditClick) {
+                                onAuditClick();
                             } else {
                                 window.location.href = '/#contact';
                             }
-                        }
-                    }}
-                    className="v3-btn-init"
-                >
-                    Contactez-nous
-                </button>
-            </GsapReveal>
+                        }}
+                        className="v3-btn-init mt-8"
+                    >
+                        Audit Site Web
+                    </button>
+                </div>
+            </div>
         </nav>
     );
 }

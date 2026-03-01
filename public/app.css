@@ -141,6 +141,96 @@ h4 {
     letter-spacing: 0.2em;
 }
 
+@media (max-width: 768px) {
+    .v3-logo {
+        transform: scale(0.85);
+        transform-origin: left center;
+    }
+}
+
+.v3-mobile-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff !important;
+    /* Force visibility */
+    pointer-events: auto;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    width: 54px;
+    /* Larger for touch */
+    height: 54px;
+    border-radius: 15px;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    z-index: 200;
+    /* Above overlay */
+    position: fixed;
+    /* Fixed to follow scroll and stay out of flow */
+    top: 1.5rem;
+    right: 1.5rem;
+}
+
+.v3-mobile-toggle:hover {
+    background: rgba(0, 112, 243, 0.2);
+    transform: scale(1.05);
+}
+
+.v3-mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #010208;
+    /* Solid deep black */
+    z-index: 150;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(100%);
+    /* Slide from right */
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    padding: 2rem;
+}
+
+.v3-mobile-menu.active {
+    transform: translateX(0);
+}
+
+.v3-mobile-menu-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+    width: 100%;
+}
+
+.v3-mobile-link {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.4em;
+    font-weight: 800;
+    color: #fff;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.v3-mobile-link:hover {
+    opacity: 1;
+    letter-spacing: 0.5em;
+    color: var(--accent-primary);
+}
+
+@media (min-width: 1024px) {
+
+    .v3-mobile-toggle,
+    .v3-mobile-menu {
+        display: none !important;
+    }
+}
+
 .v3-logo .logo-accent {
     font-weight: 400;
     color: var(--accent-primary);
@@ -251,9 +341,22 @@ h4 {
     position: relative;
     z-index: 50;
     text-align: center;
-    padding: 0 1.5rem;
+    padding: 240px 1.5rem 0;
+    /* Pushed significantly down on mobile */
     max-width: 1140px;
     margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+    .v3-hero-content {
+        padding: 0 2rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .v3-hero-content {
+        padding: 0 2rem;
+    }
 }
 
 .v3-hero-badge {

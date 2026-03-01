@@ -8,7 +8,7 @@ export async function POST(req: Request) {
 
         const { data, error } = await resend.emails.send({
             from: 'Contact Exceed Digital <onboarding@resend.dev>',
-            to: ['contact@exceeddigital.fr'],
+            to: 'contact@airgenergie.fr',
             subject: `Nouveau Message : ${name}`,
             html: `
                 <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; color: #333;">

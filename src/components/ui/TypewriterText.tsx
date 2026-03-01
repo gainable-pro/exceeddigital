@@ -44,12 +44,15 @@ export function TypewriterText({ text, className = "", delay = 0, speed = 0.05, 
     };
 
     return (
-        <motion.span
-            style={{ display: "inline-block", overflow: "hidden", ...style }}
+        <motion.div
+            style={{
+                display: "block",
+                overflow: "visible",
+                ...style
+            }}
             variants={container}
             initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
+            animate="visible"
             className={className}
         >
             {characters.map((char, index) => (
@@ -61,6 +64,6 @@ export function TypewriterText({ text, className = "", delay = 0, speed = 0.05, 
                     {char}
                 </motion.span>
             ))}
-        </motion.span>
+        </motion.div>
     );
 }

@@ -1,0 +1,59 @@
+﻿
+> xceed-digital@1.0.0 build
+> next build
+
+   Ôû▓ Next.js 15.5.12
+
+   Creating an optimized production build ...
+ Ô£ô Compiled successfully in 5.9s
+   Skipping validation of types
+   Skipping linting
+   Collecting page data ...
+   Generating static pages (0/96) ...
+node.exe : Error 
+occurred prerendering 
+page "/toulouse/seo". 
+Read more: https://nextj
+s.org/docs/messages/prer
+ender-error
+Au caractère Ligne:1 : 1
++ & "C:\Program 
+Files\nodejs/node.exe" 
+"C:\Program 
+Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo      
+        : NotSpecified  
+  : (Error occurred .   
+ ..prerender-error:S    
+tring) [], RemoteEx    
+ception
+    + FullyQualifiedErr 
+   orId : NativeComman  
+  dError
+ 
+Error: Event handlers 
+cannot be passed to 
+Client Component props.
+  {onAuditClick: 
+function onAuditClick}
+                 
+^^^^^^^^^^^^^^^^^^^^^
+If you need 
+interactivity, consider 
+converting part of this 
+to a Client Component.
+    at stringify 
+(<anonymous>) {
+  digest: '341190806'
+}
+Export encountered an 
+error on /[ville]/[servi
+ce]/page: 
+/toulouse/seo, exiting 
+the build.
+ Ô¿» Next.js build 
+worker exited with 
+code: 1 and signal: null

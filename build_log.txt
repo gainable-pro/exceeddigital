@@ -1,0 +1,88 @@
+﻿
+> xceed-digital@1.0.0 build
+> next build
+
+   Ôû▓ Next.js 15.5.12
+
+   Creating an optimized production build ...
+ Ô£ô Compiled successfully in 4.0s
+   Skipping validation of types
+   Skipping linting
+   Collecting page data ...
+node.exe : Error: 
+Missing API key. Pass 
+it to the constructor 
+`new Resend("re_123")`
+Au caractère Ligne:1 : 1
++ & "C:\Program 
+Files\nodejs/node.exe" 
+"C:\Program 
+Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo      
+        : NotSpecified  
+  : (Error: Missing .   
+ ..send("re_123")`:S    
+tring) [], RemoteEx    
+ception
+    + FullyQualifiedErr 
+   orId : NativeComman  
+  dError
+ 
+    at new ad (C:\Users\
+ghari\.gemini\antigravit
+y\scratch\xceed-digital\
+.next\server\chunks\80.j
+s:5:28092)
+    at 7933 (C:\Users\gh
+ari\.gemini\antigravity\
+scratch\xceed-digital\.n
+ext\server\app\api\conta
+ct\route.js:15:5464)
+    at c (C:\Users\ghari
+\.gemini\antigravity\scr
+atch\xceed-digital\.next
+\server\webpack-runtime.
+js:1:128)
+    at 7175 (C:\Users\gh
+ari\.gemini\antigravity\
+scratch\xceed-digital\.n
+ext\server\app\api\conta
+ct\route.js:1:618)
+    at c (C:\Users\ghari
+\.gemini\antigravity\scr
+atch\xceed-digital\.next
+\server\webpack-runtime.
+js:1:128)
+    at <unknown> (C:\Use
+rs\ghari\.gemini\antigra
+vity\scratch\xceed-digit
+al\.next\server\app\api\
+contact\route.js:15:6289
+)
+    at c.X (C:\Users\gha
+ri\.gemini\antigravity\s
+cratch\xceed-digital\.ne
+xt\server\webpack-runtim
+e.js:1:1206)
+    at <unknown> (C:\Use
+rs\ghari\.gemini\antigra
+vity\scratch\xceed-digit
+al\.next\server\app\api\
+contact\route.js:15:6268
+)
+    at 
+Object.<anonymous> (C:\U
+sers\ghari\.gemini\antig
+ravity\scratch\xceed-dig
+ital\.next\server\app\ap
+i\contact\route.js:15:63
+20)
+
+> Build error occurred
+[Error: Failed to 
+collect page data for 
+/api/contact] { type: 
+'Error' }

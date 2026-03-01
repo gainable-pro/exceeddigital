@@ -5,7 +5,7 @@ import Link from "next/link";
 import { GsapReveal } from "@/components/ui/GsapReveal";
 import { TypewriterText } from "@/components/ui/TypewriterText";
 
-export function Navbar({ onAuditClick, isCompact = false }: { onAuditClick: () => void; isCompact?: boolean }) {
+export function Navbar({ onAuditClick, isCompact = false }: { onAuditClick?: () => void; isCompact?: boolean }) {
     return (
         <nav className={`v3-navbar ${isCompact ? 'py-4 md:py-6' : ''}`} style={isCompact ? { padding: '1rem 1.5rem' } : {}}>
             <GsapReveal delay={0.1} direction="down">
@@ -64,11 +64,15 @@ export function Navbar({ onAuditClick, isCompact = false }: { onAuditClick: () =
             <GsapReveal delay={0.4} direction="down">
                 <button
                     onClick={() => {
-                        const contactSection = document.getElementById('contact');
-                        if (contactSection) {
-                            contactSection.scrollIntoView({ behavior: 'smooth' });
+                        if (onAuditClick) {
+                            onAuditClick();
                         } else {
-                            window.location.href = '/#contact';
+                            const contactSection = document.getElementById('contact');
+                            if (contactSection) {
+                                contactSection.scrollIntoView({ behavior: 'smooth' });
+                            } else {
+                                window.location.href = '/#contact';
+                            }
                         }
                     }}
                     className="v3-btn-init"

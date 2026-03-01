@@ -10,6 +10,7 @@ interface DiagnosticFormProps {
 
 export function DiagnosticForm({ isOpen }: DiagnosticFormProps) {
     const [step, setStep] = useState(1);
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -23,7 +24,29 @@ export function DiagnosticForm({ isOpen }: DiagnosticFormProps) {
     const sectors = ["E-commerce", "Restaurant", "Immobilier", "Santé", "Conseil", "Startup Tech", "Artisan", "Autre"];
     const challenges = ["Visibilité", "Conversion", "Automatisation", "Design", "Vitesse", "Sécurité", "Scalabilité", "Contenu"];
 
-    const handleNext = () => setStep(s => Math.min(s + 1, 3));
+    const handleNext = async () => {
+        if (step === 2) {
+            setIsSubmitting(true);
+            try {
+                const response = await fetch('/api/audit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData),
+                });
+                if (response.ok) {
+                    setStep(3);
+                } else {
+                    alert("Une erreur est parvenue lors de l'envoi. Veuillez réessayer.");
+                }
+            } catch (error) {
+                console.error("Submission error:", error);
+            } finally {
+                setIsSubmitting(false);
+            }
+        } else {
+            setStep(s => Math.min(s + 1, 3));
+        }
+    };
     const handlePrev = () => setStep(s => Math.max(s - 1, 1));
 
     if (!isOpen) return null;
@@ -102,8 +125,8 @@ export function DiagnosticForm({ isOpen }: DiagnosticFormProps) {
                         </div>
 
                         <div className="v3-form-footer">
-                            <button className="v3-btn-submit" onClick={handleNext} style={{ width: '100%', flex: 'none' }}>
-                                Continuer l'Audit <ArrowRight size={18} />
+                            <button className="v3-btn-submit" onClick={handleNext} style={{ width: '100%', flex: 'none' }} disabled={isSubmitting}>
+                                {isSubmitting ? "Traitement..." : "Continuer l'Audit"} <ArrowRight size={18} />
                             </button>
                         </div>
                     </motion.div>
@@ -151,11 +174,11 @@ export function DiagnosticForm({ isOpen }: DiagnosticFormProps) {
                         </div>
 
                         <div className="v3-form-footer" style={{ flexDirection: 'row', gap: '1.5rem' }}>
-                            <button className="v3-btn-nav v3-btn-prev" onClick={handlePrev}>
+                            <button className="v3-btn-nav v3-btn-prev" onClick={handlePrev} disabled={isSubmitting}>
                                 <ArrowLeft size={16} /> Retour
                             </button>
-                            <button className="v3-btn-nav v3-btn-next" onClick={handleNext}>
-                                Continuer <ArrowRight size={16} />
+                            <button className="v3-btn-nav v3-btn-next" onClick={handleNext} disabled={isSubmitting}>
+                                {isSubmitting ? "Envoi en cours..." : "Continuer"} <ArrowRight size={16} />
                             </button>
                         </div>
                     </motion.div>

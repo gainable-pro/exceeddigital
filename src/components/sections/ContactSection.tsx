@@ -49,16 +49,31 @@ export function ContactSection() {
         if (!formData.name || !formData.email || !formData.message) return;
 
         setIsSubmitting(true);
-        // Simulate API call
-        await new Promise(r => setTimeout(r, 2000));
-        setIsSubmitting(false);
-        setIsSuccess(true);
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData),
+            });
 
-        // Reset form after success
-        setTimeout(() => {
-            setIsSuccess(false);
-            setFormData(initialContactData);
-        }, 5000);
+            if (response.ok) {
+                setIsSuccess(true);
+                setFormData(initialContactData);
+            } else {
+                alert("Erreur lors de l'envoi. Veuillez réessayer.");
+            }
+        } catch (error) {
+            console.error("Submission error:", error);
+        } finally {
+            setIsSubmitting(false);
+        }
+
+        // Reset success message after 5 seconds
+        if (isSuccess) {
+            setTimeout(() => {
+                setIsSuccess(false);
+            }, 5000);
+        }
     };
 
     return (

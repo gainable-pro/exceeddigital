@@ -108,8 +108,8 @@ export function ContactSection() {
                                 </div>
                                 <div className="flex flex-col ml-6">
                                     <span className="text-[10px] text-accent-primary uppercase font-bold tracking-[0.3em] mb-2 opacity-50">TÉLÉPHONE</span>
-                                    <a href="tel:+33615622188" className="font-sora text-white text-xl hover:text-accent-primary transition-all tracking-tight">
-                                        +33 6 15 62 21 88
+                                    <a href="tel:+33663945742" className="font-sora text-white text-xl hover:text-accent-primary transition-all tracking-tight">
+                                        06 63 94 57 42
                                     </a>
                                 </div>
                             </div>

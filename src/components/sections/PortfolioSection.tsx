@@ -18,6 +18,20 @@ const projects = [
         url: "https://gainable.fr"
     },
     {
+        title: "Inessence",
+        category: "Site Vitrine & SEO local",
+        desc: "Site web vitrine dédié à la naturopathie, diffusion sur 50 pages web et optimisation.",
+        img: "/assets/portfolio/inessence.png",
+        url: "https://www.inessencenaturopathe.com/"
+    },
+    {
+        title: "LJ Rénovation",
+        category: "Site Vitrine & SEO Local",
+        desc: "Site vitrine cordiste, diffusion sur 985 pages et indexation et optimisation SEO.",
+        img: "/assets/portfolio/ljrenovation.png",
+        url: "https://www.ljrenovation.fr/"
+    },
+    {
         title: "TR-Peinture",
         category: "Optimisation SEO & Google Ads",
         desc: "Stratégie d'acquisition complète et optimisation de la visibilité locale pour artisan peintre.",

@@ -24,7 +24,7 @@ export type Sector = {
 export const BRAND = {
     name: "Exceed Digital",
     domain: "exceeddigital.fr",
-    phone: "+33 6 15 62 21 88",
+    phone: "06 63 94 57 42",
 };
 
 export const SERVICES: Service[] = [

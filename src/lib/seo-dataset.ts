@@ -1418,6 +1418,216 @@ export const CITIES: City[] = [
         "name": "Villiers-sur-Marne",
         "slug": "villiers-sur-marne",
         "insee": "94079"
+    },
+    {
+        "name": "Miramas",
+        "slug": "miramas",
+        "insee": "13063"
+    },
+    {
+        "name": "Fos-sur-Mer",
+        "slug": "fos-sur-mer",
+        "insee": "13039"
+    },
+    {
+        "name": "Châteauneuf-les-Martigues",
+        "slug": "chateauneuf-les-martigues",
+        "insee": "13026"
+    },
+    {
+        "name": "Gardanne",
+        "slug": "gardanne",
+        "insee": "13041"
+    },
+    {
+        "name": "Les Pennes-Mirabeau",
+        "slug": "les-pennes-mirabeau",
+        "insee": "13071"
+    },
+    {
+        "name": "Port-de-Bouc",
+        "slug": "port-de-bouc",
+        "insee": "13077"
+    },
+    {
+        "name": "Tarascon",
+        "slug": "tarascon",
+        "insee": "13108"
+    },
+    {
+        "name": "Berre-l'Étang",
+        "slug": "berre-l-etang",
+        "insee": "13014"
+    },
+    {
+        "name": "Bouc-Bel-Air",
+        "slug": "bouc-bel-air",
+        "insee": "13015"
+    },
+    {
+        "name": "Rognac",
+        "slug": "rognac",
+        "insee": "13081"
+    },
+    {
+        "name": "Châteaurenard",
+        "slug": "chateaurenard",
+        "insee": "13027"
+    },
+    {
+        "name": "Trets",
+        "slug": "trets",
+        "insee": "13110"
+    },
+    {
+        "name": "Septèmes-les-Vallons",
+        "slug": "septemes-les-vallons",
+        "insee": "13106"
+    },
+    {
+        "name": "Saint-Rémy-de-Provence",
+        "slug": "saint-remy-de-provence",
+        "insee": "13100"
+    },
+    {
+        "name": "Auriol",
+        "slug": "auriol",
+        "insee": "13007"
+    },
+    {
+        "name": "Plan-de-Cuques",
+        "slug": "plan-de-cuques",
+        "insee": "13075"
+    },
+    {
+        "name": "Brignoles",
+        "slug": "brignoles",
+        "insee": "83025"
+    },
+    {
+        "name": "Sainte-Maxime",
+        "slug": "sainte-maxime",
+        "insee": "83115"
+    },
+    {
+        "name": "Roquebrune-sur-Argens",
+        "slug": "roquebrune-sur-argens",
+        "insee": "83107"
+    },
+    {
+        "name": "Grimaud",
+        "slug": "grimaud",
+        "insee": "83068"
+    },
+    {
+        "name": "Saint-Tropez",
+        "slug": "saint-tropez",
+        "insee": "83119"
+    },
+    {
+        "name": "Cogolin",
+        "slug": "cogolin",
+        "insee": "83042"
+    },
+    {
+        "name": "Vidauban",
+        "slug": "vidauban",
+        "insee": "83148"
+    },
+    {
+        "name": "Ollioules",
+        "slug": "ollioules",
+        "insee": "83090"
+    },
+    {
+        "name": "Sanary-sur-Mer",
+        "slug": "sanary-sur-mer",
+        "insee": "83123"
+    },
+    {
+        "name": "La Valette-du-Var",
+        "slug": "la-valette-du-var",
+        "insee": "83144"
+    },
+    {
+        "name": "La Garde",
+        "slug": "la-garde",
+        "insee": "83062"
+    },
+    {
+        "name": "Solliès-Pont",
+        "slug": "sollies-pont",
+        "insee": "83130"
+    },
+    {
+        "name": "Saint-Maximin-la-Sainte-Baume",
+        "slug": "saint-maximin-la-sainte-baume",
+        "insee": "83116"
+    },
+    {
+        "name": "Orange",
+        "slug": "orange",
+        "insee": "84087"
+    },
+    {
+        "name": "Carpentras",
+        "slug": "carpentras",
+        "insee": "84031"
+    },
+    {
+        "name": "Cavaillon",
+        "slug": "cavaillon",
+        "insee": "84035"
+    },
+    {
+        "name": "L'Isle-sur-la-Sorgue",
+        "slug": "l-isle-sur-la-sorgue",
+        "insee": "84054"
+    },
+    {
+        "name": "Pertuis",
+        "slug": "pertuis",
+        "insee": "84089"
+    },
+    {
+        "name": "Sorgues",
+        "slug": "sorgues",
+        "insee": "84129"
+    },
+    {
+        "name": "Le Pontet",
+        "slug": "le-pontet",
+        "insee": "84092"
+    },
+    {
+        "name": "Bollène",
+        "slug": "bollene",
+        "insee": "84019"
+    },
+    {
+        "name": "Apt",
+        "slug": "apt",
+        "insee": "84003"
+    },
+    {
+        "name": "Manosque",
+        "slug": "manosque",
+        "insee": "04112"
+    },
+    {
+        "name": "Digne-les-Bains",
+        "slug": "digne-les-bains",
+        "insee": "04070"
+    },
+    {
+        "name": "Sisteron",
+        "slug": "sisteron",
+        "insee": "04209"
+    },
+    {
+        "name": "Briançon",
+        "slug": "briancon",
+        "insee": "05023"
     }
 ];
 

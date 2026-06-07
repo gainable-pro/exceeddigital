@@ -1888,6 +1888,16 @@ export function getServiceSections(serviceKey: string, city: City) {
     const v = city.name;
     const d = geo.dept;
     const r = geo.region;
+    const near = getNearbyCities(city.slug);
+    const near1 = near[0]?.name || "alentours";
+    const near2 = near[1]?.name || "villes proches";
+
+    const spin = {
+        pick: <T>(variations: T[], step: number): T => {
+            const seed = city.insee.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0) + step;
+            return variations[seed % variations.length];
+        }
+    };
 
     const sections: Record<string, Array<{
         title: string;
@@ -1898,11 +1908,31 @@ export function getServiceSections(serviceKey: string, city: City) {
     }>> = {
         "creation-site-web-seo": [
             {
-                title: `Création de site web sur mesure à ${v}`,
-                subtitle: `Un design unique et performant pour votre entreprise dans le ${d}`,
+                title: spin.pick([
+                    `Création de site web sur mesure à ${v}`,
+                    `Conception de site internet et vitrine à ${v}`,
+                    `Développement de site vitrine & e-commerce à ${v}`
+                ], 1),
+                subtitle: spin.pick([
+                    `Un design unique et performant pour votre entreprise dans le ${d}`,
+                    `Propulsez l'image de votre marque en région ${r}`,
+                    `Attirez de nouveaux clients locaux à ${v} et ses environs`
+                ], 2),
                 paragraphs: [
-                    `Nous concevons des sites internet vitrines et e-commerce sur mesure pour les entreprises de ${v} et de la région ${r}. Que vous soyez un artisan du bâtiment (BTP), un cabinet médical, un commerçant local, une PME industrielle ou une startup en pleine croissance, notre approche exclut les templates génériques pour vous offrir une identité visuelle unique et performante.`,
-                    `Chaque ligne de code est optimisée pour garantir une vitesse de chargement ultra-rapide (Core Web Vitals au vert) et maximiser le taux de conversion de vos visiteurs en clients.`
+                    spin.pick([
+                        `Nous concevons des sites internet vitrines et e-commerce sur mesure pour les entreprises de ${v} et de la région ${r}. Que vous soyez un artisan du bâtiment (BTP), un cabinet médical, un commerçant local, une PME industrielle ou une startup en pleine croissance, notre approche exclut les templates génériques pour vous offrir une identité visuelle unique et performante.`,
+                        `Notre agence crée des sites web vitrines et e-commerce modernes pour les professionnels installés à ${v} et dans tout le ${d}. Du commerce de proximité aux startups de la région ${r}, en passant par le secteur médical ou le BTP, nous concevons des chartes graphiques sur mesure qui reflètent l'ADN de votre entreprise.`,
+                        `Donnez vie à vos projets digitaux grâce à nos solutions de conception de sites sur mesure à ${v}. Nous accompagnons les structures de tous secteurs (professions libérales, artisans, industries B2B) pour livrer des interfaces soignées et pensées pour le référencement.`
+                    ], 3) + " " + spin.pick([
+                        `Notre équipe intervient également auprès des professionnels des communes voisines comme ${near1} et ${near2}.`,
+                        `Nous suivons de près les projets des entreprises situées aux alentours de ${v}, notamment à ${near1} et ${near2}.`,
+                        `Notre accompagnement de proximité s'étend aux villes proches comme ${near1} ou ${near2} pour maximiser votre présence locale.`
+                    ], 4),
+                    spin.pick([
+                        `Chaque ligne de code est optimisée pour garantir une vitesse de chargement ultra-rapide (Core Web Vitals au vert) et maximiser le taux de conversion de vos visiteurs en clients.`,
+                        `En optimisant la structure de nos pages pour mobile, nous garantissons une expérience utilisateur fluide qui incite vos prospects à prendre contact.`,
+                        `La rapidité et la sécurité de nos développements web Next.js vous permettent de retenir les visiteurs et d'augmenter significativement vos conversions.`
+                    ], 5)
                 ],
                 bullets: [
                     "Design premium 100% personnalisé et responsive (mobile-first)",
@@ -1913,11 +1943,27 @@ export function getServiceSections(serviceKey: string, city: City) {
                 image: { src: "/assets/expertise/web.png", alt: `Création de site internet sur mesure à ${v}` }
             },
             {
-                title: `Stratégie de référencement naturel (SEO) à ${v}`,
-                subtitle: `Dominez les résultats de recherche locaux sur Google à ${v}`,
+                title: spin.pick([
+                    `Stratégie de référencement naturel (SEO) à ${v}`,
+                    `Optimisation SEO et visibilité Google à ${v}`,
+                    `Expertise SEO et audit de référencement naturel à ${v}`
+                ], 6),
+                subtitle: spin.pick([
+                    `Dominez les résultats de recherche locaux sur Google à ${v}`,
+                    `Positionnez durablement vos services devant vos concurrents locaux`,
+                    `Captez un trafic qualifié et ciblé dans le département ${d}`
+                ], 7),
                 paragraphs: [
-                    `Être visible sur Google à ${v} est indispensable pour capter vos clients locaux, quel que soit votre secteur d'activité (BTP, santé, commerce, services). Nous mettons en place une stratégie SEO complète : structure de contenu sémantique, balisage Schema.org et netlinking de confiance.`,
-                    `Nous ciblons les mots-clés stratégiques liés à votre activité dans le ${d} pour vous positionner durablement devant vos concurrents locaux et nationaux.`
+                    spin.pick([
+                        `Être visible sur Google à ${v} est indispensable pour capter vos clients locaux, quel que soit votre secteur d'activité (BTP, santé, commerce, services). Nous mettons en place une stratégie SEO complète : structure de contenu sémantique, balisage Schema.org et netlinking de confiance.`,
+                        `Avoir un site web ne suffit pas ; il doit être trouvé par vos futurs clients dans le ${d}. Nous optimisons votre référencement naturel grâce à des audits de mots-clés rigoureux, une optimisation technique de pointe et une stratégie éditoriale forte.`,
+                        `Augmentez votre flux de prospects qualifiés à ${v} en dominant les premières positions des moteurs de recherche. Nous adaptons la structure sémantique de votre site pour répondre précisément aux requêtes locales de votre secteur d'activité.`
+                    ], 8),
+                    spin.pick([
+                        `Nous ciblons les mots-clés stratégiques liés à votre activité dans le ${d} pour vous positionner durablement devant vos concurrents locaux et nationaux.`,
+                        `Notre méthodologie SEO permet de générer des visites hautement qualifiées issues de ${v} et des villes environnantes.`,
+                        `Nous analysons en détail le positionnement de vos concurrents à ${v} pour vous bâtir une autorité de domaine incontournable.`
+                    ], 9)
                 ],
                 bullets: [
                     "Recherche approfondie de mots-clés locaux et sectoriels à fort potentiel",
@@ -1928,11 +1974,27 @@ export function getServiceSections(serviceKey: string, city: City) {
                 image: { src: "/assets/expertise/strategy.png", alt: `Référencement naturel SEO local à ${v}` }
             },
             {
-                title: `Hébergement sécurisé et maintenance réactive`,
-                subtitle: `Une plateforme toujours en ligne et performante à ${v}`,
+                title: spin.pick([
+                    `Hébergement sécurisé et maintenance réactive à ${v}`,
+                    `Maintenance technique et infogérance de votre site à ${v}`,
+                    `Hébergement cloud de haute performance et maintenance`
+                ], 10),
+                subtitle: spin.pick([
+                    `Une plateforme toujours en ligne et performante à ${v}`,
+                    `Sécurisez votre outil digital et assurez sa pérennité`,
+                    `Support réactif et sauvegardes de vos données dans le ${d}`
+                ], 11),
                 paragraphs: [
-                    `Votre site web est propulsé par des architectures cloud modernes (Vercel, AWS), garantissant une disponibilité de 99.9% et une sécurité maximale contre les attaques. Nous prenons en charge la maintenance technique afin que vous puissiez vous concentrer sur votre cœur de métier.`,
-                    `Nous assurons un suivi technique régulier et des mises à jour proactives pour maintenir les performances au sommet.`
+                    spin.pick([
+                        `Votre site web est propulsé par des architectures cloud modernes (Vercel, AWS), garantissant une disponibilité de 99.9% et une sécurité maximale contre les attaques. Nous prenons en charge la maintenance technique afin que vous puissiez vous concentrer sur votre cœur de métier.`,
+                        `Nous confions l'hébergement de vos applications à des serveurs cloud ultra-rapides et sécurisés. Nos contrats de maintenance à ${v} incluent des correctifs proactifs pour devancer les bugs.`,
+                        `La continuité de service est critique pour les entreprises de la région ${r}. C'est pourquoi nos solutions d'hébergement Next.js intègrent des pare-feux et des surveillances constantes.`
+                    ], 12),
+                    spin.pick([
+                        `Nous assurons un suivi technique régulier et des mises à jour proactives pour maintenir les performances au sommet.`,
+                        `Nos ingénieurs veillent à la mise en œuvre des derniers correctifs de sécurité pour protéger vos données sensibles.`,
+                        `Profitez d'un support réactif disponible pour répondre rapidement à vos demandes d'évolution ou d'assistance.`
+                    ], 13)
                 ],
                 bullets: [
                     "Hébergement cloud de pointe avec CDN mondial",
@@ -1945,11 +2007,31 @@ export function getServiceSections(serviceKey: string, city: City) {
         ],
         "automatisation-ia": [
             {
-                title: `Intégration d'IA & Chatbots intelligents à ${v}`,
-                subtitle: `Disponibilité 24/7 et réponses instantanées pour vos clients à ${v}`,
+                title: spin.pick([
+                    `Intégration d'IA & Chatbots intelligents à ${v}`,
+                    `Intelligence artificielle et agents virtuels à ${v}`,
+                    `Développement de Chatbots IA personnalisés à ${v}`
+                ], 1),
+                subtitle: spin.pick([
+                    `Disponibilité 24/7 et réponses instantanées pour vos clients à ${v}`,
+                    `Automatisez votre support et qualifiez vos leads dans le ${d}`,
+                    `Améliorez l'engagement de vos visiteurs grâce à l'IA conversationnelle`
+                ], 2),
                 paragraphs: [
-                    `Automatisez vos premiers niveaux de support client et de qualification commerciale grâce à des agents conversationnels intelligents configurés pour le marché de ${v}. Nos chatbots s'adaptent à toutes les activités du ${d} (cabinets médicaux, e-commerces, artisans BTP, entreprises de services B2B) en apprenant de vos données métiers.`,
-                    `Nos chatbots apprennent de vos documents internes pour répondre de manière pertinente et naturelle à vos visiteurs, augmentant ainsi le taux d'engagement.`
+                    spin.pick([
+                        `Automatisez vos premiers niveaux de support client et de qualification commerciale grâce à des agents conversationnels intelligents configurés pour le marché de ${v}. Nos chatbots s'adaptent à toutes les activités du ${d} (cabinets médicaux, e-commerces, artisans BTP, entreprises de services B2B) en apprenant de vos données métiers.`,
+                        `Optimisez l'accueil de vos visiteurs à ${v} en intégrant un chatbot intelligent entraîné sur vos documentations internes. Qu'il s'agisse de guider les patients d'un cabinet de santé, de qualifier des devis BTP ou de répondre aux questions e-commerce, l'IA répond 24h/24.`,
+                        `Libérez du temps pour vos collaborateurs dans la région ${r} en déléguant les réponses récurrentes à un assistant virtuel intelligent. Nos intégrations d'intelligence artificielle permettent d'orienter naturellement vos prospects locaux.`
+                    ], 3) + " " + spin.pick([
+                        `Nos équipes accompagnent les entreprises de ${v} et des localités limitrophes comme ${near1} ou ${near2}.`,
+                        `Cette technologie de pointe est déployable rapidement pour les professionnels proches de ${v}, par exemple à ${near1} ou ${near2}.`,
+                        `Nous installons ces solutions pour vos clients à ${v} ainsi que dans les zones de ${near1} et ${near2}.`
+                    ], 4),
+                    spin.pick([
+                        `Nos chatbots apprennent de vos données métiers pour répondre de manière pertinente et naturelle à vos visiteurs, augmentant ainsi le taux d'engagement.`,
+                        `Grâce à une phase d'apprentissage sur vos données spécifiques, l'agent IA répond avec exactitude aux interrogations des internautes.`,
+                        `Chaque chatbot est paramétré avec vos règles métiers afin de garantir des réponses conformes à votre image de marque.`
+                    ], 5)
                 ],
                 bullets: [
                     "Qualification automatique de vos prospects qualifiés",
@@ -1960,11 +2042,27 @@ export function getServiceSections(serviceKey: string, city: City) {
                 image: { src: "/assets/expertise/chatbot.png", alt: `Intégration d'IA et de Chatbot intelligent à ${v}` }
             },
             {
-                title: `Automatisation de workflows d'entreprise dans le ${d}`,
-                subtitle: `Gagnez des heures précieuses en éliminant les tâches répétitives`,
+                title: spin.pick([
+                    `Automatisation de workflows d'entreprise dans le ${d}`,
+                    `Optimisation et automatisation de processus métiers à ${v}`,
+                    `Connecteurs d'outils et automatisation de flux à ${v}`
+                ], 6),
+                subtitle: spin.pick([
+                    `Gagnez des heures précieuses en éliminant les tâches répétitives`,
+                    `Connectez vos logiciels internes pour fluidifier votre activité à ${v}`,
+                    `Zéro saisie manuelle : faites communiquer vos applications métier`
+                ], 7),
                 paragraphs: [
-                    `Nous connectons vos outils quotidiens (CRM, facturation, emails, ERP) grâce à des plateformes d'intégration automatisées. Vos données circulent sans erreur d'un système à l'autre, quel que soit votre secteur.`,
-                    `Libérez vos équipes de ${v} des tâches chronophages à faible valeur ajoutée pour qu'elles se concentrent sur la croissance.`
+                    spin.pick([
+                        `Nous connectons vos outils quotidiens (CRM, facturation, emails, ERP) grâce à des plateformes d'intégration automatisées. Vos données circulent sans erreur d'un système à l'autre, quel que soit votre secteur.`,
+                        `Supprimez les pertes d'informations et les doubles saisies dans vos bureaux de ${v}. Nous créons des automatisations sur mesure reliant votre messagerie, vos outils de devis et votre base de données.`,
+                        `Gagnez en productivité opérationnelle dans toute la région ${r} en synchronisant vos outils. Nos experts en intégration modélisent vos processus pour automatiser vos relances et votre facturation.`
+                    ], 8),
+                    spin.pick([
+                        `Libérez vos équipes de ${v} des tâches chronophages à faible valeur ajoutée pour qu'elles se concentrent sur la croissance.`,
+                        `Vos collaborateurs se concentrent sur des actions à forte valeur commerciale plutôt que sur du transfert manuel de fichiers.`,
+                        `Chaque workflow automatisé est rigoureusement sécurisé pour garantir l'intégrité de vos bases de données.`
+                    ], 9)
                 ],
                 bullets: [
                     "Synchronisation automatique de vos leads avec votre CRM",
@@ -1975,11 +2073,27 @@ export function getServiceSections(serviceKey: string, city: City) {
                 image: { src: "/assets/expertise/strategy.png", alt: `Automatisation de workflows métiers à ${v}` }
             },
             {
-                title: `Optimisation des processus et formation IA`,
-                subtitle: `Adoptez les meilleures technologies d'intelligence artificielle à ${v}`,
+                title: spin.pick([
+                    `Optimisation des processus et formation IA à ${v}`,
+                    `Audit d'opportunité IA et accompagnement à ${v}`,
+                    `Formation de vos collaborateurs aux outils d'IA à ${v}`
+                ], 10),
+                subtitle: spin.pick([
+                    `Adoptez les meilleures technologies d'intelligence artificielle à ${v}`,
+                    `Accompagnez le changement et intégrez l'IA dans vos méthodes de travail`,
+                    `Préparez votre entreprise du ${d} aux technologies de demain`
+                ], 11),
                 paragraphs: [
-                    `L'intelligence artificielle transforme tous les métiers. Nous auditons vos processus actuels à ${v} pour y intégrer les meilleurs outils du marché (génération de contenu, analyse de données, automatisation de support). `,
-                    `Nous formons vos équipes pour assurer une adoption fluide et sécurisée de l'IA au quotidien.`
+                    spin.pick([
+                        `L'intelligence artificielle transforme tous les métiers. Nous auditons vos processus actuels à ${v} pour y intégrer les meilleurs outils du marché (génération de contenu, analyse de données, automatisation de support).`,
+                        `Découvrez comment l'IA peut booster les performances de votre structure dans le ${d}. Nous menons des études approfondies pour identifier les leviers de rentabilité applicables à vos équipes.`,
+                        `Intégrez sereinement les technologies de LLM et de vision par ordinateur dans votre entreprise de la région ${r}. Notre accompagnement assure une transition technologique réussie.`
+                    ], 12),
+                    spin.pick([
+                        `Nous formons vos équipes pour assurer une adoption fluide et sécurisée de l'IA au quotidien.`,
+                        `Nos ateliers pratiques permettent à vos collaborateurs de prendre en main les outils IA de manière autonome.`,
+                        `Nous veillons à ce que toutes vos intégrations d'intelligence artificielle respectent scrupuleusement le RGPD.`
+                    ], 13)
                 ],
                 bullets: [
                     "Audit d'opportunité d'intégration de l'IA",
@@ -1992,11 +2106,31 @@ export function getServiceSections(serviceKey: string, city: City) {
         ],
         "developpement-sur-mesure": [
             {
-                title: `Développement d'applications web et ERP à ${v}`,
-                subtitle: `Des solutions logicielles qui s'adaptent à votre métier à ${v}`,
+                title: spin.pick([
+                    `Développement d'applications web et ERP à ${v}`,
+                    `Conception d'applications web et ERP sur mesure à ${v}`,
+                    `Développement de plateformes SaaS et ERP métiers à ${v}`
+                ], 1),
+                subtitle: spin.pick([
+                    `Des solutions logicielles qui s'adaptent à votre métier à ${v}`,
+                    `Centralisez vos opérations et pilotez votre croissance dans le ${d}`,
+                    `Des interfaces logicielles robustes et intuitives en région ${r}`
+                ], 2),
                 paragraphs: [
-                    `Les logiciels standards ne répondent pas toujours à vos spécificités. Que ce soit pour un ERP de suivi de chantier (BTP), une application de télémédecine (santé), un logiciel de gestion des stocks (commerce), ou un SaaS métier dans la région ${r}, nous développons des applications web sur mesure adaptées aux flux réels de votre entreprise à ${v}.`,
-                    `Centralisez vos données, gérez vos stocks, pilotez vos ventes et suivez vos performances opérationnelles sur une interface intuitive.`
+                    spin.pick([
+                        `Les logiciels standards ne répondent pas toujours à vos spécificités. Que ce soit pour un ERP de suivi de chantier (BTP), une application de télémédecine (santé), un logiciel de gestion des stocks (commerce), ou un SaaS métier dans la région ${r}, nous développons des applications web sur mesure adaptées aux flux réels de votre entreprise à ${v}.`,
+                        `Chaque secteur possède des règles métiers uniques qu'un progiciel générique ne peut couvrir. À ${v}, nous programmons vos outils de gestion de stocks, vos ERP de suivi de production industrielle ou vos plateformes de réservation médicale sur mesure.`,
+                        `Structurez l'activité de votre entreprise dans le ${d} grâce à un outil logiciel développé spécifiquement pour vos collaborateurs. De la gestion de devis complexes pour le BTP au tableau de bord e-commerce, nous unifions vos besoins.`
+                    ], 3) + " " + spin.pick([
+                        `Nous intervenons également pour concevoir des outils numériques dans les communes proches, comme ${near1} et ${near2}.`,
+                        `Notre équipe de développeurs se déplace régulièrement pour rencontrer nos clients à ${near1} ou ${near2}.`,
+                        `Ce service d'ingénierie applicative est disponible pour les professionnels de ${v}, ${near1} et ${near2}.`
+                    ], 4),
+                    spin.pick([
+                        `Centralisez vos données, gérez vos stocks, pilotez vos ventes et suivez vos performances opérationnelles sur une interface intuitive.`,
+                        `Grâce à une base de données unifiée, vous disposez d'indicateurs de performance en temps réel pour prendre les bonnes décisions.`,
+                        `Nos interfaces utilisateurs sont ergonomiques et pensées pour limiter le temps d'apprentissage de vos collaborateurs.`
+                    ], 5)
                 ],
                 bullets: [
                     "Conception d'architectures logicielles modernes et extensibles (SaaS, ERP, outils métiers)",
@@ -2007,26 +2141,58 @@ export function getServiceSections(serviceKey: string, city: City) {
                 image: { src: "/assets/expertise/erp.png", alt: `Développement d'application web et ERP sur mesure à ${v}` }
             },
             {
-                title: `Intégration d'API et connexion de vos systèmes dans le ${d}`,
-                subtitle: `Faites communiquer vos logiciels de manière fluide et sécurisée`,
+                title: spin.pick([
+                    `Intégration d'API et connexion de vos systèmes dans le ${d}`,
+                    `Développement d'API et connexion de logiciels tiers à ${v}`,
+                    `Synchronisation de bases de données et flux d'API à ${v}`
+                ], 6),
+                subtitle: spin.pick([
+                    `Faites communiquer vos logiciels de manière fluide et sécurisée`,
+                    `Unifiez votre système d'information pour éliminer les doubles saisies`,
+                    `Des flux d'informations automatisés et fiabilisés à ${v}`
+                ], 7),
                 paragraphs: [
-                    `Nous développons et intégrons des API robustes pour connecter votre nouvel outil à vos systèmes comptables, logistiques ou commerciaux existants (Hubspot, Salesforce, Stripe, Sage, etc.).`,
-                    `Vos données de ${v} sont unifiées pour éliminer les doubles saisies et les pertes d'informations dans toutes vos branches d'activité.`
+                    spin.pick([
+                        `Nous développons et intégrons des API robustes pour connecter votre nouvel outil à vos systèmes comptables, logistiques ou commerciaux existants (Hubspot, Salesforce, Stripe, Sage, etc.).`,
+                        `Facilitez la circulation des données de votre structure à ${v}. Nous créons des passerelles sécurisées pour interconnecter vos outils marketing, vos passerelles de paiement Stripe et votre comptabilité.`,
+                        `Notre expertise en architecture logicielle dans la région ${r} garantit des flux d'API stables, capables de supporter de fortes charges d'utilisation quotidienne.`
+                    ], 8),
+                    spin.pick([
+                        `Vos données de ${v} sont unifiées pour éliminer les doubles saisies et les pertes d'informations dans toutes vos branches d'activité.`,
+                        `La centralisation des flux informatiques élimine les risques d'erreurs humaines et augmente la productivité globale.`,
+                        `Chaque intégration d'API tierce fait l'objet de tests de charge rigoureux pour garantir sa fiabilité sur le long terme.`
+                    ], 9)
                 ],
                 bullets: [
                     "Développement d'API REST / GraphQL sécurisées",
-                    "Intégration de passerelles de paiement (Stripe, PayPal)",
-                    "Connexion avec des logiciels tiers (Hubspot, Salesforce, Sage)",
-                    "Sécurisation des flux de données et gestion des erreurs"
+                    "Intégrations de passerelles de paiement (Stripe, PayPal, Banques)",
+                    "Connexion avec des logiciels tiers (Hubspot, Salesforce, Sage, Cegid)",
+                    "Sécurisation des flux de données et gestion d'erreurs d'intégration"
                 ],
                 image: { src: "/assets/expertise/web.png", alt: `Intégration d'API et connexion logiciels à ${v}` }
             },
             {
-                title: `Maintenance applicative et évolutivité (SLA)`,
-                subtitle: `Assurez la continuité de service de vos applications critiques`,
+                title: spin.pick([
+                    `Maintenance applicative et évolutivité (SLA) à ${v}`,
+                    `Contrat de support (SLA) et infogérance de vos applications à ${v}`,
+                    `Garantie de continuité de service et maintenance applicative`
+                ], 10),
+                subtitle: spin.pick([
+                    `Assurez la continuité de service de vos applications critiques`,
+                    `Un support réactif et des serveurs infogérés en région ${r}`,
+                    `Suivi technique proactif pour faire évoluer votre logiciel à ${v}`
+                ], 11),
                 paragraphs: [
-                    `Nous offrons un suivi rigoureux pour garantir le bon fonctionnement de votre plateforme sur le long terme à ${v} et dans toute la région ${r}. Nous comprenons que les applications métiers ne peuvent souffrir d'aucune interruption.`,
-                    `Votre logiciel évolue au rythme de la croissance de votre entreprise pour rester performant.`
+                    spin.pick([
+                        `Nous offrons un suivi rigoureux pour garantir le bon fonctionnement de votre plateforme sur le long terme à ${v} et dans toute la région ${r}. Nous comprenons que les applications métiers ne peuvent souffrir d'aucune interruption.`,
+                        `La maintenance corrective et évolutive est indispensable pour garder vos logiciels performants à ${v}. Nous mettons à votre disposition un interlocuteur dédié pour assurer les mises à jour de sécurité.`,
+                        `Bénéficiez d'une tranquillité d'esprit complète dans le ${d}. Nos ingénieurs surveillent l'état des serveurs et appliquent les correctifs nécessaires de manière totalement invisible.`
+                    ], 12),
+                    spin.pick([
+                        `Votre logiciel évolue au rythme de la croissance de votre entreprise pour rester performant.`,
+                        `Nous assurons des sauvegardes journalières cryptées pour parer à toute éventualité de perte de données.`,
+                        `Notre équipe intervient selon des délais de rétablissement stricts (GTR) définis dans notre accord de support.`
+                    ], 13)
                 ],
                 bullets: [
                     "Supervision en temps réel et alertes de dysfonctionnement",
@@ -2039,11 +2205,31 @@ export function getServiceSections(serviceKey: string, city: City) {
         ],
         "methodes-dev-coaching": [
             {
-                title: `Coaching technique et Mentorat de vos équipes à ${v}`,
-                subtitle: `Améliorez les compétences de vos développeurs dans le ${d}`,
+                title: spin.pick([
+                    `Coaching technique et Mentorat de vos équipes à ${v}`,
+                    `Accompagnement de vos développeurs et Clean Code à ${v}`,
+                    `Audit de code et mentorat technique des équipes à ${v}`
+                ], 1),
+                subtitle: spin.pick([
+                    `Améliorez les compétences de vos développeurs dans le ${d}`,
+                    `Instaurez des standards de qualité et accélérez vos livraisons logicielles`,
+                    `Accompagnement technique de proximité pour vos DSI et startups`
+                ], 2),
                 paragraphs: [
-                    `Vous souhaitez structurer votre équipe technique à ${v} ? Nous intervenons auprès de vos développeurs pour les coacher sur les pratiques modernes d'ingénierie logicielle. Que vous soyez un éditeur de logiciel SaaS, une startup de la Tech, ou la DSI d'un grand groupe, nous aidons vos équipes à progresser.`,
-                    `Grâce à notre accompagnement, vos équipes gagnent en autonomie, en rigueur et en vitesse de livraison.`
+                    spin.pick([
+                        `Vous souhaitez structurer votre équipe technique à ${v} ? Nous intervenons auprès de vos développeurs pour les coacher sur les pratiques modernes d'ingénierie logicielle. Que vous soyez un éditeur de logiciel SaaS, une startup de la Tech, ou la DSI d'un grand groupe, nous aidons vos équipes à progresser.`,
+                        `Faites monter en compétences vos équipes techniques à ${v} grâce à notre méthodologie de mentorat. Nous formons vos développeurs au Clean Code, aux principes SOLID et à l'architecture logicielle afin d'éviter la dette technique.`,
+                        `Optimisez la qualité des développements au sein de votre entreprise dans le ${d}. Nous animons des ateliers pratiques d'architecture et de revue de code pour instaurer une culture d'excellence technique.`
+                    ], 3) + " " + spin.pick([
+                        `Nos sessions d'accompagnement sont également disponibles pour les équipes de 	ext{${near1}} et 	ext{${near2}}.`,
+                        `Nous intervenons sur site ou à distance auprès de vos collaborateurs à ${near1} et ${near2}.`,
+                        `Ce coaching technique de haut niveau s'adresse aux startups de ${v}, ${near1} et ${near2}.`
+                    ], 4),
+                    spin.pick([
+                        `Grâce à notre accompagnement, vos équipes gagnent en autonomie, en rigueur et en vitesse de livraison.`,
+                        `L'amélioration de la qualité de votre code source réduit drastiquement le temps passé à corriger des bugs en production.`,
+                        `Vos développeurs acquièrent les bons réflexes pour collaborer efficacement et maintenir un code propre.`
+                    ], 5)
                 ],
                 bullets: [
                     "Sessions de mentorat technique individuelles et collectives",
@@ -2054,11 +2240,27 @@ export function getServiceSections(serviceKey: string, city: City) {
                 image: { src: "/assets/expertise/strategy.png", alt: `Coaching technique et mentorat développeurs à ${v}` }
             },
             {
-                title: `Mise en place de méthodes de dev agiles à ${v}`,
-                subtitle: `Optimisez vos cycles de production et réduisez vos délais de mise sur le marché`,
+                title: spin.pick([
+                    `Mise en place de méthodes de dev agiles à ${v}`,
+                    `Organisation de projets agiles et Scrum à ${v}`,
+                    `Audit de vos workflows et méthodologies agiles à ${v}`
+                ], 6),
+                subtitle: spin.pick([
+                    `Optimisez vos cycles de production et réduisez vos délais de mise sur le marché`,
+                    `Structurez la communication entre vos équipes produit et technique à ${v}`,
+                    `Réduisez le stress de vos lancements de produits grâce à Scrum/Kanban`
+                ], 7),
                 paragraphs: [
-                    `Nous structurons vos flux de développement (Agile, Scrum, Kanban) pour maximiser la visibilité sur l'avancement des projets et fluidifier la communication. C'est l'assurance d'un projet délivré à temps et sans friction.`,
-                    `Fini les retards de livraison et le manque de clarté pour les équipes de ${v}.`
+                    spin.pick([
+                        `Nous structurons vos flux de développement (Agile, Scrum, Kanban) pour maximiser la visibilité sur l'avancement des projets et fluidifier la communication. C'est l'assurance d'un projet délivré à temps et sans friction.`,
+                        `Améliorez la prédictibilité de vos livraisons logicielles à ${v}. Nous vous aidons à mettre en place des rituels agiles constructifs pour clarifier les rôles et motiver vos équipes techniques.`,
+                        `Une bonne organisation technique est indispensable pour la croissance des entreprises du ${d}. Nous auditons vos outils de suivi (Jira, Linear) et formons vos équipes aux meilleures pratiques agiles.`
+                    ], 8),
+                    spin.pick([
+                        `Fini les retards de livraison et le manque de clarté pour les équipes de ${v}.`,
+                        `Bénéficiez de cycles de développement plus courts et de lancements plus sereins.`,
+                        `La clarté sur les objectifs de sprint redonne du sens au travail quotidien de vos ingénieurs.`
+                    ], 9)
                 ],
                 bullets: [
                     "Audit et réorganisation de vos workflows de développement",
@@ -2069,11 +2271,27 @@ export function getServiceSections(serviceKey: string, city: City) {
                 image: { src: "/assets/expertise/web.png", alt: `Mise en place de méthodes agiles et dev à ${v}` }
             },
             {
-                title: `Automatisation des déploiements et CI/CD dans la région ${r}`,
-                subtitle: `Sécurisez vos mises en production en éliminant les erreurs manuelles`,
+                title: spin.pick([
+                    `Automatisation des déploiements et CI/CD dans la région ${r}`,
+                    `Déploiement continu (CI/CD) et DevOps à ${v}`,
+                    `Sécurisez vos lancements de versions grâce au DevOps à ${v}`
+                ], 10),
+                subtitle: spin.pick([
+                    `Sécurisez vos mises en production en éliminant les erreurs manuelles`,
+                    `Zéro interruption de service lors de vos mises à jour logicielles`,
+                    `Des pipelines de déploiement automatisés et validés dans le ${d}`
+                ], 11),
                 paragraphs: [
-                    `Nous mettons en place des pipelines d'intégration et de déploiement continus (CI/CD) pour valider automatiquement la qualité de votre code avant chaque mise en ligne, supprimant ainsi tout risque de régression.`,
-                    `Déployez en toute confiance à ${v} à n'importe quel moment de la journée.`
+                    spin.pick([
+                        `Nous mettons en place des pipelines d'intégration et de déploiement continus (CI/CD) pour valider automatiquement la qualité de votre code avant chaque mise en ligne, supprimant ainsi tout risque de régression.`,
+                        `Ne craignez plus de mettre à jour vos outils de gestion à ${v}. Grâce aux configurations DevOps (GitHub Actions, GitLab CI), les tests automatisés valident le bon fonctionnement de l'application avant sa mise en ligne.`,
+                        `Nous mettons en œuvre des stratégies de déploiement avancées en région ${r} pour supprimer les coupures de service lors des mises à jour majeures de vos applications.`
+                    ], 12),
+                    spin.pick([
+                        `Déployez en toute confiance à ${v} à n'importe quel moment de la journée.`,
+                        `Les erreurs de manipulation manuelle lors des lancements de code appartiennent désormais au passé.`,
+                        `Votre équipe produit peut livrer de nouvelles fonctionnalités de manière autonome et sécurisée.`
+                    ], 13)
                 ],
                 bullets: [
                     "Mise en place de tests unitaires et d'intégration automatisés",
@@ -2086,11 +2304,31 @@ export function getServiceSections(serviceKey: string, city: City) {
         ],
         "acquisition-clients": [
             {
-                title: `Stratégie d'acquisition et Growth Marketing à ${v}`,
-                subtitle: `Générez un flux régulier de clients qualifiés dans le ${d}`,
+                title: spin.pick([
+                    `Stratégie d'acquisition et Growth Marketing à ${v}`,
+                    `Générez un flux régulier de clients qualifiés à ${v}`,
+                    `Growth Marketing et acquisition locale de prospects à ${v}`
+                ], 1),
+                subtitle: spin.pick([
+                    `Générez un flux régulier de clients qualifiés dans le ${d}`,
+                    `Tunnels d'acquisition sur mesure pour votre activité locale`,
+                    `Augmentez vos opportunités commerciales en région ${r}`
+                ], 2),
                 paragraphs: [
-                    `Avoir un site web performant est inutile si personne ne le visite. Nous concevons et déployons des stratégies d'acquisition ciblées pour votre marché à ${v} : génération de leads par téléphone pour le BTP et les services, campagnes de conversion pour le e-commerce, ou prospection automatisée (ABM) pour l'industrie B2B.`,
-                    `Nous attirons des visiteurs qualifiés et mettons en place des mécaniques de conversion pour les transformer en clients.`
+                    spin.pick([
+                        `Avoir un site web performant est inutile si personne ne le visite. Nous concevons et déployons des stratégies d'acquisition ciblées pour votre marché à ${v} : génération de leads par téléphone pour le BTP et les services, campagnes de conversion pour le e-commerce, ou prospection automatisée (ABM) pour l'industrie B2B.`,
+                        `Attirez de nouveaux prospects hautement qualifiés à ${v} grâce à nos tunnels d'acquisition. De l'artisan BTP voulant des contacts de devis au site marchand cherchant des ventes récurrentes, nous créons des mécaniques adaptées à votre cible.`,
+                        `Développez votre part de marché dans le ${d} avec des leviers de Growth Marketing. Nous structurons des landing pages optimisées pour capter l'intérêt des professionnels locaux et maximiser les prises de contact.`
+                    ], 3) + " " + spin.pick([
+                        `Nos actions de growth marketing couvrent également les communes de ${near1} et ${near2}.`,
+                        `Nous aidons les professionnels basés à ${v} mais aussi à ${near1} ou ${near2} à accroître leur notoriété.`,
+                        `Bénéficiez de cette dynamique commerciale dans tout votre secteur, y compris à ${near1} et ${near2}.`
+                    ], 4),
+                    spin.pick([
+                        `Nous attirons des visiteurs qualifiés et mettons en place des mécaniques de conversion pour les transformer en clients.`,
+                        `Chaque point de contact de votre tunnel de vente est analysé pour augmenter le taux de conversion.`,
+                        `Nous construisons des campagnes d'acquisition basées sur des données fiables pour garantir votre retour sur investissement.`
+                    ], 5)
                 ],
                 bullets: [
                     "Définition de votre client idéal (Personas) et de votre positionnement",
@@ -2101,11 +2339,27 @@ export function getServiceSections(serviceKey: string, city: City) {
                 image: { src: "/assets/expertise/strategy.png", alt: `Stratégie d'acquisition et growth marketing à ${v}` }
             },
             {
-                title: `Campagnes publicitaires payantes à ${v} (Google & Facebook Ads)`,
-                subtitle: `Obtenez des résultats immédiats et mesurables sur vos investissements`,
+                title: spin.pick([
+                    `Campagnes publicitaires payantes à ${v} (Google & Meta Ads)`,
+                    `Acquisition payante (Google Ads, Facebook Ads) à ${v}`,
+                    `Gestion et optimisation de campagnes publicitaires à ${v}`
+                ], 6),
+                subtitle: spin.pick([
+                    `Obtenez des résultats immédiats et mesurables sur vos investissements`,
+                    `Ciblez précisément les internautes de votre secteur dans le ${d}`,
+                    `Augmentez vos ventes locales grâce au trafic publicitaire qualifié`
+                ], 7),
                 paragraphs: [
-                    `Nous gérons et optimisons vos budgets publicitaires sur Google Search, Facebook, Instagram et LinkedIn pour cibler précisément les internautes de ${v} prêts à acheter vos services. Nous optimisons le coût par lead pour chaque secteur.`,
-                    `Chaque euro dépensé est tracé pour maximiser votre retour sur investissement (ROI).`
+                    spin.pick([
+                        `Nous gérons et optimisons vos budgets publicitaires sur Google Search, Facebook, Instagram et LinkedIn pour cibler précisément les internautes de ${v} prêts à acheter vos services. Nous optimisons le coût par lead pour chaque secteur.`,
+                        `Captez les recherches intentionnelles de vos futurs clients à ${v} via Google Ads. Nous concevons également des campagnes visuelles ciblées sur Meta pour faire découvrir vos services dans tout le ${d}.`,
+                        `Le trafic payant est un levier de croissance instantané dans la région ${r}. Nous rédigeons vos annonces publicitaires et configurons vos audiences de manière chirurgicale pour maximiser les leads.`
+                    ], 8),
+                    spin.pick([
+                        `Chaque euro dépensé est tracé pour maximiser votre retour sur investissement (ROI).`,
+                        `Nous suivons quotidiennement les indicateurs de performance de vos annonces pour réduire vos coûts par acquisition.`,
+                        `Vos budgets sont investis uniquement sur les mots-clés et les profils d'utilisateurs les plus rentables.`
+                    ], 9)
                 ],
                 bullets: [
                     "Création et gestion de campagnes de recherche et Display",
@@ -2116,11 +2370,27 @@ export function getServiceSections(serviceKey: string, city: City) {
                 image: { src: "/assets/expertise/web.png", alt: `Campagnes Google Ads et Facebook Ads à ${v}` }
             },
             {
-                title: `Analyse de données et tracking de conversion à ${v}`,
-                subtitle: `Prenez des décisions marketing basées sur des chiffres concrets`,
+                title: spin.pick([
+                    `Analyse de données et tracking de conversion à ${v}`,
+                    `Tracking de conversion (GA4, GTM) et analytics à ${v}`,
+                    `Looker Studio et pilotage par la donnée à ${v}`
+                ], 10),
+                subtitle: spin.pick([
+                    `Prenez des décisions marketing basées sur des chiffres concrets`,
+                    `Mesurez avec précision les actions de vos prospects dans le ${d}`,
+                    `Des tableaux de bord transparents pour suivre vos performances à ${v}`
+                ], 11),
                 paragraphs: [
-                    `Nous installons et configurons les outils de tracking les plus performants (GA4, GTM, Server-Side) pour mesurer précisément le comportement de vos utilisateurs de ${v} et l'origine de vos ventes, sans perte d'information.`,
-                    `Visualisez vos performances en temps réel sur des tableaux de bord clairs et transparents.`
+                    spin.pick([
+                        `Nous installons et configurons les outils de tracking les plus performants (GA4, GTM, Server-Side) pour mesurer précisément le comportement de vos utilisateurs de ${v} et l'origine de vos ventes, sans perte d'information.`,
+                        `Prenez le contrôle de vos statistiques de vente à ${v}. Nous mettons en place un plan de marquage de vos formulaires et boutons pour identifier d'où viennent vos clients les plus rentables.`,
+                        `Bénéficiez d'une visibilité totale sur l'efficacité de vos canaux marketing dans la région ${r}. Nous unifions vos statistiques de trafic sur des rapports automatisés.`
+                    ], 12),
+                    spin.pick([
+                        `Visualisez vos performances en temps réel sur des tableaux de bord clairs et transparents.`,
+                        `L'implémentation du tracking côté serveur garantit le respect du RGPD et la justesse de vos données.`,
+                        `Nous analysons mensuellement vos résultats pour vous formuler des préconisations stratégiques exploitables.`
+                    ], 13)
                 ],
                 bullets: [
                     "Configuration avancée de Google Analytics 4 et Google Tag Manager",

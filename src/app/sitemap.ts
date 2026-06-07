@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next';
-import { CITIES, SERVICES, BRAND, TOP_20_SLUGS } from '@/lib/seo-dataset';
+import { CITIES, SERVICES, BRAND } from '@/lib/seo-dataset';
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const baseUrl = `https://${BRAND.domain}`;
@@ -19,17 +19,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: route === '' ? 1 : 0.8,
     }));
 
-    // Dynamic pages (City x Service) - Filtered for Phase 1 (Top 20)
-    const dynamicPages = CITIES
-        .filter(city => TOP_20_SLUGS.includes(city.slug))
-        .flatMap((city) =>
-            SERVICES.map((service) => ({
-                url: `${baseUrl}/${city.slug}/${service.key}`,
-                lastModified: new Date(),
-                changeFrequency: 'weekly' as const,
-                priority: 0.6,
-            }))
-        );
+    // Dynamic pages (City x Service) - All 101 cities included
+    const dynamicPages = CITIES.flatMap((city) =>
+        SERVICES.map((service) => ({
+            url: `${baseUrl}/${city.slug}/${service.key}`,
+            lastModified: new Date(),
+            changeFrequency: 'weekly' as const,
+            priority: 0.6,
+        }))
+    );
 
     return [...staticPages, ...dynamicPages];
 }

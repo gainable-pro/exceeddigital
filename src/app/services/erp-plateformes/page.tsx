@@ -1,5 +1,3 @@
-"use client";
-
 import { Navbar } from "@/components/layout/Navbar";
 import { GsapReveal } from "@/components/ui/GsapReveal";
 import { ContactSection } from "@/components/sections/ContactSection";
@@ -18,6 +16,12 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { TypewriterText } from "@/components/ui/TypewriterText";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Développement ERP & Logiciels sur mesure | Exceed Digital",
+    description: "Simplifiez vos processus métiers avec nos solutions ERP et plateformes logicielles personnalisées, conçues pour l'efficacité opérationnelle et la croissance.",
+};
 
 export default function ErpServicePage() {
     return (

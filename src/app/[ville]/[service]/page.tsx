@@ -1,4 +1,4 @@
-import { CITIES, SERVICES, SECTORS, BRAND, buildCanonical, buildPageId, getLocalFAQ, getNearbyCities, TOP_20_SLUGS } from "@/lib/seo-dataset";
+import { CITIES, SERVICES, BRAND, buildCanonical, buildPageId, getLocalFAQ, getNearbyCities, getGeoDetails, getServiceSections } from "@/lib/seo-dataset";
 import { ZigZagSections } from "@/components/shared/ZigZagSections";
 import { Navbar } from "@/components/layout/Navbar";
 import { ArrowRight, Phone, MapPin, CheckCircle2 } from "lucide-react";
@@ -18,10 +18,9 @@ function getService(serviceKey: string) {
 }
 
 export async function generateStaticParams() {
-    // Phase 1: Strategic Batch (Top 20 cities)
-    return TOP_20_SLUGS.flatMap((villeSlug) =>
+    return CITIES.flatMap((city) =>
         SERVICES.map((s) => ({
-            ville: villeSlug,
+            ville: city.slug,
             service: s.key,
         }))
     );
@@ -34,16 +33,22 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
     const villeName = city?.name ?? ville;
     const serviceLabel = service?.label ?? serviceKey;
+    const geo = city ? getGeoDetails(city.insee) : null;
+    
+    // Safely extract department number in parentheses
+    const deptMatch = geo?.dept.match(/\(([^)]+)\)/);
+    const deptNum = deptMatch ? deptMatch[1] : (city ? city.insee.substring(0, 2) : "");
+    const location = deptNum ? `${villeName} (${deptNum})` : villeName;
 
     const path = `/${ville}/${serviceKey}`;
     return {
-        title: `${serviceLabel} à ${villeName} | ${BRAND.name}`,
-        description: `Expert en ${serviceLabel.toLowerCase()} à ${villeName}. Solutions sur mesure, performance technique et stratégie ROI pour votre entreprise à ${villeName}.`,
+        title: `${serviceLabel} à ${location} | ${BRAND.name}`,
+        description: `Expert en ${serviceLabel.toLowerCase()} à ${location}. Solutions sur mesure, performance technique et stratégie d'acquisition ROI pour entreprises dans le ${geo?.dept || location}.`,
         alternates: { canonical: buildCanonical(path) },
         robots: { index: true, follow: true },
         openGraph: {
-            title: `${serviceLabel} à ${villeName} | ${BRAND.name}`,
-            description: `Agence digitale à ${villeName} spécialisée en ${serviceLabel.toLowerCase()}. Propulsez votre croissance locale.`,
+            title: `${serviceLabel} à ${location} | ${BRAND.name}`,
+            description: `Agence digitale à ${location} spécialisée en ${serviceLabel.toLowerCase()}. Propulsez votre croissance locale dans le ${geo?.dept || location}.`,
             url: buildCanonical(path),
             type: "website",
         },
@@ -61,19 +66,7 @@ export default async function Page({ params }: PageProps) {
     const faqs = getLocalFAQ(villeName, serviceLabel);
     const nearCities = getNearbyCities(ville);
 
-    const zigItems = SECTORS.slice(0, 3).map((sector) => ({
-        title: `${sector.label} : Solutions digitales à ${villeName}`,
-        subtitle: `Optimisez votre présence dans le secteur ${sector.label.toLowerCase()}`,
-        paragraphs: [
-            `À ${villeName}, le secteur ${sector.label.toLowerCase()} demande une approche digitale spécifique et performante.`,
-            `Nous concevons des outils adaptés aux besoins des entreprises locales pour maximiser leur visibilité et leur efficacité opérationnelle.`
-        ],
-        bullets: sector.bullets.features,
-        image: {
-            src: `/assets/expertise/${sector.key === 'btp' ? 'strategy' : sector.key === 'sante' ? 'web' : 'chatbot'}.png`,
-            alt: `${serviceLabel} pour ${sector.label} à ${villeName}`
-        },
-    }));
+    const zigItems = city ? getServiceSections(serviceKey, city) : [];
 
     return (
         <main className="w-full">
@@ -142,7 +135,15 @@ export default async function Page({ params }: PageProps) {
                         <div className="bg-accent-primary/5 p-8 rounded-3xl border border-accent-primary/20">
                             <h3 className="text-xl font-bold text-white mb-4 italic">Vision Globale</h3>
                             <p className="text-secondary mb-6">Explorez notre expertise complète en {serviceLabel.toLowerCase()} au-delà du niveau local.</p>
-                            <Link href={`/services/${serviceKey === 'creation-site-web' ? 'creation-site-web-seo' : serviceKey === 'developpement-api' ? 'erp-plateformes' : serviceKey === 'performance-web' ? 'creation-site-web-seo' : serviceKey}`} className="text-accent-primary font-bold hover:underline flex items-center gap-2">
+                            <Link href={`/services/${
+                                serviceKey === 'creation-site-web-seo' || serviceKey === 'acquisition-clients'
+                                    ? 'creation-site-web-seo'
+                                    : serviceKey === 'developpement-sur-mesure' || serviceKey === 'methodes-dev-coaching'
+                                    ? 'erp-plateformes'
+                                    : serviceKey === 'automatisation-ia'
+                                    ? 'chatbot-automatisation'
+                                    : 'creation-site-web-seo'
+                            }`} className="text-accent-primary font-bold hover:underline flex items-center gap-2">
                                 Voir la page pilier {serviceLabel} <ArrowRight size={18} />
                             </Link>
                         </div>

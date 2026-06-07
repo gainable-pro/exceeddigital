@@ -1,13 +1,17 @@
-"use client";
-
 import { Navbar } from "@/components/layout/Navbar";
 import { DiagnosticForm } from "@/components/shared/DiagnosticForm";
 import React from "react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Audit de site web gratuit — Analyse SEO & Performance | Exceed Digital",
+    description: "Obtenez un diagnostic personnalisé de votre site internet en 2 minutes : vitesse, référencement SEO et conversion.",
+};
 
 export default function AuditPage() {
     return (
         <main className="v3-audit-page">
-            <Navbar onAuditClick={() => { }} isCompact={true} />
+            <Navbar isCompact={true} />
 
             {/* Immersive Background Shell (Optional, kept for depth) */}
             <div className="fixed inset-0 pointer-events-none z-0">

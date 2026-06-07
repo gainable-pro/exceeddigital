@@ -5,8 +5,8 @@ import { ConditionalFooter } from "@/components/layout/ConditionalFooter";
 import { BRAND } from "@/lib/seo-dataset";
 
 export const metadata: Metadata = {
-    title: "Xceed Digital — Premium Digital Agency Experience",
-    description: "Architectures digitales haute performance, SEO stratégique et automatisations métiers pour entreprises ambitieuses.",
+    title: "Exceed Digital — Agence Web, Référencement SEO & Solutions IA",
+    description: "Conception de sites vitrines et e-commerce sur mesure, développement d'ERP, chatbots intelligents et stratégies d'acquisition locales.",
     metadataBase: new URL(`https://${BRAND.domain}`),
     verification: {
         google: "TD_a3pv1_mHcpbjG7E7AkEF87XR5fqpCu26JQ-tngV0",

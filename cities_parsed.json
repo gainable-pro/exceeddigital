@@ -1,0 +1,1252 @@
+[
+  {
+    "name": "Paris",
+    "slug": "paris",
+    "insee": "75056"
+  },
+  {
+    "name": "Marseille",
+    "slug": "marseille",
+    "insee": "13055"
+  },
+  {
+    "name": "Lyon",
+    "slug": "lyon",
+    "insee": "69123"
+  },
+  {
+    "name": "Toulouse",
+    "slug": "toulouse",
+    "insee": "31555"
+  },
+  {
+    "name": "Nice",
+    "slug": "nice",
+    "insee": "06088"
+  },
+  {
+    "name": "Nantes",
+    "slug": "nantes",
+    "insee": "44109"
+  },
+  {
+    "name": "Montpellier",
+    "slug": "montpellier",
+    "insee": "34172"
+  },
+  {
+    "name": "Strasbourg",
+    "slug": "strasbourg",
+    "insee": "67482"
+  },
+  {
+    "name": "Bordeaux",
+    "slug": "bordeaux",
+    "insee": "33063"
+  },
+  {
+    "name": "Lille",
+    "slug": "lille",
+    "insee": "59350"
+  },
+  {
+    "name": "Rennes",
+    "slug": "rennes",
+    "insee": "35238"
+  },
+  {
+    "name": "Toulon",
+    "slug": "toulon",
+    "insee": "83137"
+  },
+  {
+    "name": "Reims",
+    "slug": "reims",
+    "insee": "51454"
+  },
+  {
+    "name": "Saint-Étienne",
+    "slug": "saint-etienne",
+    "insee": "42218"
+  },
+  {
+    "name": "Le Havre",
+    "slug": "le-havre",
+    "insee": "76351"
+  },
+  {
+    "name": "Villeurbanne",
+    "slug": "villeurbanne",
+    "insee": "69266"
+  },
+  {
+    "name": "Dijon",
+    "slug": "dijon",
+    "insee": "21231"
+  },
+  {
+    "name": "Angers",
+    "slug": "angers",
+    "insee": "49007"
+  },
+  {
+    "name": "Grenoble",
+    "slug": "grenoble",
+    "insee": "38185"
+  },
+  {
+    "name": "Saint-Denis",
+    "slug": "saint-denis",
+    "insee": "97411"
+  },
+  {
+    "name": "Nîmes",
+    "slug": "nimes",
+    "insee": "30189"
+  },
+  {
+    "name": "Aix-en-Provence",
+    "slug": "aix-en-provence",
+    "insee": "13001"
+  },
+  {
+    "name": "Saint-Denis",
+    "slug": "saint-denis",
+    "insee": "93066"
+  },
+  {
+    "name": "Clermont-Ferrand",
+    "slug": "clermont-ferrand",
+    "insee": "63113"
+  },
+  {
+    "name": "Le Mans",
+    "slug": "le-mans",
+    "insee": "72181"
+  },
+  {
+    "name": "Brest",
+    "slug": "brest",
+    "insee": "29019"
+  },
+  {
+    "name": "Tours",
+    "slug": "tours",
+    "insee": "37261"
+  },
+  {
+    "name": "Amiens",
+    "slug": "amiens",
+    "insee": "80021"
+  },
+  {
+    "name": "Annecy",
+    "slug": "annecy",
+    "insee": "74010"
+  },
+  {
+    "name": "Limoges",
+    "slug": "limoges",
+    "insee": "87085"
+  },
+  {
+    "name": "Metz",
+    "slug": "metz",
+    "insee": "57463"
+  },
+  {
+    "name": "Perpignan",
+    "slug": "perpignan",
+    "insee": "66136"
+  },
+  {
+    "name": "Boulogne-Billancourt",
+    "slug": "boulogne-billancourt",
+    "insee": "92012"
+  },
+  {
+    "name": "Besançon",
+    "slug": "besancon",
+    "insee": "25056"
+  },
+  {
+    "name": "Rouen",
+    "slug": "rouen",
+    "insee": "76540"
+  },
+  {
+    "name": "Orléans",
+    "slug": "orleans",
+    "insee": "45234"
+  },
+  {
+    "name": "Montreuil",
+    "slug": "montreuil",
+    "insee": "93048"
+  },
+  {
+    "name": "Caen",
+    "slug": "caen",
+    "insee": "14118"
+  },
+  {
+    "name": "Saint-Paul",
+    "slug": "saint-paul",
+    "insee": "97415"
+  },
+  {
+    "name": "Argenteuil",
+    "slug": "argenteuil",
+    "insee": "95018"
+  },
+  {
+    "name": "Mulhouse",
+    "slug": "mulhouse",
+    "insee": "68224"
+  },
+  {
+    "name": "Nancy",
+    "slug": "nancy",
+    "insee": "54395"
+  },
+  {
+    "name": "Tourcoing",
+    "slug": "tourcoing",
+    "insee": "59599"
+  },
+  {
+    "name": "Roubaix",
+    "slug": "roubaix",
+    "insee": "59512"
+  },
+  {
+    "name": "Nanterre",
+    "slug": "nanterre",
+    "insee": "92050"
+  },
+  {
+    "name": "Vitry-sur-Seine",
+    "slug": "vitry-sur-seine",
+    "insee": "94081"
+  },
+  {
+    "name": "Asnières-sur-Seine",
+    "slug": "asnieres-sur-seine",
+    "insee": "92004"
+  },
+  {
+    "name": "Créteil",
+    "slug": "creteil",
+    "insee": "94028"
+  },
+  {
+    "name": "Avignon",
+    "slug": "avignon",
+    "insee": "84007"
+  },
+  {
+    "name": "Colombes",
+    "slug": "colombes",
+    "insee": "92025"
+  },
+  {
+    "name": "Poitiers",
+    "slug": "poitiers",
+    "insee": "86194"
+  },
+  {
+    "name": "Aubervilliers",
+    "slug": "aubervilliers",
+    "insee": "93001"
+  },
+  {
+    "name": "Aulnay-sous-Bois",
+    "slug": "aulnay-sous-bois",
+    "insee": "93005"
+  },
+  {
+    "name": "Dunkerque",
+    "slug": "dunkerque",
+    "insee": "59183"
+  },
+  {
+    "name": "Nouméa",
+    "slug": "noumea",
+    "insee": "98818"
+  },
+  {
+    "name": "Saint-Pierre",
+    "slug": "saint-pierre",
+    "insee": "97416"
+  },
+  {
+    "name": "Versailles",
+    "slug": "versailles",
+    "insee": "78646"
+  },
+  {
+    "name": "Courbevoie",
+    "slug": "courbevoie",
+    "insee": "92026"
+  },
+  {
+    "name": "Rueil-Malmaison",
+    "slug": "rueil-malmaison",
+    "insee": "92063"
+  },
+  {
+    "name": "Le Tampon",
+    "slug": "le-tampon",
+    "insee": "97422"
+  },
+  {
+    "name": "Béziers",
+    "slug": "beziers",
+    "insee": "34032"
+  },
+  {
+    "name": "Pau",
+    "slug": "pau",
+    "insee": "64445"
+  },
+  {
+    "name": "La Rochelle",
+    "slug": "la-rochelle",
+    "insee": "17300"
+  },
+  {
+    "name": "Cherbourg-en-Cotentin",
+    "slug": "cherbourg-en-cotentin",
+    "insee": "50129"
+  },
+  {
+    "name": "Mérignac",
+    "slug": "merignac",
+    "insee": "33281"
+  },
+  {
+    "name": "Champigny-sur-Marne",
+    "slug": "champigny-sur-marne",
+    "insee": "94017"
+  },
+  {
+    "name": "Antibes",
+    "slug": "antibes",
+    "insee": "06004"
+  },
+  {
+    "name": "Saint-Maur-des-Fossés",
+    "slug": "saint-maur-des-fosses",
+    "insee": "94068"
+  },
+  {
+    "name": "Ajaccio",
+    "slug": "ajaccio",
+    "insee": "2A004"
+  },
+  {
+    "name": "Fort-de-France",
+    "slug": "fort-de-france",
+    "insee": "97209"
+  },
+  {
+    "name": "Saint-Nazaire",
+    "slug": "saint-nazaire",
+    "insee": "44184"
+  },
+  {
+    "name": "Cannes",
+    "slug": "cannes",
+    "insee": "06029"
+  },
+  {
+    "name": "Noisy-le-Grand",
+    "slug": "noisy-le-grand",
+    "insee": "93051"
+  },
+  {
+    "name": "Drancy",
+    "slug": "drancy",
+    "insee": "93029"
+  },
+  {
+    "name": "Mamoudzou",
+    "slug": "mamoudzou",
+    "insee": "97611"
+  },
+  {
+    "name": "Cergy",
+    "slug": "cergy",
+    "insee": "95127"
+  },
+  {
+    "name": "Levallois-Perret",
+    "slug": "levallois-perret",
+    "insee": "92044"
+  },
+  {
+    "name": "Issy-les-Moulineaux",
+    "slug": "issy-les-moulineaux",
+    "insee": "92040"
+  },
+  {
+    "name": "Calais",
+    "slug": "calais",
+    "insee": "62193"
+  },
+  {
+    "name": "Pessac",
+    "slug": "pessac",
+    "insee": "33318"
+  },
+  {
+    "name": "Colmar",
+    "slug": "colmar",
+    "insee": "68066"
+  },
+  {
+    "name": "Évry-Courcouronnes",
+    "slug": "evry-courcouronnes",
+    "insee": "91228"
+  },
+  {
+    "name": "Vénissieux",
+    "slug": "venissieux",
+    "insee": "69259"
+  },
+  {
+    "name": "Ivry-sur-Seine",
+    "slug": "ivry-sur-seine",
+    "insee": "94041"
+  },
+  {
+    "name": "Valence",
+    "slug": "valence",
+    "insee": "26362"
+  },
+  {
+    "name": "Clichy",
+    "slug": "clichy",
+    "insee": "92024"
+  },
+  {
+    "name": "Quimper",
+    "slug": "quimper",
+    "insee": "29232"
+  },
+  {
+    "name": "Antony",
+    "slug": "antony",
+    "insee": "92002"
+  },
+  {
+    "name": "Bourges",
+    "slug": "bourges",
+    "insee": "18033"
+  },
+  {
+    "name": "La Seyne-sur-Mer",
+    "slug": "la-seyne-sur-mer",
+    "insee": "83126"
+  },
+  {
+    "name": "Montauban",
+    "slug": "montauban",
+    "insee": "82121"
+  },
+  {
+    "name": "Villeneuve-d'Ascq",
+    "slug": "villeneuve-d-ascq",
+    "insee": "59009"
+  },
+  {
+    "name": "Cayenne",
+    "slug": "cayenne",
+    "insee": "97302"
+  },
+  {
+    "name": "Le Blanc-Mesnil",
+    "slug": "le-blanc-mesnil",
+    "insee": "93007"
+  },
+  {
+    "name": "Troyes",
+    "slug": "troyes",
+    "insee": "10387"
+  },
+  {
+    "name": "Pantin",
+    "slug": "pantin",
+    "insee": "93055"
+  },
+  {
+    "name": "Villejuif",
+    "slug": "villejuif",
+    "insee": "94076"
+  },
+  {
+    "name": "Chambéry",
+    "slug": "chambery",
+    "insee": "73065"
+  },
+  {
+    "name": "Niort",
+    "slug": "niort",
+    "insee": "79191"
+  },
+  {
+    "name": "Fréjus",
+    "slug": "frejus",
+    "insee": "83061"
+  },
+  {
+    "name": "Neuilly-sur-Seine",
+    "slug": "neuilly-sur-seine",
+    "insee": "92051"
+  },
+  {
+    "name": "Sarcelles",
+    "slug": "sarcelles",
+    "insee": "95585"
+  },
+  {
+    "name": "Saint-André",
+    "slug": "saint-andre",
+    "insee": "97409"
+  },
+  {
+    "name": "Clamart",
+    "slug": "clamart",
+    "insee": "92023"
+  },
+  {
+    "name": "Lorient",
+    "slug": "lorient",
+    "insee": "56121"
+  },
+  {
+    "name": "Narbonne",
+    "slug": "narbonne",
+    "insee": "11262"
+  },
+  {
+    "name": "Bobigny",
+    "slug": "bobigny",
+    "insee": "93008"
+  },
+  {
+    "name": "Meaux",
+    "slug": "meaux",
+    "insee": "77284"
+  },
+  {
+    "name": "Maisons-Alfort",
+    "slug": "maisons-alfort",
+    "insee": "94046"
+  },
+  {
+    "name": "Hyères",
+    "slug": "hyeres",
+    "insee": "83069"
+  },
+  {
+    "name": "Vannes",
+    "slug": "vannes",
+    "insee": "56260"
+  },
+  {
+    "name": "Beauvais",
+    "slug": "beauvais",
+    "insee": "60057"
+  },
+  {
+    "name": "Saint-Louis",
+    "slug": "saint-louis",
+    "insee": "97414"
+  },
+  {
+    "name": "La Roche-sur-Yon",
+    "slug": "la-roche-sur-yon",
+    "insee": "85191"
+  },
+  {
+    "name": "Chelles",
+    "slug": "chelles",
+    "insee": "77108"
+  },
+  {
+    "name": "Corbeil-Essonnes",
+    "slug": "corbeil-essonnes",
+    "insee": "91174"
+  },
+  {
+    "name": "Saint-Laurent-du-Maroni",
+    "slug": "saint-laurent-du-maroni",
+    "insee": "97311"
+  },
+  {
+    "name": "Cholet",
+    "slug": "cholet",
+    "insee": "49099"
+  },
+  {
+    "name": "Bayonne",
+    "slug": "bayonne",
+    "insee": "64102"
+  },
+  {
+    "name": "Fontenay-sous-Bois",
+    "slug": "fontenay-sous-bois",
+    "insee": "94033"
+  },
+  {
+    "name": "Saint-Ouen-sur-Seine",
+    "slug": "saint-ouen-sur-seine",
+    "insee": "93070"
+  },
+  {
+    "name": "Cagnes-sur-Mer",
+    "slug": "cagnes-sur-mer",
+    "insee": "06027"
+  },
+  {
+    "name": "Vaulx-en-Velin",
+    "slug": "vaulx-en-velin",
+    "insee": "69256"
+  },
+  {
+    "name": "Épinay-sur-Seine",
+    "slug": "epinay-sur-seine",
+    "insee": "93031"
+  },
+  {
+    "name": "Saint-Quentin",
+    "slug": "saint-quentin",
+    "insee": "02691"
+  },
+  {
+    "name": "Sartrouville",
+    "slug": "sartrouville",
+    "insee": "78586"
+  },
+  {
+    "name": "Sevran",
+    "slug": "sevran",
+    "insee": "93071"
+  },
+  {
+    "name": "Arles",
+    "slug": "arles",
+    "insee": "13004"
+  },
+  {
+    "name": "Massy",
+    "slug": "massy",
+    "insee": "91377"
+  },
+  {
+    "name": "Albi",
+    "slug": "albi",
+    "insee": "81004"
+  },
+  {
+    "name": "Les Abymes",
+    "slug": "les-abymes",
+    "insee": "97101"
+  },
+  {
+    "name": "Gennevilliers",
+    "slug": "gennevilliers",
+    "insee": "92036"
+  },
+  {
+    "name": "Saint-Herblain",
+    "slug": "saint-herblain",
+    "insee": "44162"
+  },
+  {
+    "name": "Grasse",
+    "slug": "grasse",
+    "insee": "06069"
+  },
+  {
+    "name": "Bondy",
+    "slug": "bondy",
+    "insee": "93010"
+  },
+  {
+    "name": "Les Sables-d'Olonne",
+    "slug": "les-sables-d-olonne",
+    "insee": "85194"
+  },
+  {
+    "name": "Laval",
+    "slug": "laval",
+    "insee": "53130"
+  },
+  {
+    "name": "Évreux",
+    "slug": "evreux",
+    "insee": "27229"
+  },
+  {
+    "name": "Saint-Priest",
+    "slug": "saint-priest",
+    "insee": "69290"
+  },
+  {
+    "name": "Suresnes",
+    "slug": "suresnes",
+    "insee": "92073"
+  },
+  {
+    "name": "Martigues",
+    "slug": "martigues",
+    "insee": "13056"
+  },
+  {
+    "name": "Vincennes",
+    "slug": "vincennes",
+    "insee": "94080"
+  },
+  {
+    "name": "Aubagne",
+    "slug": "aubagne",
+    "insee": "13005"
+  },
+  {
+    "name": "Saint-Malo",
+    "slug": "saint-malo",
+    "insee": "35288"
+  },
+  {
+    "name": "Livry-Gargan",
+    "slug": "livry-gargan",
+    "insee": "93046"
+  },
+  {
+    "name": "Blois",
+    "slug": "blois",
+    "insee": "41018"
+  },
+  {
+    "name": "Rosny-sous-Bois",
+    "slug": "rosny-sous-bois",
+    "insee": "93064"
+  },
+  {
+    "name": "La Courneuve",
+    "slug": "la-courneuve",
+    "insee": "93027"
+  },
+  {
+    "name": "Brive-la-Gaillarde",
+    "slug": "brive-la-gaillarde",
+    "insee": "19031"
+  },
+  {
+    "name": "Bastia",
+    "slug": "bastia",
+    "insee": "2B033"
+  },
+  {
+    "name": "Talence",
+    "slug": "talence",
+    "insee": "33522"
+  },
+  {
+    "name": "Meudon",
+    "slug": "meudon",
+    "insee": "92048"
+  },
+  {
+    "name": "Montrouge",
+    "slug": "montrouge",
+    "insee": "92049"
+  },
+  {
+    "name": "Alès",
+    "slug": "ales",
+    "insee": "30007"
+  },
+  {
+    "name": "Carcassonne",
+    "slug": "carcassonne",
+    "insee": "11069"
+  },
+  {
+    "name": "Melun",
+    "slug": "melun",
+    "insee": "77288"
+  },
+  {
+    "name": "Choisy-le-Roi",
+    "slug": "choisy-le-roi",
+    "insee": "94022"
+  },
+  {
+    "name": "Saint-Germain-en-Laye",
+    "slug": "saint-germain-en-laye",
+    "insee": "78551"
+  },
+  {
+    "name": "Belfort",
+    "slug": "belfort",
+    "insee": "90010"
+  },
+  {
+    "name": "Charleville-Mézières",
+    "slug": "charleville-mezieres",
+    "insee": "08105"
+  },
+  {
+    "name": "Alfortville",
+    "slug": "alfortville",
+    "insee": "94002"
+  },
+  {
+    "name": "Noisy-le-Sec",
+    "slug": "noisy-le-sec",
+    "insee": "93053"
+  },
+  {
+    "name": "Sète",
+    "slug": "sete",
+    "insee": "34301"
+  },
+  {
+    "name": "Chalon-sur-Saône",
+    "slug": "chalon-sur-saone",
+    "insee": "71076"
+  },
+  {
+    "name": "Bagneux",
+    "slug": "bagneux",
+    "insee": "92007"
+  },
+  {
+    "name": "Tarbes",
+    "slug": "tarbes",
+    "insee": "65440"
+  },
+  {
+    "name": "Saint-Brieuc",
+    "slug": "saint-brieuc",
+    "insee": "22278"
+  },
+  {
+    "name": "Istres",
+    "slug": "istres",
+    "insee": "13047"
+  },
+  {
+    "name": "Salon-de-Provence",
+    "slug": "salon-de-provence",
+    "insee": "13103"
+  },
+  {
+    "name": "Puteaux",
+    "slug": "puteaux",
+    "insee": "92062"
+  },
+  {
+    "name": "Caluire-et-Cuire",
+    "slug": "caluire-et-cuire",
+    "insee": "69034"
+  },
+  {
+    "name": "Rezé",
+    "slug": "reze",
+    "insee": "44143"
+  },
+  {
+    "name": "Mantes-la-Jolie",
+    "slug": "mantes-la-jolie",
+    "insee": "78361"
+  },
+  {
+    "name": "Valenciennes",
+    "slug": "valenciennes",
+    "insee": "59606"
+  },
+  {
+    "name": "Anglet",
+    "slug": "anglet",
+    "insee": "64024"
+  },
+  {
+    "name": "Bagnolet",
+    "slug": "bagnolet",
+    "insee": "93006"
+  },
+  {
+    "name": "Bron",
+    "slug": "bron",
+    "insee": "69029"
+  },
+  {
+    "name": "Châlons-en-Champagne",
+    "slug": "chalons-en-champagne",
+    "insee": "51108"
+  },
+  {
+    "name": "Châteauroux",
+    "slug": "chateauroux",
+    "insee": "36044"
+  },
+  {
+    "name": "Arras",
+    "slug": "arras",
+    "insee": "62041"
+  },
+  {
+    "name": "Thionville",
+    "slug": "thionville",
+    "insee": "57672"
+  },
+  {
+    "name": "Villenave-d'Ornon",
+    "slug": "villenave-d-ornon",
+    "insee": "33550"
+  },
+  {
+    "name": "Castres",
+    "slug": "castres",
+    "insee": "81065"
+  },
+  {
+    "name": "Bourg-en-Bresse",
+    "slug": "bourg-en-bresse",
+    "insee": "01053"
+  },
+  {
+    "name": "Thonon-les-Bains",
+    "slug": "thonon-les-bains",
+    "insee": "74281"
+  },
+  {
+    "name": "Gagny",
+    "slug": "gagny",
+    "insee": "93032"
+  },
+  {
+    "name": "Le Cannet",
+    "slug": "le-cannet",
+    "insee": "06030"
+  },
+  {
+    "name": "Angoulême",
+    "slug": "angouleme",
+    "insee": "16015"
+  },
+  {
+    "name": "Garges-lès-Gonesse",
+    "slug": "garges-les-gonesse",
+    "insee": "95268"
+  },
+  {
+    "name": "Villepinte",
+    "slug": "villepinte",
+    "insee": "93078"
+  },
+  {
+    "name": "Stains",
+    "slug": "stains",
+    "insee": "93072"
+  },
+  {
+    "name": "Gap",
+    "slug": "gap",
+    "insee": "05061"
+  },
+  {
+    "name": "Poissy",
+    "slug": "poissy",
+    "insee": "78498"
+  },
+  {
+    "name": "Colomiers",
+    "slug": "colomiers",
+    "insee": "31149"
+  },
+  {
+    "name": "Wattrelos",
+    "slug": "wattrelos",
+    "insee": "59650"
+  },
+  {
+    "name": "Draguignan",
+    "slug": "draguignan",
+    "insee": "83050"
+  },
+  {
+    "name": "Compiègne",
+    "slug": "compiegne",
+    "insee": "60159"
+  },
+  {
+    "name": "Montélimar",
+    "slug": "montelimar",
+    "insee": "26198"
+  },
+  {
+    "name": "Boulogne-sur-Mer",
+    "slug": "boulogne-sur-mer",
+    "insee": "62160"
+  },
+  {
+    "name": "Douai",
+    "slug": "douai",
+    "insee": "59178"
+  },
+  {
+    "name": "Marcq-en-Barœul",
+    "slug": "marcq-en-bar-ul",
+    "insee": "59378"
+  },
+  {
+    "name": "Neuilly-sur-Marne",
+    "slug": "neuilly-sur-marne",
+    "insee": "93050"
+  },
+  {
+    "name": "Le Lamentin",
+    "slug": "le-lamentin",
+    "insee": "97213"
+  },
+  {
+    "name": "Saint-Joseph",
+    "slug": "saint-joseph",
+    "insee": "97412"
+  },
+  {
+    "name": "Pontault-Combault",
+    "slug": "pontault-combault",
+    "insee": "77373"
+  },
+  {
+    "name": "Saint-Benoît",
+    "slug": "saint-benoit",
+    "insee": "97410"
+  },
+  {
+    "name": "La Ciotat",
+    "slug": "la-ciotat",
+    "insee": "13028"
+  },
+  {
+    "name": "Joué-lès-Tours",
+    "slug": "joue-les-tours",
+    "insee": "37122"
+  },
+  {
+    "name": "Tremblay-en-France",
+    "slug": "tremblay-en-france",
+    "insee": "93073"
+  },
+  {
+    "name": "Chartres",
+    "slug": "chartres",
+    "insee": "28085"
+  },
+  {
+    "name": "Oullins-Pierre-Bénite",
+    "slug": "oullins-pierre-benite",
+    "insee": "69149"
+  },
+  {
+    "name": "Franconville",
+    "slug": "franconville",
+    "insee": "95252"
+  },
+  {
+    "name": "Saint-Martin-d'Hères",
+    "slug": "saint-martin-d-heres",
+    "insee": "38421"
+  },
+  {
+    "name": "Annemasse",
+    "slug": "annemasse",
+    "insee": "74012"
+  },
+  {
+    "name": "Savigny-sur-Orge",
+    "slug": "savigny-sur-orge",
+    "insee": "91589"
+  },
+  {
+    "name": "Échirolles",
+    "slug": "echirolles",
+    "insee": "38151"
+  },
+  {
+    "name": "Palaiseau",
+    "slug": "palaiseau",
+    "insee": "91477"
+  },
+  {
+    "name": "Romainville",
+    "slug": "romainville",
+    "insee": "93063"
+  },
+  {
+    "name": "Saint-Raphaël",
+    "slug": "saint-raphael",
+    "insee": "83118"
+  },
+  {
+    "name": "Six-Fours-les-Plages",
+    "slug": "six-fours-les-plages",
+    "insee": "83129"
+  },
+  {
+    "name": "Sainte-Marie",
+    "slug": "sainte-marie",
+    "insee": "97418"
+  },
+  {
+    "name": "Conflans-Sainte-Honorine",
+    "slug": "conflans-sainte-honorine",
+    "insee": "78172"
+  },
+  {
+    "name": "Vitrolles",
+    "slug": "vitrolles",
+    "insee": "13117"
+  },
+  {
+    "name": "Châtillon",
+    "slug": "chatillon",
+    "insee": "92020"
+  },
+  {
+    "name": "Meyzieu",
+    "slug": "meyzieu",
+    "insee": "69282"
+  },
+  {
+    "name": "Athis-Mons",
+    "slug": "athis-mons",
+    "insee": "91027"
+  },
+  {
+    "name": "La Possession",
+    "slug": "la-possession",
+    "insee": "97408"
+  },
+  {
+    "name": "Matoury",
+    "slug": "matoury",
+    "insee": "97307"
+  },
+  {
+    "name": "Bezons",
+    "slug": "bezons",
+    "insee": "95063"
+  },
+  {
+    "name": "Haguenau",
+    "slug": "haguenau",
+    "insee": "67180"
+  },
+  {
+    "name": "Creil",
+    "slug": "creil",
+    "insee": "60175"
+  },
+  {
+    "name": "Villeneuve-Saint-Georges",
+    "slug": "villeneuve-saint-georges",
+    "insee": "94078"
+  },
+  {
+    "name": "Villefranche-sur-Saône",
+    "slug": "villefranche-sur-saone",
+    "insee": "69264"
+  },
+  {
+    "name": "Saint-Leu",
+    "slug": "saint-leu",
+    "insee": "97413"
+  },
+  {
+    "name": "Châtenay-Malabry",
+    "slug": "chatenay-malabry",
+    "insee": "92019"
+  },
+  {
+    "name": "Saint-Chamond",
+    "slug": "saint-chamond",
+    "insee": "42207"
+  },
+  {
+    "name": "Sainte-Geneviève-des-Bois",
+    "slug": "sainte-genevieve-des-bois",
+    "insee": "91549"
+  },
+  {
+    "name": "Roanne",
+    "slug": "roanne",
+    "insee": "42187"
+  },
+  {
+    "name": "Le Perreux-sur-Marne",
+    "slug": "le-perreux-sur-marne",
+    "insee": "94058"
+  },
+  {
+    "name": "Mâcon",
+    "slug": "macon",
+    "insee": "71270"
+  },
+  {
+    "name": "Auxerre",
+    "slug": "auxerre",
+    "insee": "89024"
+  },
+  {
+    "name": "Dumbéa",
+    "slug": "dumbea",
+    "insee": "98805"
+  },
+  {
+    "name": "Schiltigheim",
+    "slug": "schiltigheim",
+    "insee": "67447"
+  },
+  {
+    "name": "Trappes",
+    "slug": "trappes",
+    "insee": "78621"
+  },
+  {
+    "name": "Les Mureaux",
+    "slug": "les-mureaux",
+    "insee": "78440"
+  },
+  {
+    "name": "Houilles",
+    "slug": "houilles",
+    "insee": "78311"
+  },
+  {
+    "name": "Le Port",
+    "slug": "le-port",
+    "insee": "97407"
+  },
+  {
+    "name": "Marignane",
+    "slug": "marignane",
+    "insee": "13054"
+  },
+  {
+    "name": "Romans-sur-Isère",
+    "slug": "romans-sur-isere",
+    "insee": "26281"
+  },
+  {
+    "name": "Villiers-sur-Marne",
+    "slug": "villiers-sur-marne",
+    "insee": "94079"
+  }
+]

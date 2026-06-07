@@ -1,5 +1,3 @@
-"use client";
-
 import { Navbar } from "@/components/layout/Navbar";
 import { GsapReveal } from "@/components/ui/GsapReveal";
 import { ContactSection } from "@/components/sections/ContactSection";
@@ -18,6 +16,12 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { TypewriterText } from "@/components/ui/TypewriterText";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Stratégie de Marque & Identité Visuelle | Exceed Digital",
+    description: "Affirmez votre présence en ligne avec une stratégie d'image forte : branding premium, charte graphique unique et création de contenus percutants.",
+};
 
 export default function StrategieServicePage() {
     return (

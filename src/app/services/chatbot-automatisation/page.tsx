@@ -1,5 +1,3 @@
-"use client";
-
 import { Navbar } from "@/components/layout/Navbar";
 import { GsapReveal } from "@/components/ui/GsapReveal";
 import { ContactSection } from "@/components/sections/ContactSection";
@@ -18,6 +16,12 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { TypewriterText } from "@/components/ui/TypewriterText";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Création de Chatbots & Intelligence Artificielle | Exceed Digital",
+    description: "Automatisez vos interactions clients et vos processus internes grâce à des chatbots intelligents et l'intégration de technologies IA sur mesure.",
+};
 
 export default function ChatbotServicePage() {
     return (

@@ -11,10 +11,10 @@ export function Footer() {
             <div className="max-w-6xl mx-auto px-4 relative z-10">
                 <div className="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-12 text-[10px] font-mono tracking-widest text-secondary/40">
                     <div className="flex items-center gap-6 flex-wrap justify-center">
-                        <Link href="/implantations" className="hover:text-accent-primary transition-colors">NOS IMPLANTATIONS</Link>
                         <Link href="/mentions-legales" className="hover:text-accent-primary transition-colors">MENTIONS LÉGALES</Link>
                         <Link href="/politique-confidentialite" className="hover:text-accent-primary transition-colors">CONFIDENTIALITÉ & RGPD</Link>
                         <Link href="/cgv" className="hover:text-accent-primary transition-colors">CGV</Link>
+                        <Link href="/implantations" className="hover:text-accent-primary transition-colors">ZONES D'INTERVENTION</Link>
                     </div>
 
                     <div className="hidden md:block w-1 h-1 bg-white/10 rounded-full" />

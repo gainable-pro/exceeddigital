@@ -41,14 +41,35 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     const location = deptNum ? `${villeName} (${deptNum})` : villeName;
 
     const path = `/${ville}/${serviceKey}`;
+
+    let title = `${serviceLabel} à ${location} | ${BRAND.name}`;
+    let description = `Expert en ${serviceLabel.toLowerCase()} à ${location}. Solutions sur mesure, performance technique et stratégie d'acquisition ROI pour entreprises dans le ${geo?.dept || location}.`;
+
+    if (serviceKey === "creation-site-web-seo") {
+        title = `Création Site Web & Référencement SEO à ${location} | Agence Web`;
+        description = `Besoin de créer un site internet à ${location} ? Notre agence web est experte en création de site web et référencement naturel (SEO) pour augmenter votre visibilité sur Google.`;
+    } else if (serviceKey === "automatisation-ia") {
+        title = `Automatisation & Chatbot IA à ${location} | Exceed Digital`;
+        description = `Automatisez vos tâches et boostez vos leads à ${location} avec nos solutions d'intelligence artificielle. Création de chatbots intelligents sur mesure.`;
+    } else if (serviceKey === "developpement-sur-mesure") {
+        title = `Application Web, ERP & SaaS sur mesure à ${location} | Exceed Digital`;
+        description = `Conception de logiciels, applications web complexes, portails SaaS et ERP sur mesure pour structurer votre activité d'entreprise à ${location}.`;
+    } else if (serviceKey === "methodes-dev-coaching") {
+        title = `Coaching Agile & Méthodes de Dev à ${location} | Exceed Digital`;
+        description = `Mentorat technique de développeurs, mise en place des méthodes agiles Scrum, Clean Code et pipelines DevOps / CI/CD pour votre équipe à ${location}.`;
+    } else if (serviceKey === "acquisition-clients") {
+        title = `Acquisition de Clients & Google Ads à ${location} | Growth Marketing`;
+        description = `Augmentez votre référencement, vos ventes et captez un flux de clients à ${location} grâce à nos campagnes Google Ads, Meta Ads et tunnels de conversion.`;
+    }
+
     return {
-        title: `${serviceLabel} à ${location} | ${BRAND.name}`,
-        description: `Expert en ${serviceLabel.toLowerCase()} à ${location}. Solutions sur mesure, performance technique et stratégie d'acquisition ROI pour entreprises dans le ${geo?.dept || location}.`,
+        title,
+        description,
         alternates: { canonical: buildCanonical(path) },
         robots: { index: true, follow: true },
         openGraph: {
-            title: `${serviceLabel} à ${location} | ${BRAND.name}`,
-            description: `Agence digitale à ${location} spécialisée en ${serviceLabel.toLowerCase()}. Propulsez votre croissance locale dans le ${geo?.dept || location}.`,
+            title,
+            description,
             url: buildCanonical(path),
             type: "website",
         },

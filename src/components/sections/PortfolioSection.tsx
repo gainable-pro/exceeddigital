@@ -4,6 +4,13 @@ import { ArrowUpRight } from "lucide-react";
 
 const projects = [
     {
+        title: "AMO Patio Réno",
+        category: "Site Vitrine & Audit Énergétique",
+        desc: "Cabinet d'Assistance à Maîtrise d'Ouvrage (AMO), audit énergétique RGE et ingénierie du bâtiment.",
+        img: "/assets/portfolio/amopatioreno.png",
+        url: "https://www.amopatioreno.fr"
+    },
+    {
         title: "Air G Energie",
         category: "Site Vitrine & SEO Local",
         desc: "Architecture dynamique avec pages optimisées par ville pour une domination du SEO local.",

@@ -32,7 +32,7 @@ export function Footer() {
                         </div>
 
                         <p className="text-[8px] uppercase tracking-widest mt-2 opacity-30">
-                            © {currentYear} EXCEED DIGITAL <span className="text-secondary opacity-50">®</span> TOUS DROITS RÉSERVÉS.
+                            © {currentYear} EXCEED DIGITAL <span className="text-secondary opacity-50">®</span> TOUS DROITS RÉSERVÉS. | PARTENAIRE : <a href="https://www.gainable.fr" target="_blank" rel="noopener noreferrer" className="hover:text-accent-primary underline">GAINABLE.FR</a>
                         </p>
                     </div>
                 </div>

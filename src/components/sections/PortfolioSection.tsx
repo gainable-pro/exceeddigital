@@ -4,6 +4,20 @@ import { ArrowUpRight } from "lucide-react";
 
 const projects = [
     {
+        title: "DuctedExpert.com",
+        category: "Plateforme SaaS & Réseau HVAC",
+        desc: "Plateforme internationale multilingue de mise en relation thermique, réseau d'experts HVAC, devis et traduction IA.",
+        img: "/assets/portfolio/ductedexpert.png",
+        url: "https://www.ductedexpert.com"
+    },
+    {
+        title: "Meca Diag Soft Auto",
+        category: "Site Vitrine & SEO Programmatique",
+        desc: "Atelier expert en reprogrammation moteur, réparation de calculateurs électroniques et conversion Bio-Éthanol E85.",
+        img: "/assets/portfolio/mecadiagauto.png",
+        url: "https://www.mecadiagsoftauto.fr"
+    },
+    {
         title: "AMO Patio Réno",
         category: "Site Vitrine & Audit Énergétique",
         desc: "Cabinet d'Assistance à Maîtrise d'Ouvrage (AMO), audit énergétique RGE et ingénierie du bâtiment.",
@@ -58,7 +72,7 @@ export function PortfolioSection() {
                             <TypewriterText text="SÉLECTIONNÉES" delay={1.0} />
                         </span>
                     </h2>
-                    <p className="text-secondary opacity-60 font-mono tracking-widest uppercase text-xs">Scroll to explore catalog — 2024</p>
+                    <p className="text-secondary opacity-60 font-mono tracking-widest uppercase text-xs">Scroll to explore catalog — 2026</p>
                 </div>
 
                 <div className="v3-portfolio-grid">
